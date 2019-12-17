@@ -62,7 +62,8 @@ const Navbar = () => {
     <>
       {collapseOpen ? <div id="bodyClick" onClick={() => closeMenu()} /> : null}
       <NavbarReactstrap
-        className={"fixed-top" + navbarColor}
+        // className={"fixed-top" + navbarColor}
+        className={"fixed-top bg-white"}
         // color="white"
         expand="lg"
       >

@@ -23,11 +23,15 @@ const Banner = props => {
   //   }
   // })
 
+  const wrapperStyles = props.small
+    ? { minHeight: "40vh", maxHeight: "480px" }
+    : {}
+
   return (
     <>
       <div
-        className="page-header page-header-small"
-        style={{ marginTop: "90px" }}
+        className="page-header page-header-small d-flex align-items-center"
+        style={{ marginTop: "90px", ...wrapperStyles }}
       >
         <Image
           className="page-header-image"
