@@ -1,7 +1,11 @@
-img{
-    max-width: 100%;
-    border-radius: 1px;
+img {
+  max-width: 100%;
+  border-radius: 1px;
 }
-.img-raised{
-    box-shadow: $box-shadow-raised;
+.img-raised {
+  box-shadow: $box-shadow-raised;
+}
+
+div.section-image.gatsby-image-wrapper::after {
+  background-color: transparent;
 }

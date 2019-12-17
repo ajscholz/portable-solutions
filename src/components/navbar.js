@@ -1,6 +1,7 @@
 import React from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import Image from "gatsby-image"
+import { navigate } from "@reach/router"
 
 import {
   Navbar as NavbarReactstrap,
@@ -69,12 +70,7 @@ const Navbar = () => {
       >
         <Container>
           <div className="navbar-translate">
-            <NavbarBrand
-              tag={Link}
-              to="/"
-              id="navbar-brand"
-              // onClick={e => e.preventDefault()}
-            >
+            <NavbarBrand id="navbar-brand" onClick={() => navigate("#top")}>
               <Image fixed={logo.fixed} alt="Go to homepage" />
               {/* Portable Solutions */}
             </NavbarBrand>
@@ -93,17 +89,26 @@ const Navbar = () => {
           </div>
           <Collapse isOpen={collapseOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem className="active">
-                <NavLink tag={Link} to="/info" onClick={() => closeMenu()}>
+              <NavItem>
+                <NavLink
+                  onClick={() => {
+                    closeMenu()
+                    navigate("#crate-info")
+                  }}
+                >
                   {/* <i className="now-ui-icons objects_globe"></i> */}
-                  <p>Info</p>
+                  <p>Crate Information</p>
                 </NavLink>
               </NavItem>
-
               <NavItem>
-                <NavLink tag={Link} to="/contact" onClick={() => closeMenu()}>
-                  {/* <i className="now-ui-icons users_circle-08"></i> */}
-                  <p>Contact</p>
+                <NavLink
+                  onClick={() => {
+                    closeMenu()
+                    navigate("#qualifications")
+                  }}
+                >
+                  {/* <i className="now-ui-icons objects_globe"></i> */}
+                  <p>Our Qualifications</p>
                 </NavLink>
               </NavItem>
             </Nav>

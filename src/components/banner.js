@@ -34,7 +34,7 @@ const Banner = props => {
         style={{ marginTop: "90px", ...wrapperStyles }}
       >
         <Image
-          className="page-header-image"
+          style={{ position: "unset" }}
           fluid={data.image.fluid}
           // ref={pageHeader}
         />
