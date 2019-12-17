@@ -8,20 +8,20 @@ import { Container } from "reactstrap"
 const Banner = props => {
   const { data } = props
 
-  let pageHeader = React.createRef()
-  React.useEffect(() => {
-    if (window.innerWidth > 991) {
-      const updateScroll = () => {
-        let windowScrollTop = window.pageYOffset / 3
-        pageHeader.current.style.transform =
-          "translate3d(0," + windowScrollTop + "px,0)"
-      }
-      window.addEventListener("scroll", updateScroll)
-      return function cleanup() {
-        window.removeEventListener("scroll", updateScroll)
-      }
-    }
-  })
+  // let pageHeader = React.createRef()
+  // React.useEffect(() => {
+  //   if (window.innerWidth > 991) {
+  //     const updateScroll = () => {
+  //       let windowScrollTop = window.pageYOffset / 3
+  //       pageHeader.current.style.transform =
+  //         "translate3d(0," + windowScrollTop + "px,0)"
+  //     }
+  //     window.addEventListener("scroll", updateScroll)
+  //     return function cleanup() {
+  //       window.removeEventListener("scroll", updateScroll)
+  //     }
+  //   }
+  // })
 
   return (
     <>
@@ -32,7 +32,7 @@ const Banner = props => {
         <Image
           className="page-header-image"
           fluid={data.image.fluid}
-          ref={pageHeader}
+          // ref={pageHeader}
         />
 
         <div className="content-center">
