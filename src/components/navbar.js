@@ -15,32 +15,33 @@ import {
 const Navbar = () => {
   const [collapseOpen, setCollapseOpen] = React.useState(false)
   const [navbarColor, setNavbarColor] = React.useState(
-    (document.documentElement.scrollTop > 499 || document.body.scrollTop) > 499
-      ? "bg-white"
-      : // : " navbar-transparent"
-        " bg-white"
+    "bg-white"
+    // (document.documentElement.scrollTop > 499 || document.body.scrollTop) > 499
+    //   ? "bg-white"
+    //   : // : " navbar-transparent"
+    //     " bg-white"
   )
 
-  React.useEffect(() => {
-    const updateNavbarColor = () => {
-      if (
-        document.documentElement.scrollTop > 499 ||
-        document.body.scrollTop > 499
-      ) {
-        setNavbarColor("bg-white")
-      } else if (
-        document.documentElement.scrollTop < 500 ||
-        document.body.scrollTop < 500
-      ) {
-        // setNavbarColor(" navbar-transparent")
-        setNavbarColor(" bg-white")
-      }
-    }
-    window.addEventListener("scroll", updateNavbarColor)
-    return function cleanup() {
-      window.removeEventListener("scroll", updateNavbarColor)
-    }
-  })
+  // React.useEffect(() => {
+  //   const updateNavbarColor = () => {
+  //     if (
+  //       document.documentElement.scrollTop > 499 ||
+  //       document.body.scrollTop > 499
+  //     ) {
+  //       setNavbarColor("bg-white")
+  //     } else if (
+  //       document.documentElement.scrollTop < 500 ||
+  //       document.body.scrollTop < 500
+  //     ) {
+  //       // setNavbarColor(" navbar-transparent")
+  //       setNavbarColor(" bg-white")
+  //     }
+  //   }
+  //   window.addEventListener("scroll", updateNavbarColor)
+  //   return function cleanup() {
+  //     window.removeEventListener("scroll", updateNavbarColor)
+  //   }
+  // })
 
   const { logo } = useStaticQuery(graphql`
     {
