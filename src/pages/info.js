@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 import Banner from "../components/banner"
 import { Container, Row } from "reactstrap"
 
-const IndexPage = props => {
+const InfoPage = props => {
   const { data } = props
   const { banner, sections } = data.page
 
@@ -25,7 +25,7 @@ const IndexPage = props => {
 
 export const data = graphql`
   {
-    page: contentfulPage(title: { eq: "Index" }) {
+    page: contentfulPage(title: { eq: "Info" }) {
       title
       banner {
         heading
@@ -36,7 +36,7 @@ export const data = graphql`
         }
       }
       sections {
-        ... on ContentfulPageSection {
+        ... on ContentfulInfo {
           title
           description {
             description
@@ -47,4 +47,4 @@ export const data = graphql`
   }
 `
 
-export default IndexPage
+export default InfoPage

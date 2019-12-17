@@ -18,7 +18,7 @@ const Navbar = () => {
     (document.documentElement.scrollTop > 499 || document.body.scrollTop) > 499
       ? "bg-white"
       : // : " navbar-transparent"
-        " bg-primary"
+        " bg-white"
   )
 
   React.useEffect(() => {
@@ -33,7 +33,7 @@ const Navbar = () => {
         document.body.scrollTop < 500
       ) {
         // setNavbarColor(" navbar-transparent")
-        setNavbarColor(" bg-primary")
+        setNavbarColor(" bg-white")
       }
     }
     window.addEventListener("scroll", updateNavbarColor)
@@ -92,15 +92,15 @@ const Navbar = () => {
           <Collapse isOpen={collapseOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem className="active">
-                <NavLink tag={Link} href="/" onClick={e => e.preventDefault()}>
-                  <i className="now-ui-icons objects_globe"></i>
+                <NavLink tag={Link} to="/info" onClick={() => closeMenu()}>
+                  {/* <i className="now-ui-icons objects_globe"></i> */}
                   <p>Info</p>
                 </NavLink>
               </NavItem>
 
               <NavItem>
-                <NavLink href="#pablo" onClick={e => e.preventDefault()}>
-                  <i className="now-ui-icons users_circle-08"></i>
+                <NavLink tag={Link} to="/contact" onClick={() => closeMenu()}>
+                  {/* <i className="now-ui-icons users_circle-08"></i> */}
                   <p>Contact</p>
                 </NavLink>
               </NavItem>
