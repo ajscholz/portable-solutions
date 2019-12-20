@@ -8,21 +8,21 @@ $none: 0 !default;
 $border-thin: 1px !default;
 $border-thick: 2px !default;
 
-$white-color: #ffffff !default;
-$white-bg: #ffffff !default;
+$white-color: #fffbfc !default;
+$white-bg: #fffbfc !default;
 $orange-bg: #e95e38 !default;
 
+$black-color: #010400 !default;
+
 $smoke-bg: #f5f5f5 !default;
-$light-black: #444 !default;
+$light-black: lighten($black-color, 40%) !default;
 
-$black-bg: rgba(30, 30, 30, 0.97) !default;
+$black-bg: #010400 !default;
+$black-hr: #a0a2a0 !default;
 
-$black-color: #2c2c2c !default;
-$black-hr: #444444 !default;
-
-$light-gray: #e3e3e3 !default;
-$medium-gray: #dddddd !default;
-$dark-gray: #9a9a9a !default;
+$light-gray: #edeeed !default;
+$medium-gray: #c2c3c2 !default;
+$dark-gray: #a0a2a0 !default;
 
 $opacity-gray-3: rgba(222, 222, 222, 0.3) !default;
 $opacity-gray-5: rgba(222, 222, 222, 0.5) !default;
@@ -40,34 +40,34 @@ $opacity-2: rgba(255, 255, 255, 0.2) !default;
 $transparent-bg: transparent !default;
 $dark-background: #555555 !default;
 
-$default-color: #888888 !default;
+$default-color: #a0a2a0 !default;
 $default-states-color: lighten($default-color, 6%) !default;
 $default-color-opacity: rgba(182, 182, 182, 0.6) !default;
 
-$primary-color: #f96332 !default;
+$primary-color: #424b54 !default;
 $primary-states-color: lighten($primary-color, 6%) !default;
-$primary-color-opacity: rgba(249, 99, 50, 0.3) !default;
-$primary-color-alert: rgba(249, 99, 50, 0.8) !default;
+$primary-color-opacity: rgba(66, 75, 84, 0.3) !default;
+$primary-color-alert: rgba(66, 75, 84, 0.8) !default;
 
-$success-color: #18ce0f !default;
+$success-color: #678d58 !default;
 $success-states-color: lighten($success-color, 6%) !default;
-$success-color-opacity: rgba(24, 206, 15, 0.3) !default;
-$success-color-alert: rgba(24, 206, 15, 0.8) !default;
+$success-color-opacity: rgba(103, 141, 88, 0.3) !default;
+$success-color-alert: rgba(103, 141, 88, 0.8) !default;
 
-$info-color: #2ca8ff !default;
+$info-color: #93a8ac !default;
 $info-states-color: lighten($info-color, 6%) !default;
-$info-color-opacity: rgba(44, 168, 255, 0.3) !default;
-$info-color-alert: rgba(44, 168, 255, 0.8) !default;
+$info-color-opacity: rgba(148, 167, 172, 0.3) !default;
+$info-color-alert: rgba(148, 167, 172, 0.8) !default;
 
-$warning-color: #ffb236 !default;
+$warning-color: #f9c80e !default;
 $warning-states-color: lighten($warning-color, 6%) !default;
-$warning-color-opacity: rgba(255, 178, 54, 0.3) !default;
-$warning-color-alert: rgba(255, 178, 54, 0.8) !default;
+$warning-color-opacity: rgba(249, 200, 14, 0.3) !default;
+$warning-color-alert: rgba(249, 200, 14, 0.8) !default;
 
-$danger-color: #ff3636 !default;
+$danger-color: #ff4a1c !default;
 $danger-states-color: lighten($danger-color, 6%) !default;
-$danger-color-opacity: rgba(255, 54, 54, 0.3) !default;
-$danger-color-alert: rgba(255, 54, 54, 0.8) !default;
+$danger-color-opacity: rgba(255, 74, 28, 0.3) !default;
+$danger-color-alert: rgba(255, 74, 28, 0.8) !default;
 
 /*     brand Colors              */
 $brand-primary: $primary-color !default;

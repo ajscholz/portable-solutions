@@ -28,7 +28,7 @@ const FAB = () => {
         id="fast-action-button"
         className="btn-fab slide-in-right"
         size="lg"
-        color="primary"
+        color="info"
         type="button"
         onClick={() => setOpenForm(true)}
       >

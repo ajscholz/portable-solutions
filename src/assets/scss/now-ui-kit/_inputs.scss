@@ -316,3 +316,8 @@ textarea.form-control {
   height: 100%;
   z-index: 100;
 }
+
+[data-background-color]:not([data-background-color="gray"])
+  .form-control::-webkit-input-placeholder {
+  color: $light-gray !important;
+}

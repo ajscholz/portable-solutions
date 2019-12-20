@@ -62,7 +62,7 @@ const ContactModal = props => {
   return (
     <Modal
       className="modal-login modal-fab"
-      modalClassName="modal-primary"
+      modalClassName="modal-info"
       isOpen={open}
       toggle={() => toggle(false)}
       onClosed={() => {
