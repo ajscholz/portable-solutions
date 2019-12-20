@@ -15,13 +15,13 @@ import {
 
 const Navbar = () => {
   const [collapseOpen, setCollapseOpen] = React.useState(false)
-  const [navbarColor, setNavbarColor] = React.useState(
-    "bg-white"
-    // (document.documentElement.scrollTop > 499 || document.body.scrollTop) > 499
-    //   ? "bg-white"
-    //   : // : " navbar-transparent"
-    //     " bg-white"
-  )
+  // const [navbarColor, setNavbarColor] = React.useState(
+  //   "bg-white"
+  // (document.documentElement.scrollTop > 499 || document.body.scrollTop) > 499
+  //   ? "bg-white"
+  //   : // : " navbar-transparent"
+  //     " bg-white"
+  // )
 
   // React.useEffect(() => {
   //   const updateNavbarColor = () => {
@@ -96,6 +96,7 @@ const Navbar = () => {
               {/* Portable Solutions */}
             </NavbarBrand>
             <button
+              style={{ marginLeft: "auto", width: "unset", padding: 0 }}
               onClick={() => {
                 document.documentElement.classList.toggle("nav-open")
                 setCollapseOpen(!collapseOpen)
@@ -107,7 +108,20 @@ const Navbar = () => {
               <span className="navbar-toggler-bar bar2"></span>
               <span className="navbar-toggler-bar bar3"></span>
             </button>
+            {/* <button
+              onClick={() => {
+                document.documentElement.classList.toggle("nav-open")
+                setCollapseOpen(!collapseOpen)
+              }}
+              aria-expanded={collapseOpen}
+              className="navbar-toggler"
+            >
+              <span className="navbar-toggler-bar bar1"></span>
+              <span className="navbar-toggler-bar bar2"></span>
+              <span className="navbar-toggler-bar bar3"></span>
+            </button> */}
           </div>
+
           <Collapse isOpen={collapseOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
