@@ -1,4 +1,6 @@
-import React from "react"
+import React, { useState } from "react"
+import { graphql, useStaticQuery } from "gatsby"
+import Image from "gatsby-image"
 
 import {
   Button,
@@ -17,61 +19,174 @@ import {
 const ContactModal = props => {
   const { open, toggle } = props
 
+  const {
+    data: { logo },
+  } = useStaticQuery(graphql`
+    {
+      data: contentfulCompanyInformation {
+        logo {
+          fixed(width: 180) {
+            ...GatsbyContentfulFixed
+          }
+        }
+      }
+    }
+  `)
+  console.log(logo)
+
+  const [name, setName] = useState("Andrew")
+  const [email, setEmail] = useState("andrew@citynorth.church")
+  const [phone, setPhone] = useState("614-560-1176")
+  const [orgName, setOrgName] = useState("City North Church")
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    console.log(
+      "form submission recorded: ",
+      "name: ",
+      name,
+      "email: ",
+      email,
+      "phone: ",
+      phone,
+      "orgName: ",
+      orgName
+    )
+  }
+
   return (
     <Modal
       className="modal-login modal-fab"
       modalClassName="modal-primary"
-      isOpen={open}
+      isOpen={true}
       toggle={() => toggle(false)}
     >
       <Card className="card-login card-plain">
-        <div className="modal-header justify-content-center">
+        <div className="modal-header bg-white justify-content-center">
           <button
             aria-hidden={true}
-            className="close"
+            className="close text-dark"
             type="button"
             onClick={() => toggle(false)}
+            style={{ right: "12px", top: "10px" }}
           >
-            <i className="now-ui-icons ui-1_simple-remove"></i>
+            <i
+              className="now-ui-icons ui-1_simple-remove"
+              style={{ fontSize: "16px" }}
+            ></i>
           </button>
-          <div className="header header-primary text-center">
-            <div className="logo-container">
-              <img alt="..." src={require("../assets/img/now-logo.png")}></img>
-            </div>
+          <div
+            className="logo-container mx-auto d-flex justify-content-center"
+            style={{ width: "100%" }}
+          >
+            <Image fixed={logo.fixed} alt="Portable Solutions" />
+            {/* <img alt="..." src={require("../assets/img/now-logo.png")}></img> */}
           </div>
         </div>
         <ModalBody data-background-color="">
-          <Form action="" className="form" method="">
+          <Form className="form">
             <CardBody>
-              <InputGroup className="form-group-no-border input-lg">
+              <InputGroup
+                className="form-group-no-border input-lg"
+                onFocus={e =>
+                  e.currentTarget.classList.add("input-group-focus")
+                }
+                onBlur={e =>
+                  e.currentTarget.classList.remove("input-group-focus")
+                }
+              >
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText>
                     <i className="now-ui-icons users_circle-08"></i>
                   </InputGroupText>
                 </InputGroupAddon>
-                <Input placeholder="First Name..." type="text"></Input>
+                <Input
+                  placeholder="Name..."
+                  type="text"
+                  value={name}
+                  onChange={e => setName(e.value)}
+                ></Input>
               </InputGroup>
-              <InputGroup className="form-group-no-border input-lg">
+
+              <InputGroup
+                className="form-group-no-border input-lg"
+                onFocus={e =>
+                  e.currentTarget.classList.add("input-group-focus")
+                }
+                onBlur={e =>
+                  e.currentTarget.classList.remove("input-group-focus")
+                }
+              >
                 <InputGroupAddon addonType="prepend">
                   <InputGroupText>
-                    <i className="now-ui-icons ui-1_lock-circle-open"></i>
+                    <i className="now-ui-icons ui-1_email-85"></i>
                   </InputGroupText>
                 </InputGroupAddon>
-                <Input placeholder="Password..." type="text"></Input>
+                <Input
+                  placeholder="Email..."
+                  type="email"
+                  value={email}
+                  onChange={e => setEmail(e.value)}
+                ></Input>
+              </InputGroup>
+
+              <InputGroup
+                className="form-group-no-border input-lg"
+                onFocus={e =>
+                  e.currentTarget.classList.add("input-group-focus")
+                }
+                onBlur={e =>
+                  e.currentTarget.classList.remove("input-group-focus")
+                }
+              >
+                <InputGroupAddon addonType="prepend">
+                  <InputGroupText>
+                    <i className="now-ui-icons tech_mobile"></i>
+                  </InputGroupText>
+                </InputGroupAddon>
+                <Input
+                  placeholder="Phone..."
+                  type="phone"
+                  value={phone}
+                  onChange={e => setPhone(e.value)}
+                ></Input>
+              </InputGroup>
+
+              <InputGroup
+                className="form-group-no-border input-lg"
+                onFocus={e =>
+                  e.currentTarget.classList.add("input-group-focus")
+                }
+                onBlur={e =>
+                  e.currentTarget.classList.remove("input-group-focus")
+                }
+              >
+                <InputGroupAddon addonType="prepend">
+                  <InputGroupText>
+                    <i className="now-ui-icons business_bank"></i>
+                  </InputGroupText>
+                </InputGroupAddon>
+                <Input
+                  placeholder="Organization Name..."
+                  type="text"
+                  value={orgName}
+                  onChange={e => setOrgName(e.value)}
+                ></Input>
               </InputGroup>
             </CardBody>
           </Form>
         </ModalBody>
-        <ModalFooter className="text-center">
+
+        <ModalFooter className="text-center pb-0">
           <Button
             block
-            className="btn-neutral btn-round"
+            className="btn-neutral d-flex align-items-center justify-content-center"
             color="default"
-            href="#pablo"
-            onClick={e => e.preventDefault()}
+            onClick={e => handleSubmit(e)}
             size="lg"
+            style={{ width: "100%" }}
           >
-            Get Started
+            <i className="now-ui-icons ui-1_send mr-2"></i>Get My Quote
           </Button>
         </ModalFooter>
       </Card>

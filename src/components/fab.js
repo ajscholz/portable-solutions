@@ -4,14 +4,14 @@ import { Button } from "reactstrap"
 import ContactModal from "./contact-modal"
 
 const FAB = () => {
-  const [showButton, setShowButton] = useState(false)
+  const [showButton, setShowButton] = useState(true)
   const [openForm, setOpenForm] = useState(false)
 
-  useEffect(() => {
-    setTimeout(() => {
-      setShowButton(true)
-    }, 2000)
-  })
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setShowButton(true)
+  //   }, 2000)
+  // })
 
   return showButton ? (
     <>
@@ -23,7 +23,7 @@ const FAB = () => {
         type="button"
         onClick={() => setOpenForm(true)}
       >
-        <i className="now-ui-icons gestures_tap-01"></i>
+        <i className="now-ui-icons gestures_tap-01 mr-2"></i>
         Get A Custom Quote
       </Button>
 
