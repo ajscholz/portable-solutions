@@ -7,12 +7,22 @@ import Banner from "../components/banner"
 import ProductSection from "../components/sections/product"
 import CrateInfoSection from "../components/sections/crate-info"
 import QualificationsSection from "../components/sections/qualifications"
+import HowSection from "../components/sections/how"
+import WhySection from "../components/sections/why"
 
 const IndexPage = props => {
   const { data } = props
   const { sections, title, banner } = data.indexPage
 
   const productData = sections.find(
+    section => section.id === "1kzR2f6Y1eXS0Irtj4TUlB" && section
+  )
+
+  const whyData = sections.find(
+    section => section.id === "1kzR2f6Y1eXS0Irtj4TUlB" && section
+  )
+
+  const howData = sections.find(
     section => section.id === "1kzR2f6Y1eXS0Irtj4TUlB" && section
   )
 
@@ -30,6 +40,8 @@ const IndexPage = props => {
       <Banner data={banner} />
 
       <ProductSection sectionData={productData} />
+      <WhySection sectionData={whyData} />
+      <HowSection sectionData={howData} />
       <CrateInfoSection sectionData={crateInfoData} />
       <QualificationsSection sectionData={qualificationsData} />
     </>
