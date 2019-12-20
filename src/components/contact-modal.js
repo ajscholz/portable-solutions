@@ -17,7 +17,7 @@ import {
 } from "reactstrap"
 
 const ContactModal = props => {
-  const { open, toggle } = props
+  const { open, toggle, hideFab } = props
 
   const {
     data: { logo },
@@ -32,12 +32,13 @@ const ContactModal = props => {
       }
     }
   `)
-  console.log(logo)
 
-  const [name, setName] = useState("Andrew")
-  const [email, setEmail] = useState("andrew@citynorth.church")
-  const [phone, setPhone] = useState("614-560-1176")
-  const [orgName, setOrgName] = useState("City North Church")
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("")
+  const [orgName, setOrgName] = useState("")
+
+  const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -52,14 +53,21 @@ const ContactModal = props => {
       "orgName: ",
       orgName
     )
+
+    // hide the fab
+    setSubmitted(true)
+    toggle(false)
   }
 
   return (
     <Modal
       className="modal-login modal-fab"
       modalClassName="modal-primary"
-      isOpen={true}
+      isOpen={open}
       toggle={() => toggle(false)}
+      onClosed={() => {
+        if (submitted) hideFab()
+      }}
     >
       <Card className="card-login card-plain">
         <div className="modal-header bg-white justify-content-center">
@@ -104,7 +112,7 @@ const ContactModal = props => {
                   placeholder="Name..."
                   type="text"
                   value={name}
-                  onChange={e => setName(e.value)}
+                  onChange={e => setName(e.currentTarget.value)}
                 ></Input>
               </InputGroup>
 
@@ -126,7 +134,7 @@ const ContactModal = props => {
                   placeholder="Email..."
                   type="email"
                   value={email}
-                  onChange={e => setEmail(e.value)}
+                  onChange={e => setEmail(e.currentTarget.value)}
                 ></Input>
               </InputGroup>
 
@@ -148,7 +156,7 @@ const ContactModal = props => {
                   placeholder="Phone..."
                   type="phone"
                   value={phone}
-                  onChange={e => setPhone(e.value)}
+                  onChange={e => setPhone(e.currentTarget.value)}
                 ></Input>
               </InputGroup>
 
@@ -170,7 +178,7 @@ const ContactModal = props => {
                   placeholder="Organization Name..."
                   type="text"
                   value={orgName}
-                  onChange={e => setOrgName(e.value)}
+                  onChange={e => setOrgName(e.currentTarget.value)}
                 ></Input>
               </InputGroup>
             </CardBody>

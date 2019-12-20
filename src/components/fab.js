@@ -4,14 +4,23 @@ import { Button } from "reactstrap"
 import ContactModal from "./contact-modal"
 
 const FAB = () => {
-  const [showButton, setShowButton] = useState(true)
+  const [showButton, setShowButton] = useState(false)
   const [openForm, setOpenForm] = useState(false)
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setShowButton(true)
-  //   }, 2000)
-  // })
+  useEffect(() => {
+    setTimeout(() => {
+      setShowButton(true)
+    }, 5000)
+  }, [])
+
+  const hideButton = () => {
+    document
+      .getElementById("fast-action-button")
+      .classList.replace("slide-in-right", "slide-out-right")
+    setTimeout(() => {
+      setShowButton(false)
+    }, 1000)
+  }
 
   return showButton ? (
     <>
@@ -27,7 +36,7 @@ const FAB = () => {
         Get A Custom Quote
       </Button>
 
-      <ContactModal open={openForm} toggle={setOpenForm} />
+      <ContactModal open={openForm} toggle={setOpenForm} hideFab={hideButton} />
     </>
   ) : null
 }
