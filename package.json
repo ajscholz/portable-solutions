@@ -28,7 +28,8 @@
     "react-select": "3.0.4",
     "react-tagsinput": "3.19.0",
     "reactstrap": "8.0.1",
-    "rellax": "1.10.0"
+    "rellax": "1.10.0",
+    "typeface-kanit": "^0.0.72"
   },
   "devDependencies": {
     "gulp": "4.0.2",

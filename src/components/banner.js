@@ -41,7 +41,7 @@ const Banner = props => {
 
         <div className="content-center">
           <Container>
-            <h1 className="title">{data.heading}</h1>
+            <h2 className="title h1">{data.heading}</h2>
             <div className="text-center">
               {/* <Button
                 className="btn-icon btn-round mr-1"
