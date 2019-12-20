@@ -4,7 +4,6 @@ import Image from "gatsby-image"
 
 import SEO from "../components/seo"
 import Banner from "../components/banner"
-import { Container, Row, Col } from "reactstrap"
 import ProductSection from "../components/sections/product"
 import CrateInfoSection from "../components/sections/crate-info"
 import QualificationsSection from "../components/sections/qualifications"

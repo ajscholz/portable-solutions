@@ -19,13 +19,13 @@ const ProductSection = props => {
             let color
             let icon
 
-            if (index === 1) {
+            if (index === 0) {
               color = "icon-info"
               icon = "ui-2_chat-round"
-            } else if (index === 2) {
+            } else if (index === 1) {
               color = "icon-success"
               icon = "business_chart-pie-36"
-            } else if (index === 3) {
+            } else if (index === 2) {
               color = "icon-warning"
               icon = "design-2_ruler-pencil"
             } else return
