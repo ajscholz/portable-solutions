@@ -7,6 +7,7 @@ const WhySection = props => {
 
   return (
     <section
+      id="why"
       className="features-2 section-image"
       style={{
         backgroundImage: "url(" + require("../../assets/img/bg22.jpg") + ")",

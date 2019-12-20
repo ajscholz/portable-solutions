@@ -44,6 +44,22 @@ const Navbar = () => {
   //   }
   // })
 
+  const scrollToSection = (e, element) => {
+    e.preventDefault()
+    const nav = document.getElementById("navbar")
+
+    if (typeof element === "number") {
+      window.scrollTo({ left: 0, top: element, behavior: "smooth" })
+      return
+    }
+
+    const node = document.getElementById(element)
+    const scrollTo = node.getBoundingClientRect().top - nav.clientHeight
+    if (typeof "window" !== undefined) {
+      window.scrollBy({ left: 0, top: scrollTo, behavior: "smooth" })
+    }
+  }
+
   const { logo } = useStaticQuery(graphql`
     {
       logo: contentfulAsset(title: { eq: "Logo Gray" }) {
@@ -67,10 +83,15 @@ const Navbar = () => {
         className={"fixed-top bg-white"}
         // color="white"
         expand="lg"
+        id="navbar"
       >
         <Container>
           <div className="navbar-translate">
-            <NavbarBrand id="navbar-brand" onClick={() => navigate("#top")}>
+            <NavbarBrand
+              id="navbar-brand"
+              onClick={e => scrollToSection(e, 0)}
+              style={{ cursor: "pointer" }}
+            >
               <Image fixed={logo.fixed} alt="Go to homepage" />
               {/* Portable Solutions */}
             </NavbarBrand>
@@ -91,23 +112,55 @@ const Navbar = () => {
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink
-                  onClick={() => {
-                    closeMenu()
-                    navigate("#crate-info")
+                  href="#product"
+                  onClick={e => {
+                    scrollToSection(e, "product")
                   }}
                 >
-                  {/* <i className="now-ui-icons objects_globe"></i> */}
-                  <p>Crate Information</p>
+                  <p>Product</p>
                 </NavLink>
               </NavItem>
+
               <NavItem>
                 <NavLink
-                  onClick={() => {
-                    closeMenu()
-                    navigate("#qualifications")
+                  href="#why"
+                  onClick={e => {
+                    scrollToSection(e, "why")
                   }}
                 >
-                  {/* <i className="now-ui-icons objects_globe"></i> */}
+                  <p>Why</p>
+                </NavLink>
+              </NavItem>
+
+              <NavItem>
+                <NavLink
+                  href="#how"
+                  onClick={e => {
+                    scrollToSection(e, "how")
+                  }}
+                >
+                  <p>How</p>
+                </NavLink>
+              </NavItem>
+
+              <NavItem>
+                <NavLink
+                  href="#crate-info"
+                  onClick={e => {
+                    scrollToSection(e, "crate-info")
+                  }}
+                >
+                  <p>Crates</p>
+                </NavLink>
+              </NavItem>
+
+              <NavItem>
+                <NavLink
+                  href="#qualifications"
+                  onClick={e => {
+                    scrollToSection(e, "qualifications")
+                  }}
+                >
                   <p>Our Qualifications</p>
                 </NavLink>
               </NavItem>

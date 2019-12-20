@@ -1,10 +1,22 @@
 import React from "react"
 
-// import { Col, Row, Container } from "reactstrap"
+import { Col, Row, Container } from "reactstrap"
 
 const ProductSection = props => {
-  const { sectionData } = props
-  return <h2>hello from product section</h2>
+  const { title, description } = props.sectionData
+  return (
+    <section className="features-6" id="product">
+      <Container>
+        <Row>
+          <Col className="ml-auto mr-auto text-center" md="8">
+            <h2 className="title">{title}</h2>
+
+            <h4 className="description">{description.description}</h4>
+          </Col>
+        </Row>
+      </Container>
+    </section>
+  )
 }
 
 export default ProductSection
