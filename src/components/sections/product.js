@@ -15,6 +15,7 @@ const ProductSection = props => {
         </Row>
         <Row>
           {otherContent.map((item, index) => {
+            // set colors & icons
             let color
             let icon
 
@@ -24,10 +25,10 @@ const ProductSection = props => {
             } else if (index === 2) {
               color = "icon-success"
               icon = "business_chart-pie-36"
-            } else {
+            } else if (index === 3) {
               color = "icon-warning"
               icon = "design-2_ruler-pencil"
-            }
+            } else return
 
             return (
               <Col md="4" key={item.id}>
