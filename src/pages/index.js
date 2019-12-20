@@ -23,7 +23,7 @@ const IndexPage = props => {
   )
 
   const howData = sections.find(
-    section => section.id === "1kzR2f6Y1eXS0Irtj4TUlB" && section
+    section => section.id === "6hH8zT9kM39dTllIp35zuA" && section
   )
 
   const crateInfoData = sections.find(

@@ -6,10 +6,15 @@ const WhySection = props => {
   const { title, description, otherContent } = props.sectionData
 
   return (
-    <div className="features-1">
-      <Container>
+    <section
+      className="features-2 section-image"
+      style={{
+        backgroundImage: "url(" + require("../../assets/img/bg22.jpg") + ")",
+      }}
+    >
+      <Container fluid>
         <Row>
-          <Col className="ml-auto mr-auto" md="8">
+          <Col className="mr-auto ml-auto" md="8">
             <h2 className="title">{title}</h2>
             <h4 className="description">{description.description}</h4>
           </Col>
@@ -33,8 +38,8 @@ const WhySection = props => {
 
             return (
               <Col md="4" key={item.id}>
-                <div className="info info-hover">
-                  <div className={`icon ${color}`}>
+                <div className="info ">
+                  <div className={`icon ${color} icon-circle`}>
                     <i className={`now-ui-icons ${icon}`}></i>
                   </div>
                   <h4 className="info-title">{item.title}</h4>
@@ -45,7 +50,7 @@ const WhySection = props => {
           })}
         </Row>
       </Container>
-    </div>
+    </section>
   )
 }
 

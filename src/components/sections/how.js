@@ -1,9 +1,33 @@
 import React from "react"
 
-const HowSection = props => {
-  const { sectionData } = props
+import { Container, Row, Col } from "reactstrap"
 
-  return <h2>how section</h2>
+const HowSection = props => {
+  const { title, otherContent } = props.sectionData
+
+  return (
+    <section className="features-6" id="how">
+      <Container>
+        <Row>
+          <Col className="ml-auto mr-auto text-center" md="8">
+            <h2 className="title">{title}</h2>
+          </Col>
+        </Row>
+        <ol className="big-number-list row">
+          {otherContent.map(item => (
+            <li key={item.id} className="col-md-6 col-xl-3 mt-5">
+              <div className="info info-horizontal pt-0">
+                <div className="description">
+                  <h5 className="info-title">{item.title}</h5>
+                  <p>{item.description.description}</p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </Container>
+    </section>
+  )
 }
 
 export default HowSection
