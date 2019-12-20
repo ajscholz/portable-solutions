@@ -30,9 +30,6 @@ const QualificationsSection = props => {
             <Col className="px-0" md="6">
               <Col sm="12">
                 <div className="info info-horizontal">
-                  <div className="icon">
-                    <i className="now-ui-icons design-2_html5"></i>
-                  </div>
                   <div className="description">
                     <h5 className="info-title">{otherContent[0].title}</h5>
                     <p className="description">
@@ -41,9 +38,6 @@ const QualificationsSection = props => {
                   </div>
                 </div>
                 <div className="info info-horizontal">
-                  <div className="icon">
-                    <i className="now-ui-icons design_palette"></i>
-                  </div>
                   <div className="description">
                     <h5 className="info-title">{otherContent[1].title}</h5>
                     <p className="description">
@@ -52,9 +46,6 @@ const QualificationsSection = props => {
                   </div>
                 </div>
                 <div className="info info-horizontal">
-                  <div className="icon">
-                    <i className="now-ui-icons design-2_ruler-pencil"></i>
-                  </div>
                   <div className="description">
                     <h5 className="info-title">{otherContent[2].title}</h5>
                     <p className="description">
