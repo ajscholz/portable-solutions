@@ -4,13 +4,13 @@ import { Button } from "reactstrap"
 import ContactModal from "./contact-modal"
 
 const FAB = () => {
-  const [showButton, setShowButton] = useState(true)
-  const [openForm, setOpenForm] = useState(true)
+  const [showButton, setShowButton] = useState(false)
+  const [openForm, setOpenForm] = useState(false)
 
   useEffect(() => {
     setTimeout(() => {
       setShowButton(true)
-    }, 5000)
+    }, 7000)
   }, [])
 
   const hideButton = () => {
