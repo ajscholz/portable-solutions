@@ -91,8 +91,8 @@ const Navbar = () => {
               id="navbar-brand"
               onClick={e => {
                 e.preventDefault()
-                setCollapseOpen(false)
                 scrollToSection(e, 0)
+                closeMenu()
               }}
               style={{ cursor: "pointer" }}
             >
@@ -134,7 +134,7 @@ const Navbar = () => {
                   onClick={e => {
                     e.preventDefault()
                     scrollToSection(e, "product")
-                    setCollapseOpen(false)
+                    closeMenu()
                   }}
                 >
                   <p>Product</p>
@@ -147,7 +147,7 @@ const Navbar = () => {
                   onClick={e => {
                     e.preventDefault()
                     scrollToSection(e, "why")
-                    setCollapseOpen(false)
+                    closeMenu()
                   }}
                 >
                   <p>Why</p>
@@ -160,7 +160,7 @@ const Navbar = () => {
                   onClick={e => {
                     e.preventDefault()
                     scrollToSection(e, "how")
-                    setCollapseOpen(false)
+                    closeMenu()
                   }}
                 >
                   <p>How</p>
@@ -173,7 +173,7 @@ const Navbar = () => {
                   onClick={e => {
                     e.preventDefault()
                     scrollToSection(e, "crate-info")
-                    setCollapseOpen(false)
+                    closeMenu()
                   }}
                 >
                   <p>Crates</p>
@@ -186,7 +186,7 @@ const Navbar = () => {
                   onClick={e => {
                     e.preventDefault()
                     scrollToSection(e, "qualifications")
-                    setCollapseOpen(false)
+                    closeMenu()
                   }}
                 >
                   <p>Our Qualifications</p>

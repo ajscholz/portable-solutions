@@ -5,3 +5,10 @@
  */
 
 // You can delete this file if you're not using it
+
+const smoothscroll = require("smoothscroll-polyfill")
+
+exports.onClientEntry = () => {
+  console.log("entering")
+  smoothscroll.polyfill()
+}

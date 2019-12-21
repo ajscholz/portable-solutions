@@ -33,6 +33,7 @@
     "react-tagsinput": "3.19.0",
     "reactstrap": "8.0.1",
     "rellax": "1.10.0",
+    "smoothscroll-polyfill": "^0.4.4",
     "typeface-kanit": "^0.0.72"
   },
   "devDependencies": {
