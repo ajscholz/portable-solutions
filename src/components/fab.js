@@ -4,8 +4,8 @@ import { Button } from "reactstrap"
 import ContactModal from "./contact-modal"
 
 const FAB = () => {
-  const [showButton, setShowButton] = useState(false)
-  const [openForm, setOpenForm] = useState(false)
+  const [showButton, setShowButton] = useState(true)
+  const [openForm, setOpenForm] = useState(true)
 
   useEffect(() => {
     setTimeout(() => {
