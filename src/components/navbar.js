@@ -89,7 +89,11 @@ const Navbar = () => {
           <div className="navbar-translate">
             <NavbarBrand
               id="navbar-brand"
-              onClick={e => scrollToSection(e, 0)}
+              onClick={e => {
+                e.preventDefault()
+                setCollapseOpen(false)
+                scrollToSection(e, 0)
+              }}
               style={{ cursor: "pointer" }}
             >
               <Image fixed={logo.fixed} alt="Go to homepage" />
@@ -128,7 +132,9 @@ const Navbar = () => {
                 <NavLink
                   href="#product"
                   onClick={e => {
+                    e.preventDefault()
                     scrollToSection(e, "product")
+                    setCollapseOpen(false)
                   }}
                 >
                   <p>Product</p>
@@ -139,7 +145,9 @@ const Navbar = () => {
                 <NavLink
                   href="#why"
                   onClick={e => {
+                    e.preventDefault()
                     scrollToSection(e, "why")
+                    setCollapseOpen(false)
                   }}
                 >
                   <p>Why</p>
@@ -150,7 +158,9 @@ const Navbar = () => {
                 <NavLink
                   href="#how"
                   onClick={e => {
+                    e.preventDefault()
                     scrollToSection(e, "how")
+                    setCollapseOpen(false)
                   }}
                 >
                   <p>How</p>
@@ -161,7 +171,9 @@ const Navbar = () => {
                 <NavLink
                   href="#crate-info"
                   onClick={e => {
+                    e.preventDefault()
                     scrollToSection(e, "crate-info")
+                    setCollapseOpen(false)
                   }}
                 >
                   <p>Crates</p>
@@ -172,7 +184,9 @@ const Navbar = () => {
                 <NavLink
                   href="#qualifications"
                   onClick={e => {
+                    e.preventDefault()
                     scrollToSection(e, "qualifications")
+                    setCollapseOpen(false)
                   }}
                 >
                   <p>Our Qualifications</p>
