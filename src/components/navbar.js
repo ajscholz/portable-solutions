@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Image from "gatsby-image"
-import { navigate } from "@reach/router"
 
 import {
   Navbar as NavbarReactstrap,
@@ -77,7 +76,17 @@ const Navbar = () => {
 
   return (
     <>
-      {collapseOpen ? <div id="bodyClick" onClick={() => closeMenu()} /> : null}
+      {collapseOpen ? (
+        <div
+          id="bodyClick"
+          onClick={() => closeMenu()}
+          onKeyDown={e => {
+            if (e.key === "Escape") {
+              closeMenu()
+            }
+          }}
+        />
+      ) : null}
       <NavbarReactstrap
         // className={"fixed-top" + navbarColor}
         className={"fixed-top bg-white"}

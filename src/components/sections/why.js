@@ -54,7 +54,7 @@ const WhySection = () => {
             } else if (index === 2) {
               color = "icon-warning"
               icon = "design-2_ruler-pencil"
-            } else return
+            }
 
             return (
               <Col md="4" key={item.id}>

@@ -7,7 +7,7 @@
 
 import "typeface-kanit"
 
-import React, { useRef } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { useInView } from "react-intersection-observer"
