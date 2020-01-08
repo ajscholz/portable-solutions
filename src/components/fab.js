@@ -23,9 +23,6 @@ const FAB = props => {
     }
   }, [hide])
 
-  console.log(hide)
-  console.log(fabRef.current)
-
   const showButton = () => {
     fabRef.current.classList.replace("slide-out-right", "slide-in-right")
   }
