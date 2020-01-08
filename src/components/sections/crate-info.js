@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
+import Image from "gatsby-image"
 
 import { Col, Row, Container } from "reactstrap"
 
@@ -17,6 +18,11 @@ const CrateInfoSection = () => {
           title
           description {
             description
+          }
+        }
+        image: foregroundImage {
+          fluid {
+            ...GatsbyContentfulFluid
           }
         }
       }
@@ -54,15 +60,17 @@ const CrateInfoSection = () => {
               </div>
             </div>
           </Col>
+
           <Col md="4">
-            <div className="phone-container">
-              <img
-                alt="..."
-                src={require("../../assets/img/iphone2.png")}
-              ></img>
-              <small>convert this to gatsby image</small>
-            </div>
+            <Image
+              className="phone-container"
+              fluid={section.image.fluid}
+              imgStyle={{
+                objectFit: "contain",
+              }}
+            />
           </Col>
+
           <Col md="4">
             <div className="info info-horizontal">
               <div className="icon icon-primary">
