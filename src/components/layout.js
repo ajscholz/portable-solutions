@@ -7,9 +7,10 @@
 
 import "typeface-kanit"
 
-import React from "react"
+import React, { useRef } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { useInView } from "react-intersection-observer"
 
 import Header from "./header"
 import Footer from "./footer"
@@ -27,12 +28,13 @@ const Layout = ({ children }) => {
     }
   `)
 
+  const [ref, inView] = useInView()
   return (
     <>
-      <FAB />
+      <FAB hide={inView} />
       <Header siteTitle={data.site.siteMetadata.title} />
       <main>{children}</main>
-      <Footer />
+      <Footer ref={ref} />
     </>
   )
 }

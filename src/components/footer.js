@@ -7,10 +7,10 @@ import { Container } from "reactstrap"
 
 // core components
 
-const Footer = () => {
+const Footer = React.forwardRef(({ children }, ref) => {
   return (
     <>
-      <footer className="footer">
+      <footer className="footer" ref={ref}>
         <Container>
           <nav>
             <ul>
@@ -43,6 +43,7 @@ const Footer = () => {
               </li> */}
             </ul>
           </nav>
+          {children}
           <div className="copyright" id="copyright">
             © {new Date().getFullYear()}, Designed and developed by{" "}
             <a href="https://ajsolutions.netlify.com" target="_blank">
@@ -53,6 +54,6 @@ const Footer = () => {
       </footer>
     </>
   )
-}
+})
 
 export default Footer

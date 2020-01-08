@@ -9,6 +9,5 @@
 const smoothscroll = require("smoothscroll-polyfill")
 
 exports.onClientEntry = () => {
-  console.log("entering")
   smoothscroll.polyfill()
 }
