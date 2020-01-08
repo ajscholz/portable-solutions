@@ -1,58 +1,67 @@
 import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 import Image from "gatsby-image"
 
 import { Container, Row, Col } from "reactstrap"
 
-const QualificationsSection = props => {
-  const {
-    backgroundImage,
-    title,
-    description,
-    otherContent,
-    foregroundImage,
-  } = props.sectionData
+const QualificationsSection = () => {
+  const { section } = useStaticQuery(graphql`
+    {
+      section: contentfulPageSection(
+        contentful_id: { eq: "42OQt7zxmkZkiK7FkHDdOf" }
+      ) {
+        title
+        description {
+          description
+        }
+        backgroundImage {
+          fluid {
+            ...GatsbyContentfulFluid
+          }
+        }
+        foregroundImage {
+          fluid {
+            ...GatsbyContentfulFluid
+          }
+        }
+        otherContent {
+          id: contentful_id
+          title
+          description {
+            description
+          }
+        }
+      }
+    }
+  `)
 
   return (
     <section style={{ position: "relative" }} id="qualifications">
       <Image
         className="section-image position-absolute"
         style={{ height: "100%" }}
-        fluid={backgroundImage.fluid}
+        fluid={section.backgroundImage.fluid}
       />
 
       <div className="features-7 section-image position-relative">
         <Col className="mr-auto ml-auto text-center" md="8">
-          <h2 className="title">{title}</h2>
-          <h4 className="description">{description.description}</h4>
+          <h2 className="title">{section.title}</h2>
+          <h4 className="description">{section.description.description}</h4>
         </Col>
         <Container fluid>
           <Row>
             <Col className="px-0" md="6">
               <Col sm="12">
-                <div className="info info-horizontal">
-                  <div className="description">
-                    <h5 className="info-title">{otherContent[0].title}</h5>
-                    <p className="description">
-                      {otherContent[0].description.description}
-                    </p>
+                {section.otherContent.map(item => (
+                  <div className="info info-horizontal" key={item.id}>
+                    <div className="description">
+                      <h5 className="info-title">{item.title}</h5>
+                      <p className="description">
+                        {item.description.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="info info-horizontal">
-                  <div className="description">
-                    <h5 className="info-title">{otherContent[1].title}</h5>
-                    <p className="description">
-                      {otherContent[1].description.description}
-                    </p>
-                  </div>
-                </div>
-                <div className="info info-horizontal">
-                  <div className="description">
-                    <h5 className="info-title">{otherContent[2].title}</h5>
-                    <p className="description">
-                      {otherContent[2].description.description}
-                    </p>
-                  </div>
-                </div>
+                ))}
               </Col>
             </Col>
             <Col md="6">
@@ -62,7 +71,7 @@ const QualificationsSection = props => {
                 </div> */}
               <Image
                 className="image-container"
-                fluid={foregroundImage.fluid}
+                fluid={section.foregroundImage.fluid}
                 imgStyle={{
                   objectPosition: "left center",
                   objectFit: "none",

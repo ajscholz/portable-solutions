@@ -1,17 +1,36 @@
 import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 
 import { Col, Row, Container } from "reactstrap"
 
-const CrateInfoSection = props => {
-  const { title, description, otherContent } = props.sectionData
+const CrateInfoSection = () => {
+  const { section } = useStaticQuery(graphql`
+    {
+      section: contentfulPageSection(
+        contentful_id: { eq: "2eVfAiZsaMtqxahL3A6L2a" }
+      ) {
+        title
+        description {
+          description
+        }
+        otherContent {
+          title
+          description {
+            description
+          }
+        }
+      }
+    }
+  `)
+
   return (
     <section className="features-6" id="crate-info">
       <Container>
         <Row>
           <Col className="ml-auto mr-auto text-center" md="8">
-            <h2 className="title">{title}</h2>
+            <h2 className="title">{section.title}</h2>
 
-            <h4 className="description">{description.description}</h4>
+            <h4 className="description">{section.description.description}</h4>
           </Col>
         </Row>
         <Row>
@@ -21,8 +40,8 @@ const CrateInfoSection = props => {
                 <i className="now-ui-icons design-2_html5"></i>
               </div>
               <div className="description">
-                <h5 className="info-title">{otherContent[0].title}</h5>
-                <p>{otherContent[0].description.description}</p>
+                <h5 className="info-title">{section.otherContent[0].title}</h5>
+                <p>{section.otherContent[0].description.description}</p>
               </div>
             </div>
             <div className="info info-horizontal">
@@ -30,8 +49,8 @@ const CrateInfoSection = props => {
                 <i className="now-ui-icons design_palette"></i>
               </div>
               <div className="description">
-                <h4 className="info-title">{otherContent[1].title}</h4>
-                <p>{otherContent[1].description.description}</p>
+                <h4 className="info-title">{section.otherContent[1].title}</h4>
+                <p>{section.otherContent[1].description.description}</p>
               </div>
             </div>
           </Col>
@@ -50,8 +69,8 @@ const CrateInfoSection = props => {
                 <i className="now-ui-icons design-2_ruler-pencil"></i>
               </div>
               <div className="description">
-                <h5 className="info-title">{otherContent[2].title}</h5>
-                <p>{otherContent[2].description.description}</p>
+                <h5 className="info-title">{section.otherContent[2].title}</h5>
+                <p>{section.otherContent[2].description.description}</p>
               </div>
             </div>
             <div className="info info-horizontal">
@@ -59,8 +78,8 @@ const CrateInfoSection = props => {
                 <i className="now-ui-icons files_single-copy-04"></i>
               </div>
               <div className="description">
-                <h4 className="info-title">{otherContent[3].title}</h4>
-                <p>{otherContent[3].description.description}</p>
+                <h4 className="info-title">{section.otherContent[3].title}</h4>
+                <p>{section.otherContent[3].description.description}</p>
               </div>
             </div>
           </Col>

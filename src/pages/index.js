@@ -14,36 +14,16 @@ import { Jumbotron } from "reactstrap"
 
 const IndexPage = props => {
   const { data } = props
-  const { sections, title, banner } = data.indexPage
-
-  const productData = sections.find(
-    section => section.id === "4poBxRjdKxbr2Oqf4ahms" && section
-  )
-
-  const whyData = sections.find(
-    section => section.id === "1kzR2f6Y1eXS0Irtj4TUlB" && section
-  )
-
-  const howData = sections.find(
-    section => section.id === "6hH8zT9kM39dTllIp35zuA" && section
-  )
-
-  const crateInfoData = sections.find(
-    section => section.id === "2eVfAiZsaMtqxahL3A6L2a" && section
-  )
-
-  const qualificationsData = sections.find(
-    section => section.id === "42OQt7zxmkZkiK7FkHDdOf" && section
-  )
+  const { title, banner } = data.indexPage
 
   return (
     <>
       <SEO title={title} />
       <Banner data={banner} />
 
-      <ProductSection sectionData={productData} />
-      <WhySection sectionData={whyData} />
-      <HowSection sectionData={howData} />
+      <ProductSection />
+      <WhySection />
+      <HowSection />
       <Jumbotron
         fluid
         className="py-0 my-0"
@@ -64,8 +44,8 @@ const IndexPage = props => {
           }}
         />
       </Jumbotron>
-      <CrateInfoSection sectionData={crateInfoData} />
-      <QualificationsSection sectionData={qualificationsData} />
+      <CrateInfoSection />
+      <QualificationsSection />
     </>
   )
 }
@@ -79,32 +59,6 @@ export const data = graphql`
         image: backgroundImage {
           fluid {
             ...GatsbyContentfulFluid
-          }
-        }
-      }
-      sections {
-        ... on ContentfulPageSection {
-          id: contentful_id
-          title
-          description {
-            description
-          }
-          backgroundImage {
-            fluid {
-              ...GatsbyContentfulFluid
-            }
-          }
-          foregroundImage {
-            fluid {
-              ...GatsbyContentfulFluid
-            }
-          }
-          otherContent {
-            id: contentful_id
-            title
-            description {
-              description
-            }
           }
         }
       }

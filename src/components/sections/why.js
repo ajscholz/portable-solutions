@@ -1,9 +1,28 @@
 import React from "react"
+import { graphql, useStaticQuery } from "gatsby"
 
 import { Col, Row, Container } from "reactstrap"
 
-const WhySection = props => {
-  const { title, description, otherContent } = props.sectionData
+const WhySection = () => {
+  const { section } = useStaticQuery(graphql`
+    {
+      section: contentfulPageSection(
+        contentful_id: { eq: "1kzR2f6Y1eXS0Irtj4TUlB" }
+      ) {
+        title
+        description {
+          description
+        }
+        otherContent {
+          id: contentful_id
+          title
+          description {
+            description
+          }
+        }
+      }
+    }
+  `)
 
   return (
     <section
@@ -16,12 +35,12 @@ const WhySection = props => {
       <Container fluid>
         <Row>
           <Col className="mr-auto ml-auto" md="8">
-            <h2 className="title">{title}</h2>
-            <h4 className="description">{description.description}</h4>
+            <h2 className="title">{section.title}</h2>
+            <h4 className="description">{section.description.description}</h4>
           </Col>
         </Row>
         <Row>
-          {otherContent.map((item, index) => {
+          {section.otherContent.map((item, index) => {
             // set colors & icons
             let color
             let icon
