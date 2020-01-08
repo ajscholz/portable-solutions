@@ -2,7 +2,7 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-var proxy = require("http-proxy-middleware")
+const proxy = require("http-proxy-middleware")
 
 module.exports = {
   siteMetadata: {
@@ -39,7 +39,10 @@ module.exports = {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        accessToken:
+          process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN ||
+          process.env.CONTENTFUL_ACCESS_TOKEN,
+        host: process.env.CONTENTFUL_HOST,
       },
     },
     `gatsby-transformer-sharp`,
