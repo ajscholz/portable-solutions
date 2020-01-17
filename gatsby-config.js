@@ -8,6 +8,7 @@ module.exports = {
   siteMetadata: {
     title: `Portable Solutions`,
     description: `Helping churches realize maximum potential with portable solutions`,
+    siteUrl: `https://portable.solutions`,
   },
   developMiddleware: app => {
     app.use(
@@ -21,6 +22,37 @@ module.exports = {
     )
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        exclude: ["/guides/*"],
+        query: `
+        {
+          site {
+            siteMetadata {
+              siteUrl
+            }
+          }
+          allSitePage {
+            edges {
+              node {
+                path
+              }
+            }
+          }
+      }`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://portable.solutions",
+        sitemap: "https://portable.solutions/sitemap.xml",
+        policy: [
+          { userAgent: "*", allow: "/", disallow: ["/guides/*", "/404"] },
+        ],
+      },
+    },
     "gatsby-plugin-netlify-cache",
     `gatsby-plugin-react-helmet`,
     {
