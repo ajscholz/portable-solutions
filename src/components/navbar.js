@@ -1,5 +1,5 @@
-import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
+import React, { useEffect, useRef } from "react"
+import { graphql, useStaticQuery, Link } from "gatsby"
 import Image from "gatsby-image"
 
 import {
@@ -12,7 +12,7 @@ import {
   NavLink,
 } from "reactstrap"
 
-const Navbar = () => {
+const Navbar = ({ indexPage }) => {
   const [collapseOpen, setCollapseOpen] = React.useState(false)
   // const [navbarColor, setNavbarColor] = React.useState(
   //   "bg-white"
@@ -43,17 +43,30 @@ const Navbar = () => {
   //   }
   // })
 
+  let navHeight = useRef()
+
+  useEffect(() => {
+    navHeight.current = document.getElementById("navbar").clientHeight
+  }, [navHeight])
+
+  const navigate = (e, element) => {
+    if (indexPage === true) {
+      e.preventDefault()
+      scrollToSection(e, element)
+    }
+    closeMenu()
+  }
+
   const scrollToSection = (e, element) => {
     e.preventDefault()
-    const nav = document.getElementById("navbar")
 
     if (typeof element === "number") {
-      window.scrollTo({ left: 0, top: element, behavior: "smooth" })
+      window.scrollBy({ left: 0, top: -element })
       return
     }
 
     const node = document.getElementById(element)
-    const scrollTo = node.getBoundingClientRect().top - nav.clientHeight
+    const scrollTo = node.getBoundingClientRect().top - navHeight.current
     if (typeof "window" !== undefined) {
       window.scrollBy({ left: 0, top: scrollTo, behavior: "smooth" })
     }
@@ -98,14 +111,16 @@ const Navbar = () => {
           <div className="navbar-translate">
             <NavbarBrand
               id="navbar-brand"
-              onClick={e => {
-                e.preventDefault()
-                scrollToSection(e, 0)
-                closeMenu()
-              }}
+              // onClick={e => {
+              //   e.preventDefault()
+              //   scrollToSection(e, 0)
+              //   closeMenu()
+              // }}
               style={{ cursor: "pointer" }}
             >
-              <Image fixed={logo.fixed} alt="Go to homepage" />
+              <NavLink tag={Link} to="/" onClick={e => navigate(e, "#")}>
+                <Image fixed={logo.fixed} alt="Go to homepage" />
+              </NavLink>
               {/* Portable Solutions */}
             </NavbarBrand>
             <button
@@ -139,12 +154,9 @@ const Navbar = () => {
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink
-                  href="#product"
-                  onClick={e => {
-                    e.preventDefault()
-                    scrollToSection(e, "product")
-                    closeMenu()
-                  }}
+                  tag={Link}
+                  to="/#product"
+                  onClick={e => navigate(e, "product")}
                 >
                   <p>Product</p>
                 </NavLink>
@@ -152,12 +164,9 @@ const Navbar = () => {
 
               <NavItem>
                 <NavLink
-                  href="#why"
-                  onClick={e => {
-                    e.preventDefault()
-                    scrollToSection(e, "why")
-                    closeMenu()
-                  }}
+                  tag={Link}
+                  to="/#why"
+                  onClick={e => navigate(e, "why")}
                 >
                   <p>Why</p>
                 </NavLink>
@@ -165,12 +174,9 @@ const Navbar = () => {
 
               <NavItem>
                 <NavLink
-                  href="#how"
-                  onClick={e => {
-                    e.preventDefault()
-                    scrollToSection(e, "how")
-                    closeMenu()
-                  }}
+                  tag={Link}
+                  to="/#how"
+                  onClick={e => navigate(e, "how")}
                 >
                   <p>How</p>
                 </NavLink>
@@ -178,12 +184,9 @@ const Navbar = () => {
 
               <NavItem>
                 <NavLink
-                  href="#crate-info"
-                  onClick={e => {
-                    e.preventDefault()
-                    scrollToSection(e, "crate-info")
-                    closeMenu()
-                  }}
+                  tag={Link}
+                  to="/#crate-info"
+                  onClick={e => navigate(e, "crate-info")}
                 >
                   <p>Crates</p>
                 </NavLink>
@@ -191,12 +194,9 @@ const Navbar = () => {
 
               <NavItem>
                 <NavLink
-                  href="#qualifications"
-                  onClick={e => {
-                    e.preventDefault()
-                    scrollToSection(e, "qualifications")
-                    closeMenu()
-                  }}
+                  tag={Link}
+                  to="/#qualifications"
+                  onClick={e => navigate(e, "qualifications")}
                 >
                   <p>Our Qualifications</p>
                 </NavLink>

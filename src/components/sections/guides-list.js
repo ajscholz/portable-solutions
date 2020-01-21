@@ -5,7 +5,7 @@ import CrateGuideCard from "../Crate-Guide-Card"
 const GuidesList = props => {
   const { data, guides } = props
   return (
-    <section className="features-6" id="crate-info">
+    <section className="features-6">
       <Container>
         <Row>
           <Col className="ml-auto mr-auto text-center" md="8">

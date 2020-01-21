@@ -1,10 +1,15 @@
 import PropTypes from "prop-types"
 import React from "react"
 import Navbar from "./navbar"
+import SimpleNavbar from "./simpleNavbar"
 
-const Header = ({ siteTitle }) => (
+const Header = ({ siteTitle, indexPage }) => (
   <header>
-    <Navbar />
+    {indexPage === true ? (
+      <Navbar siteTitle={siteTitle} indexPage={indexPage} />
+    ) : (
+      <SimpleNavbar />
+    )}
   </header>
 )
 

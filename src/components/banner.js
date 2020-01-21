@@ -29,7 +29,8 @@ const Banner = props => {
 
   return (
     <>
-      <div
+      <section
+        id="#"
         className="page-header page-header-small d-flex align-items-center"
         style={{ marginTop: "90px", ...wrapperStyles }}
       >
@@ -70,7 +71,7 @@ const Banner = props => {
             </div>
           </Container>
         </div>
-      </div>
+      </section>
     </>
   )
 }

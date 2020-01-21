@@ -17,7 +17,7 @@ import Footer from "./footer"
 import "../assets/scss/main.scss"
 import FAB from "./fab"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, pageContext }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -27,12 +27,13 @@ const Layout = ({ children }) => {
       }
     }
   `)
-
   const [ref, inView] = useInView()
+
+  const indexPage = pageContext.layout === "index"
   return (
     <>
-      <FAB hide={inView} />
-      <Header siteTitle={data.site.siteMetadata.title} />
+      {indexPage === true && <FAB hide={inView} />}
+      <Header siteTitle={data.site.siteMetadata.title} indexPage={indexPage} />
       <main>{children}</main>
       <Footer ref={ref} />
     </>
