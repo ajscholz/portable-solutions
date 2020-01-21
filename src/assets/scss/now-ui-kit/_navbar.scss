@@ -146,7 +146,7 @@
 
   &.bg-white:not(.navbar-transparent) {
     a:not(.dropdown-item):not(.btn) {
-      color: $primary-color;
+      color: $primary-states-color;
 
       &.disabled {
         opacity: 0.5;
