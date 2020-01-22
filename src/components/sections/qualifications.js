@@ -50,7 +50,7 @@ const QualificationsSection = () => {
         </Col>
         <Container fluid>
           <Row>
-            <Col className="px-0" md="6">
+            {/* <Col className="px-0" md="6">
               <Col sm="12">
                 {section.otherContent.map(item => (
                   <div className="info info-horizontal" key={item.id}>
@@ -63,19 +63,18 @@ const QualificationsSection = () => {
                   </div>
                 ))}
               </Col>
-            </Col>
-            <Col md="6">
-              {/* <div className="image-container">
-                  <img alt="..." src={require("../assets/img/ipad3.png")}></img>
-                  <Image fluid={foregroundImage.fluid} />
-                </div> */}
+            </Col> */}
+            <Col
+              md={{ size: "10", offset: "1" }}
+              lg={{ size: "8", offset: "2" }}
+            >
               <Image
                 className="image-container"
                 fluid={section.foregroundImage.fluid}
-                imgStyle={{
-                  objectPosition: "left center",
-                  objectFit: "none",
-                }}
+                // imgStyle={{
+                //   objectPosition: "left center",
+                //   objectFit: "none",
+                // }}
               />
             </Col>
           </Row>
