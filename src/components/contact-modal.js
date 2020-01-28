@@ -37,6 +37,7 @@ const ContactModal = props => {
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
   const [orgName, setOrgName] = useState("")
+  const [orgWebsite, setOrgWebsite] = useState("")
 
   const [isSubmitting, setSubmitting] = useState(false)
   const [accepted, setAccepted] = useState(null)
@@ -56,6 +57,7 @@ const ContactModal = props => {
           email: email,
           phone: phone,
           orgName: orgName,
+          orgWebsite: orgWebsite,
           // siteEmail: siteEmail,
         }),
       })
@@ -216,6 +218,28 @@ const ContactModal = props => {
                     type="text"
                     value={orgName}
                     onChange={e => setOrgName(e.currentTarget.value)}
+                  ></Input>
+                </InputGroup>
+
+                <InputGroup
+                  className="form-group-no-border input-lg"
+                  onFocus={e =>
+                    e.currentTarget.classList.add("input-group-focus")
+                  }
+                  onBlur={e =>
+                    e.currentTarget.classList.remove("input-group-focus")
+                  }
+                >
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText>
+                      <i className="now-ui-icons business_globe"></i>
+                    </InputGroupText>
+                  </InputGroupAddon>
+                  <Input
+                    placeholder="Organization Website..."
+                    type="text"
+                    value={orgWebsite}
+                    onChange={e => setOrgWebsite(e.currentTarget.value)}
                   ></Input>
                 </InputGroup>
               </CardBody>

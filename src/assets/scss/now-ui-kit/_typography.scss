@@ -88,6 +88,7 @@ p {
   font-style: $font-style-brand;
   text-transform: $text-transform-brand;
   padding-top: 30px;
+  color: $primary-color;
 
   &.title-up {
     text-transform: uppercase;
@@ -105,7 +106,7 @@ p {
 .description,
 .card-description,
 .footer-big p {
-  color: $dark-gray;
+  color: $default-color;
   font-weight: $font-weight-light;
 }
 .category {

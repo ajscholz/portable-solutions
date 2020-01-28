@@ -50,20 +50,6 @@ const QualificationsSection = () => {
         </Col>
         <Container fluid>
           <Row>
-            {/* <Col className="px-0" md="6">
-              <Col sm="12">
-                {section.otherContent.map(item => (
-                  <div className="info info-horizontal" key={item.id}>
-                    <div className="description">
-                      <h5 className="info-title">{item.title}</h5>
-                      <p className="description">
-                        {item.description.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </Col>
-            </Col> */}
             <Col
               md={{ size: "10", offset: "1" }}
               lg={{ size: "8", offset: "2" }}
