@@ -1,5 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
+import Image from "gatsby-image"
+import ImageOverlay from "../ImageOverlay"
 
 import { Col, Row, Container } from "reactstrap"
 
@@ -10,6 +12,11 @@ const WhySection = () => {
         contentful_id: { eq: "1kzR2f6Y1eXS0Irtj4TUlB" }
       ) {
         title
+        backgroundImage {
+          fluid {
+            ...GatsbyContentfulFluid
+          }
+        }
         description {
           description
         }
@@ -28,10 +35,20 @@ const WhySection = () => {
     <section
       id="why"
       className="features-2 section-image"
-      style={{
-        backgroundImage: "url(" + require("../../assets/img/bg22.jpg") + ")",
-      }}
+      // style={{
+      //   backgroundImage: "url(" + require("../../assets/img/bg22.jpg") + ")",
+      // }}
     >
+      <Image
+        fluid={section.backgroundImage.fluid}
+        style={{
+          height: "100%",
+          width: "100%",
+          top: "0",
+          position: "absolute",
+        }}
+      />
+      <ImageOverlay />
       <Container fluid>
         <Row>
           <Col className="mr-auto ml-auto" md="8">

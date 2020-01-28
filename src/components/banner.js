@@ -1,6 +1,7 @@
 import React from "react"
 
 import Image from "gatsby-image"
+import ImageOverlay from "./ImageOverlay"
 
 // reactstrap components
 import { Container } from "reactstrap"
@@ -32,13 +33,14 @@ const Banner = props => {
       <section
         id="#"
         className="page-header page-header-small d-flex align-items-center"
-        style={{ marginTop: "90px", ...wrapperStyles }}
+        style={{ marginTop: "106px", ...wrapperStyles }}
       >
         <Image
           style={{ position: "unset" }}
           fluid={data.image.fluid}
           // ref={pageHeader}
         />
+        <ImageOverlay />
 
         <div className="content-center">
           <Container>

@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import { graphql, useStaticQuery, Link } from "gatsby"
 import Image from "gatsby-image"
+import CloseButton from "./CloseButton"
 
 import {
   Navbar as NavbarReactstrap,
@@ -151,6 +152,7 @@ const Navbar = ({ indexPage }) => {
           </div>
 
           <Collapse isOpen={collapseOpen} navbar>
+            <CloseButton click={closeMenu} />
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink

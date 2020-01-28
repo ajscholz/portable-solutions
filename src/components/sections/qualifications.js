@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Image from "gatsby-image"
+import ImageOverlay from "../ImageOverlay"
 
 import { Container, Row, Col } from "reactstrap"
 
@@ -42,7 +43,7 @@ const QualificationsSection = () => {
         style={{ height: "100%" }}
         fluid={section.backgroundImage.fluid}
       />
-
+      <ImageOverlay />
       <div className="features-7 section-image position-relative">
         <Col className="mr-auto ml-auto text-center" md="8">
           <h2 className="title">{section.title}</h2>

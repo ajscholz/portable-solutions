@@ -31,7 +31,7 @@ const HowSection = () => {
         </Row>
         <ol className="big-number-list row">
           {section.otherContent.map(item => (
-            <li key={item.id} className="col-md-6 col-xl-3 mt-4">
+            <li key={item.id} className="col-md-6 mt-4">
               <div className="info info-horizontal pt-0">
                 <div className="description">
                   <h5 className="info-title">{item.title}</h5>
