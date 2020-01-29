@@ -35,7 +35,7 @@ const Layout = ({ children, pageContext }) => {
   const indexPage = pageContext.layout === "index"
   return (
     <FabProvider>
-      {indexPage === true && <FAB hide={inView} />}
+      {/* {indexPage === true && <FAB hide={inView} />} */}
       <Header siteTitle={data.site.siteMetadata.title} indexPage={indexPage} />
       <main>{children}</main>
       <Footer ref={ref} />
