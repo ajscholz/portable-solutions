@@ -1,12 +1,13 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useContext } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Image from "gatsby-image"
 import ContactForm from "./ContactForm"
 
 import { Button, ModalBody, Card, ModalFooter, CardBody } from "reactstrap"
+import { FabContext } from "../context/fabContext"
 
 const ContactCard = props => {
-  const { open, toggle, hideFab, ...rest } = props
+  const { toggle, hideFab, ...rest } = props
 
   const {
     data: { logo },
@@ -33,6 +34,12 @@ const ContactCard = props => {
   const [isSubmitting, setSubmitting] = useState(false)
   const [accepted, setAccepted] = useState(null)
   const inputRef = useRef()
+  const [openForm] = useContext(FabContext)
+
+  console.log(`
+  -------------------------------
+  ${openForm}
+  -------------------------------`)
 
   const updateField = e => {
     setFormData({
@@ -82,7 +89,7 @@ const ContactCard = props => {
         type={type || "button"}
         block
         className={`btn-neutral d-flex align-items-center justify-content-center text-success ${
-          open ? "fade-in" : "fade-out"
+          openForm ? "fade-in" : "fade-out"
         }`}
         color="default"
         size="lg"
@@ -121,7 +128,7 @@ const ContactCard = props => {
     >
       <div
         className={`bg-white d-flex justify-content-center align-items-center position-relative p-3 ${
-          open ? "fade-in" : "fade-out"
+          openForm ? "fade-in" : "fade-out"
         }`}
         style={{ height: "140px", width: "100%", top: 0 }}
       >
@@ -140,7 +147,7 @@ const ContactCard = props => {
         <Image fixed={logo.fixed} alt="Portable Solutions" />
       </div>
       <ModalBody
-        className={`${open ? "fade-in" : "fade-out"}`}
+        className={`${openForm ? "fade-in" : "fade-out"}`}
         data-background-color=""
       >
         {accepted === null ? (

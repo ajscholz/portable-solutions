@@ -7,7 +7,7 @@
 
 import "typeface-kanit"
 
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { useInView } from "react-intersection-observer"
@@ -16,6 +16,7 @@ import Header from "./header"
 import Footer from "./footer"
 import "../assets/scss/main.scss"
 import FAB from "./fab"
+import { FabProvider } from "../context/fabContext"
 
 const Layout = ({ children, pageContext }) => {
   const data = useStaticQuery(graphql`
@@ -28,15 +29,17 @@ const Layout = ({ children, pageContext }) => {
     }
   `)
   const [ref, inView] = useInView()
+  const [renderButton, setRenderButton] = useState(false)
+  const [openForm, setOpenForm] = useState(false)
 
   const indexPage = pageContext.layout === "index"
   return (
-    <>
+    <FabProvider>
       {indexPage === true && <FAB hide={inView} />}
       <Header siteTitle={data.site.siteMetadata.title} indexPage={indexPage} />
       <main>{children}</main>
       <Footer ref={ref} />
-    </>
+    </FabProvider>
   )
 }
 

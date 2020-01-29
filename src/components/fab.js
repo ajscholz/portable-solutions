@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef, useContext } from "react"
+import { FabContext } from "../context/fabContext"
 
 import { Button } from "reactstrap"
 import ContactCard from "./ContactCard"
@@ -6,9 +7,9 @@ import ContactCard from "./ContactCard"
 const FAB = props => {
   const { hide } = props
   const [renderButton, setRenderButton] = useState(false)
-  const [openForm, setOpenForm] = useState(false)
-  const fabRef = React.useRef()
-  const buttonRef = React.useRef()
+  const fabRef = useRef()
+  const buttonRef = useRef()
+  const [openForm, setOpenForm] = useContext(FabContext)
 
   useEffect(() => {
     setTimeout(() => {
@@ -18,6 +19,11 @@ const FAB = props => {
       }, 500)
     }, 5000)
   }, [])
+
+  useEffect(() => {
+    if (renderButton === true && openForm === true) handleOpenForm()
+    if (renderButton === false && openForm === true) setRenderButton(true)
+  })
 
   useEffect(() => {
     if (fabRef.current && hide === true) {
@@ -47,7 +53,7 @@ const FAB = props => {
     fabRef.current.classList.add("btn-expand-out")
     fabRef.current.classList.remove("btn-shrink-in")
     setTimeout(() => {
-      setOpenForm(true)
+      setOpenForm(() => true)
     }, 375)
     setTimeout(() => {
       buttonRef.current.style.display = "none"

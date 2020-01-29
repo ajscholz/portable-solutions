@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import { Col, Row, Container, Card, Button } from "reactstrap"
+import ThemeTogglerButton from "../ThemeTogglerButton"
 
 const ProductSection = () => {
   const { section } = useStaticQuery(graphql`
@@ -51,7 +52,7 @@ const ProductSection = () => {
                   <div className="description">
                     <h4 className="info-title mt-3">{item.title}</h4>
                     <p>{item.description.description}</p>
-                    <Button
+                    <ThemeTogglerButton
                       className="btn-link"
                       color="success"
                       type="button"
@@ -62,7 +63,7 @@ const ProductSection = () => {
                         style={{ top: 0 }}
                       />
                       Get Started
-                    </Button>
+                    </ThemeTogglerButton>
                   </div>
                 </div>
               </Card>
