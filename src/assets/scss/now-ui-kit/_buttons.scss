@@ -194,15 +194,21 @@
   right: 8px;
 }
 
-.btn-fab {
-  margin: 0;
+.fab-container {
   z-index: 1049;
   position: fixed;
   bottom: 25px;
   right: 25px;
   box-shadow: $box-shadow-raised !important;
+}
+
+.btn-fab {
+  margin: 0;
   display: flex;
   align-items: center;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
 }
 
 // .btn-facebook {

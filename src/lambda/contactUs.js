@@ -80,6 +80,10 @@ exports.handler = async event => {
         <span>Organization Name: </span>
         ${data.orgName}
       </p>
+      <p>
+        <span>Organization Website: </span>
+        ${data.orgWebsite !== "" ? data.orgWebsite : "No website given"}
+      </p>
       <br>
       <hr>
       <h4>

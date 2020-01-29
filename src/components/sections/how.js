@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
-import { Container, Row, Col } from "reactstrap"
+import { Container, Row, Col, Button } from "reactstrap"
 
 const HowSection = () => {
   const { section } = useStaticQuery(graphql`
@@ -30,12 +30,31 @@ const HowSection = () => {
           </Col>
         </Row>
         <ol className="big-number-list row">
-          {section.otherContent.map(item => (
+          {section.otherContent.map((item, index) => (
             <li key={item.id} className="col-md-6 mt-4">
               <div className="info info-horizontal pt-0">
                 <div className="description">
                   <h5 className="info-title">{item.title}</h5>
-                  <p>{item.description.description}</p>
+                  <p>
+                    {item.description.description}
+                    {index + 1 === section.otherContent.length && (
+                      <>
+                        {` Are you ready? `}
+                        <span>
+                          <a
+                            className="btn-link p-0 text-success"
+                            style={{ cursor: "pointer" }}
+                            onClick={e => {
+                              e.preventDefault()
+                              alert("clicked")
+                            }}
+                          >
+                            Get Started Now!
+                          </a>
+                        </span>
+                      </>
+                    )}
+                  </p>
                 </div>
               </div>
             </li>

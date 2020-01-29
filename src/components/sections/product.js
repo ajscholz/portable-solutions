@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
-import { Col, Row, Container, Card } from "reactstrap"
+import { Col, Row, Container, Card, Button } from "reactstrap"
 
 const ProductSection = () => {
   const { section } = useStaticQuery(graphql`
@@ -51,6 +51,18 @@ const ProductSection = () => {
                   <div className="description">
                     <h4 className="info-title mt-3">{item.title}</h4>
                     <p>{item.description.description}</p>
+                    <Button
+                      className="btn-link"
+                      color="success"
+                      type="button"
+                      size="sm"
+                    >
+                      <i
+                        className="now-ui-icons gestures_tap-01 mr-2"
+                        style={{ top: 0 }}
+                      />
+                      Get Started
+                    </Button>
                   </div>
                 </div>
               </Card>
