@@ -24,16 +24,19 @@ const Banner = props => {
   //   }
   // })
 
-  const wrapperStyles = props.small
-    ? { minHeight: "40vh", maxHeight: "480px" }
-    : {}
+  const wrapperStyles = props.small ? { minHeight: "75vh" } : {}
 
   return (
     <>
       <section
         id="#"
-        className="page-header page-header-small d-flex align-items-center"
-        style={{ marginTop: "106px", ...wrapperStyles }}
+        className="page-header d-flex align-items-center"
+        style={{
+          marginTop: "106px",
+          maxHeight: "60vh",
+          minHeight: "60vh",
+          ...wrapperStyles,
+        }}
       >
         <Image
           style={{ position: "unset" }}

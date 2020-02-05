@@ -3,19 +3,39 @@ import React from "react"
 import { Link } from "gatsby"
 
 // reactstrap components
-import { Container } from "reactstrap"
+import { Container, Button } from "reactstrap"
 
 // core components
 
 const Footer = React.forwardRef(({ children }, ref) => {
   return (
     <>
-      <footer className="footer" ref={ref}>
-        <Container className="d-flex flex-column">
+      <footer className="footer section" ref={ref}>
+        <Container className="d-flex flex-column align-items-center">
           {/* <nav>
             <ul>
               <li> */}
-          <Link to="/">Portable Solutions</Link>
+          <Link className="h4 mb-n1 mt-0" to="/">
+            Portable Solutions
+          </Link>
+          <p className="m-0 mb-3">Galena, Ohio</p>
+          <Button
+            href="tel:614-569-0307"
+            className="btn-link m-0 mb-n2 h4 d-flex align-items-center"
+            size="lg"
+          >
+            <i className="now-ui-icons tech_mobile mr-1" />
+            614.569.0307
+          </Button>
+          <Button
+            href="mailto:info@portable.solutions?Subject=Website%20Contact"
+            className="btn-link m-0 h4 d-flex align-items-center"
+            size="lg"
+          >
+            <i className="now-ui-icons ui-1_email-85 mr-1" />
+            info@portable.solutions
+          </Button>
+
           {/* </li> */}
           {/* <li>
                 <a
@@ -44,8 +64,8 @@ const Footer = React.forwardRef(({ children }, ref) => {
           {/* </ul>
           </nav> */}
           {children}
-          <div>
-            © {new Date().getFullYear()}, Designed and developed by{" "}
+          <div className="mt-3">
+            © {new Date().getFullYear()}, Built by{" "}
             <a href="https://ajsolutions.netlify.com" target="_blank">
               AJSolutions
             </a>
