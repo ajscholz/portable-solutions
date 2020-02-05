@@ -146,7 +146,11 @@ const CrateInfoSection = () => {
               </div>
             </div> */}
           </Col>
-          <Col xs="12" md={{ size: 6, offset: 3 }}>
+          <Col
+            xs="12"
+            md={{ size: 8, offset: 2 }}
+            large={{ size: 6, offset: 3 }}
+          >
             {bottomContent.map(item => {
               return (
                 <div

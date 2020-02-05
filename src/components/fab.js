@@ -33,7 +33,7 @@ const FABContainer = props => {
     >
       <FABTogglerButton
         className={`btn-fab ${
-          fabState.showForm === true ? "fade-out disabled" : "fade-in"
+          fabState.showForm === true ? "disabled fade-out" : "fade-in"
         }`}
         innerRef={buttonRef}
         size="lg"
@@ -48,7 +48,7 @@ const FABContainer = props => {
       <ContactCard
         open={fabState.showForm}
         toggle={handleCloseForm}
-        className={`${fabState.showForm === true ? "fade-in" : "fade-out"}`}
+        className={`${fabState.showForm === false ? "fade-out" : "fade-in"}`}
       />
     </div>
   )

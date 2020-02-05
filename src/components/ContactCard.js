@@ -96,7 +96,7 @@ const ContactCard = props => {
 
   return (
     <Card
-      className={`card-login card-plain ${className}`}
+      className={`card-login card-plain fab-card ${className}`}
       style={{
         position: "absolute",
         bottom: "0",

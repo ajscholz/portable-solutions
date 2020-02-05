@@ -236,8 +236,23 @@
   position: absolute;
   bottom: 0;
   right: 0;
+  // opacity: 1;
+  transition: z-index 0.75s, opacity 0.75s;
+}
+
+.fade-out {
   opacity: 0;
-  transition: z-index 0.75s;
+  transition: all 0.75s;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: all 0.75s;
+}
+
+.fab-card {
+  opacity: 1;
+  transition: all 0.75s;
 }
 
 // .btn-facebook {
