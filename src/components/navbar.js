@@ -15,34 +15,6 @@ import {
 
 const Navbar = ({ indexPage }) => {
   const [collapseOpen, setCollapseOpen] = React.useState(false)
-  // const [navbarColor, setNavbarColor] = React.useState(
-  //   "bg-white"
-  // (document.documentElement.scrollTop > 499 || document.body.scrollTop) > 499
-  //   ? "bg-white"
-  //   : // : " navbar-transparent"
-  //     " bg-white"
-  // )
-
-  // React.useEffect(() => {
-  //   const updateNavbarColor = () => {
-  //     if (
-  //       document.documentElement.scrollTop > 499 ||
-  //       document.body.scrollTop > 499
-  //     ) {
-  //       setNavbarColor("bg-white")
-  //     } else if (
-  //       document.documentElement.scrollTop < 500 ||
-  //       document.body.scrollTop < 500
-  //     ) {
-  //       // setNavbarColor(" navbar-transparent")
-  //       setNavbarColor(" bg-white")
-  //     }
-  //   }
-  //   window.addEventListener("scroll", updateNavbarColor)
-  //   return function cleanup() {
-  //     window.removeEventListener("scroll", updateNavbarColor)
-  //   }
-  // })
 
   let navHeight = useRef()
 
@@ -90,39 +62,22 @@ const Navbar = ({ indexPage }) => {
 
   return (
     <>
-      {collapseOpen ? (
-        <div
-          id="bodyClick"
-          onClick={() => closeMenu()}
-          onKeyDown={e => {
-            if (e.key === "Escape") {
-              closeMenu()
-            }
-          }}
-        />
-      ) : null}
       <NavbarReactstrap
-        // className={"fixed-top" + navbarColor}
         className={"fixed-top bg-white"}
-        // color="white"
         expand="lg"
         id="navbar"
+        style={{ height: "106px" }}
       >
         <Container>
           <div className="navbar-translate">
             <NavbarBrand
               id="navbar-brand"
-              // onClick={e => {
-              //   e.preventDefault()
-              //   scrollToSection(e, 0)
-              //   closeMenu()
-              // }}
+              tag={Link}
+              to="/"
+              onClick={e => navigate(e, "#")}
               style={{ cursor: "pointer" }}
             >
-              <NavLink tag={Link} to="/" onClick={e => navigate(e, "#")}>
-                <Image fixed={logo.fixed} alt="Go to homepage" />
-              </NavLink>
-              {/* Portable Solutions */}
+              <Image fixed={logo.fixed} alt="Go to homepage" />
             </NavbarBrand>
             <button
               style={{ marginLeft: "auto", width: "unset", padding: 0 }}
@@ -137,18 +92,6 @@ const Navbar = ({ indexPage }) => {
               <span className="navbar-toggler-bar bar2"></span>
               <span className="navbar-toggler-bar bar3"></span>
             </button>
-            {/* <button
-              onClick={() => {
-                document.documentElement.classList.toggle("nav-open")
-                setCollapseOpen(!collapseOpen)
-              }}
-              aria-expanded={collapseOpen}
-              className="navbar-toggler"
-            >
-              <span className="navbar-toggler-bar bar1"></span>
-              <span className="navbar-toggler-bar bar2"></span>
-              <span className="navbar-toggler-bar bar3"></span>
-            </button> */}
           </div>
 
           <Collapse isOpen={collapseOpen} navbar>

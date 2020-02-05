@@ -1,7 +1,8 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
-import { Container, Row, Col, Button } from "reactstrap"
+import { Container, Row, Col } from "reactstrap"
+import ThemeTogglerButton from "../ThemeTogglerButton"
 
 const HowSection = () => {
   const { section } = useStaticQuery(graphql`
@@ -41,16 +42,14 @@ const HowSection = () => {
                       <>
                         {` Are you ready? `}
                         <span>
-                          <a
-                            className="btn-link p-0 text-success"
+                          <ThemeTogglerButton
+                            className="btn-link m-0 p-0 text-success"
                             style={{ cursor: "pointer" }}
-                            onClick={e => {
-                              e.preventDefault()
-                              alert("clicked")
-                            }}
+                            onClick={() => alert("clicked")}
+                            style={{ fontSize: "inherit" }}
                           >
                             Get Started Now!
-                          </a>
+                          </ThemeTogglerButton>
                         </span>
                       </>
                     )}

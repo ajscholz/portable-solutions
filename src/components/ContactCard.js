@@ -7,7 +7,7 @@ import { Button, ModalBody, Card, ModalFooter, CardBody } from "reactstrap"
 import { FabContext } from "../context/fabContext"
 
 const ContactCard = props => {
-  const { toggle, hideFab, ...rest } = props
+  const { toggle, hideFab } = props
 
   const {
     data: { logo },

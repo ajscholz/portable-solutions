@@ -36,8 +36,6 @@ const CrateInfoSection = () => {
   const leftColumnContent = section.otherContent.slice(0, splitHalf)
   const rightColumnContent = section.otherContent.slice(splitHalf)
 
-  console.log("left", leftColumnContent)
-  console.log("right", rightColumnContent)
   return (
     <section className="features-6" id="crate-info">
       <Container>

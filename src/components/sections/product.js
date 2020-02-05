@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
-import { Col, Row, Container, Card, Button } from "reactstrap"
+import { Col, Row, Container, Card } from "reactstrap"
 import ThemeTogglerButton from "../ThemeTogglerButton"
 
 const ProductSection = () => {

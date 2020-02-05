@@ -18,7 +18,7 @@ const FAB = props => {
         handleOpenForm()
       }, 500)
     }, 5000)
-  }, [])
+  })
 
   useEffect(() => {
     if (renderButton === true && openForm === true) handleOpenForm()
