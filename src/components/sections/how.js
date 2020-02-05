@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 import { Container, Row, Col } from "reactstrap"
-import ThemeTogglerButton from "../ThemeTogglerButton"
+import FABTogglerButton from "../FABTogglerButton"
 
 const HowSection = () => {
   const { section } = useStaticQuery(graphql`
@@ -42,14 +42,14 @@ const HowSection = () => {
                       <>
                         {` Are you ready? `}
                         <span>
-                          <ThemeTogglerButton
+                          <FABTogglerButton
                             className="btn-link m-0 p-0 text-success"
                             style={{ cursor: "pointer" }}
                             onClick={() => alert("clicked")}
                             style={{ fontSize: "inherit" }}
                           >
                             Get Started Now!
-                          </ThemeTogglerButton>
+                          </FABTogglerButton>
                         </span>
                       </>
                     )}

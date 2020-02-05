@@ -5,37 +5,37 @@
  * w: http://animista.net, t: @cssanimista
  * ---------------------------------------------- */
 
-.slide-in-right {
-  -webkit-animation: slide-in-right 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-    both;
-  animation: slide-in-right 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-}
+// .slide-in-right {
+//   -webkit-animation: slide-in-right 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+//     both;
+//   animation: slide-in-right 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+// }
 
-@-webkit-keyframes slide-in-right {
-  0% {
-    -webkit-transform: translateX(350px);
-    transform: translateX(350px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
+// @-webkit-keyframes slide-in-right {
+//   0% {
+//     -webkit-transform: translateX(350px);
+//     transform: translateX(350px);
+//     opacity: 0;
+//   }
+//   100% {
+//     -webkit-transform: translateX(0);
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+// }
 
-@keyframes slide-in-right {
-  0% {
-    -webkit-transform: translateX(350px);
-    transform: translateX(350px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
+// @keyframes slide-in-right {
+//   0% {
+//     -webkit-transform: translateX(350px);
+//     transform: translateX(350px);
+//     opacity: 0;
+//   }
+//   100% {
+//     -webkit-transform: translateX(0);
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+// }
 
 .slide-out-right {
   -webkit-animation: slide-out-right 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94)
@@ -153,8 +153,9 @@
 }
 
 .fade-in {
-  -webkit-animation: fade-in 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-  animation: fade-in 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  -webkit-animation: fade-in 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s
+    both;
+  animation: fade-in 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s both;
 }
 
 @-webkit-keyframes fade-in {

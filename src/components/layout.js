@@ -7,16 +7,16 @@
 
 import "typeface-kanit"
 
-import React from "react"
+import React, { useContext, useEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-// import { useInView } from "react-intersection-observer"
+import { useInView } from "react-intersection-observer"
 
 import Header from "./header"
 import Footer from "./footer"
 import "../assets/scss/main.scss"
-// import FAB from "./fab"
-import { FabProvider } from "../context/fabContext"
+import FABContainer from "./fab"
+import { FabContext } from "../context/fabContext"
 
 const Layout = ({ children, pageContext }) => {
   const data = useStaticQuery(graphql`
@@ -28,20 +28,28 @@ const Layout = ({ children, pageContext }) => {
       }
     }
   `)
-  // const [ref, inView] = useInView()
-  // const [renderButton, setRenderButton] = useState(false)
-  // const [openForm, setOpenForm] = useState(false)
+  const [ref, inView] = useInView()
+
+  const [fabState, setFabState] = useContext(FabContext)
+  useEffect(() => {
+    setTimeout(() => {
+      setFabState({ ...fabState, renderButton: true })
+    }, 1000)
+  }, [])
 
   const indexPage = pageContext.layout === "index"
   return (
-    <FabProvider>
-      {/* {indexPage === true && <FAB hide={inView} />} */}
+    <>
+      {indexPage === true ? (
+        fabState.renderButton === true ? (
+          <FABContainer hide={inView} />
+        ) : null
+      ) : null}
       <Header siteTitle={data.site.siteMetadata.title} indexPage={indexPage} />
+
       <main>{children}</main>
-      <Footer
-      // ref={ref}
-      />
-    </FabProvider>
+      <Footer ref={ref} />
+    </>
   )
 }
 

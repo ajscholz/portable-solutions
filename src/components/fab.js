@@ -3,117 +3,55 @@ import { FabContext } from "../context/fabContext"
 
 import { Button } from "reactstrap"
 import ContactCard from "./ContactCard"
+import FABTogglerButton from "./FABTogglerButton"
 
-const FAB = props => {
-  const { hide } = props
-  const [renderButton, setRenderButton] = useState(false)
-  const fabRef = useRef()
+const FABContainer = props => {
   const buttonRef = useRef()
-  const [openForm, setOpenForm] = useContext(FabContext)
+  const [fabState, setFabState] = useContext(FabContext)
 
   useEffect(() => {
     setTimeout(() => {
-      setRenderButton(true)
+      setFabState({ ...fabState, slideIntoView: true })
       setTimeout(() => {
-        handleOpenForm()
-      }, 500)
-    }, 5000)
-  })
-
-  useEffect(() => {
-    if (renderButton === true && openForm === true) handleOpenForm()
-    if (renderButton === false && openForm === true) setRenderButton(true)
-  })
-
-  useEffect(() => {
-    if (fabRef.current && hide === true) {
-      hideButton()
-    } else if (fabRef.current && hide === false) {
-      showButton()
-    }
-  }, [hide])
-
-  const showButton = () => {
-    fabRef.current.classList.replace("slide-out-right", "slide-in-right")
-  }
-
-  const hideButton = () => {
-    fabRef.current.classList.replace("slide-in-right", "slide-out-right")
-  }
-
-  const removeButton = () => {
-    hideButton()
-    setTimeout(() => {
-      setRenderButton(false)
-    }, 1000)
-  }
-
-  const handleOpenForm = () => {
-    buttonRef.current.classList.replace("fade-in", "fade-out")
-    fabRef.current.classList.add("btn-expand-out")
-    fabRef.current.classList.remove("btn-shrink-in")
-    setTimeout(() => {
-      setOpenForm(() => true)
-    }, 375)
-    setTimeout(() => {
-      buttonRef.current.style.display = "none"
-    }, 750)
-  }
+        setFabState({ ...fabState, slideIntoView: true, showForm: true })
+      }, 1000)
+    }, 2000)
+  }, [])
 
   const handleCloseForm = () => {
-    // buttonRef.current.style.opacity = 0
-    setOpenForm(false)
-    fabRef.current.classList.replace("btn-expand-out", "btn-shrink-in")
-    setTimeout(() => {
-      buttonRef.current.style.display = "block"
-      buttonRef.current.classList.replace("fade-out", "fade-in")
-    }, 375)
+    setFabState({ ...fabState, showForm: false })
+    buttonRef.current.style.display = "block"
   }
 
-  // if (renderButton === true && hide === true) {
-  //   hideButton()
-  // }
+  console.log(fabState)
 
-  return renderButton ? (
+  return (
     <div
-      className="fab-container slide-in-right bg-success"
-      ref={fabRef}
+      className={`fab-container bg-success ${fabState.slideIntoView === true &&
+        "slide-into-view"} ${fabState.showForm === true && "fab-expand"}`}
       id="fast-action-button"
-      style={{
-        borderRadius: "4px",
-        zIndex: 1050,
-        overflow: "hidden",
-        minHeight: "48px",
-        minWidth: "190.17px",
-      }}
     >
-      <Button
-        className="btn-fab fade-in"
+      <FABTogglerButton
+        className={`btn-fab ${
+          fabState.showForm === true ? "fade-out disabled" : "fade-in"
+        }`}
+        innerRef={buttonRef}
         size="lg"
         color="success"
         type="button"
-        onClick={e => handleOpenForm(e)}
-        innerRef={buttonRef}
-        style={{
-          zIndex: 1,
-          position: "absolute",
-          bottom: 0,
-          right: 0,
-          opacity: 0,
-        }}
+        style={{ zIndex: fabState.showForm === true ? "-2" : "1" }}
       >
         <i className="now-ui-icons gestures_tap-01 mr-2" style={{ top: 0 }} />
         Get Started
-      </Button>
+      </FABTogglerButton>
 
       <ContactCard
-        open={openForm}
+        open={fabState.showForm}
         toggle={handleCloseForm}
-        hideFab={removeButton}
-        style={{ zIndex: 0 }}
+        className={`${fabState.showForm === true ? "fade-in" : "fade-out"}`}
       />
     </div>
-  ) : null
+  )
 }
 
-export default FAB
+export default FABContainer

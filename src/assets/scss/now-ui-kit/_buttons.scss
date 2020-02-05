@@ -78,6 +78,10 @@
   }
 }
 
+.btn.disabled {
+  cursor: default;
+}
+
 // Apply the mixin to the buttons
 // .btn-default { @include btn-styles($default-color, $default-states-color); }
 .btn-primary {
@@ -151,6 +155,7 @@
     &:active,
     &.active {
       background-color: $transparent-bg;
+      cursor: default;
     }
   }
 }
@@ -198,17 +203,41 @@
   z-index: 1049;
   position: fixed;
   bottom: 25px;
-  right: 25px;
+  right: -325px;
   box-shadow: $box-shadow-raised !important;
+  border-radius: 4px;
+  z-index: 1050;
+  overflow: hidden;
+  min-height: 48px;
+  min-width: 190.17px;
+  // transform: translateX(350px);
+  width: 190.17px;
+  height: 48px;
+  transition: all 0.75s;
+}
+
+.fab-expand {
+  width: 277px;
+  height: 556px;
+  border-radius: 4.8px;
+  transition: all 0.75s;
+}
+
+.slide-into-view {
+  right: 25px;
+  transition: all 0.75s;
 }
 
 .btn-fab {
   margin: 0;
   display: flex;
   align-items: center;
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  transition: z-index 0.75s;
 }
 
 // .btn-facebook {

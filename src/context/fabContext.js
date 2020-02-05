@@ -1,13 +1,20 @@
-import React, { useState } from "react"
+import React, { useState, createContext } from "react"
 
-export const FabContext = React.createContext()
+const FabContext = createContext([{}, () => {}])
 
-export const FabProvider = props => {
-  const [openForm, setOpenForm] = useState(false)
+const FabProvider = props => {
+  const [fabState, setFabState] = useState({
+    renderButton: false,
+    slideIntoView: false,
+    // showButton: false,
+    showForm: false,
+  })
 
   return (
-    <FabContext.Provider value={[openForm, setOpenForm]}>
+    <FabContext.Provider value={[fabState, setFabState]}>
       {props.children}
     </FabContext.Provider>
   )
 }
+
+export { FabContext, FabProvider }

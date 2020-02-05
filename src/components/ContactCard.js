@@ -7,7 +7,7 @@ import { Button, ModalBody, Card, ModalFooter, CardBody } from "reactstrap"
 import { FabContext } from "../context/fabContext"
 
 const ContactCard = props => {
-  const { toggle, hideFab } = props
+  const { toggle, className } = props
 
   const {
     data: { logo },
@@ -34,12 +34,7 @@ const ContactCard = props => {
   const [isSubmitting, setSubmitting] = useState(false)
   const [accepted, setAccepted] = useState(null)
   const inputRef = useRef()
-  const [openForm] = useContext(FabContext)
-
-  console.log(`
-  -------------------------------
-  ${openForm}
-  -------------------------------`)
+  const [fabState, setFabState] = useContext(FabContext)
 
   const updateField = e => {
     setFormData({
@@ -88,12 +83,10 @@ const ContactCard = props => {
       <Button
         type={type || "button"}
         block
-        className={`btn-neutral d-flex align-items-center justify-content-center text-success ${
-          openForm ? "fade-in" : "fade-out"
-        }`}
+        className={`btn-neutral d-flex align-items-center justify-content-center text-success`}
         color="default"
         size="lg"
-        style={{ width: "100%", opacity: 0 }}
+        style={{ width: "100%", opacity: 1 }}
         {...rest}
       >
         {children}
@@ -102,20 +95,8 @@ const ContactCard = props => {
   }
 
   return (
-    // <div>
-    //   <div
-    //     className="modal-login modal-fab"
-    //     // modalClassName="modal-success"
-    //     isOpen={open}
-    //     toggle={() => toggle()}
-    //     onClosed={() => {
-    //       if (accepted) hideFab()
-    //     }}
-    //     {...rest}
-    //     style={{ position: "absolute", bottom: 0, right: 0 }}
-    //   >
     <Card
-      className="card-login card-plain"
+      className={`card-login card-plain ${className}`}
       style={{
         position: "absolute",
         bottom: "0",
@@ -123,13 +104,12 @@ const ContactCard = props => {
         height: "556px",
         width: "277px",
         marginBottom: "0",
+        display: "flex",
         zIndex: -1,
       }}
     >
       <div
-        className={`bg-white d-flex justify-content-center align-items-center position-relative p-3 ${
-          openForm ? "fade-in" : "fade-out"
-        }`}
+        className={`bg-white d-flex justify-content-center align-items-center position-relative p-3 `}
         style={{ height: "140px", width: "100%", top: 0 }}
       >
         <button
@@ -147,7 +127,7 @@ const ContactCard = props => {
         <Image fixed={logo.fixed} alt="Portable Solutions" />
       </div>
       <ModalBody
-        className={`${openForm ? "fade-in" : "fade-out"}`}
+        // className={`${fabContext.showForm === true ? "fade-in" : "fade-out"}`}
         data-background-color=""
       >
         {accepted === null ? (
@@ -177,7 +157,10 @@ const ContactCard = props => {
         )}
       </ModalBody>
 
-      <ModalFooter className="text-center border-top-0 pt-0">
+      <ModalFooter
+        className="text-center border-top-0 pt-0"
+        style={{ marginTop: "auto" }}
+      >
         {isSubmitting ? (
           <ModalButton
             type="submit"
@@ -185,16 +168,29 @@ const ContactCard = props => {
             // disabled={
             //   name === "" || email === "" || phone === "" || orgName === ""
             // }
+            style={{ margin: 0 }}
           >
             <i className="now-ui-icons ui-1_settings-gear-63 spin" />
             &nbsp;&nbsp;Sending...
           </ModalButton>
         ) : accepted === true ? (
-          <ModalButton onClick={() => toggle()}>
+          <ModalButton
+            style={{ margin: 0 }}
+            onClick={() => {
+              setFabState({ ...fabState, slideIntoView: false })
+              setTimeout(() => {
+                setFabState({
+                  ...fabState,
+                  renderButton: false,
+                  slideIntoView: false,
+                })
+              }, 750)
+            }}
+          >
             <i className="now-ui-icons ui-1_simple-remove mr-2"></i>Close
           </ModalButton>
         ) : accepted === false ? (
-          <ModalButton onClick={() => setAccepted(null)}>
+          <ModalButton onClick={() => setAccepted(null)} style={{ margin: 0 }}>
             <i className="now-ui-icons arrows-1_minimal-left mr-2"></i>Go Back
           </ModalButton>
         ) : (
@@ -204,8 +200,6 @@ const ContactCard = props => {
         )}
       </ModalFooter>
     </Card>
-    //     </div>
-    //   </div>
   )
 }
 
