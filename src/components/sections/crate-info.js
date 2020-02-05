@@ -31,10 +31,14 @@ const CrateInfoSection = () => {
   `)
 
   // if length === 3 then this will return "2"
-  const splitHalf = Math.ceil(section.otherContent.length / 2)
+  // const splitHalf = Math.ceil(section.otherContent.length / 2)
 
-  const leftColumnContent = section.otherContent.slice(0, splitHalf)
-  const rightColumnContent = section.otherContent.slice(splitHalf)
+  // const leftColumnContent = section.otherContent.slice(0, splitHalf)
+  // const rightColumnContent = section.otherContent.slice(splitHalf)
+
+  const leftColumnContent = section.otherContent.slice(0, 2)
+  const rightColumnContent = section.otherContent.slice(2, 4)
+  const bottomContent = section.otherContent.slice(4, 5)
 
   return (
     <section className="features-6" id="crate-info">
@@ -90,7 +94,7 @@ const CrateInfoSection = () => {
             </div> */}
           </Col>
 
-          <Col md="4">
+          <Col md="4" style={{ paddingTop: "40px" }}>
             <Image
               className="phone-container"
               fluid={section.image.fluid}
@@ -141,6 +145,25 @@ const CrateInfoSection = () => {
                 <p>{section.otherContent[5].description.description}</p>
               </div>
             </div> */}
+          </Col>
+          <Col xs="12" md={{ size: 6, offset: 3 }}>
+            {bottomContent.map(item => {
+              return (
+                <div
+                  className="info info-horizontal"
+                  key={item.id}
+                  style={{ paddingTop: "10px" }}
+                >
+                  <div className="icon icon-info">
+                    <i className="now-ui-icons design-2_html5"></i>
+                  </div>
+                  <div className="description">
+                    <h5 className="info-title">{item.title}</h5>
+                    <p>{item.description.description}</p>
+                  </div>
+                </div>
+              )
+            })}
           </Col>
         </Row>
       </Container>
