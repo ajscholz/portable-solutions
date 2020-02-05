@@ -19,7 +19,7 @@ const IndexPage = props => {
   return (
     <>
       <SEO title={title} />
-      <Banner data={banner} />
+      <Banner data={banner} objectPosition="51% 63%" />
 
       <ProductSection />
       <WhySection />
@@ -57,7 +57,7 @@ export const data = graphql`
       banner {
         heading
         image: backgroundImage {
-          fluid {
+          fluid(quality: 80) {
             ...GatsbyContentfulFluid
           }
         }

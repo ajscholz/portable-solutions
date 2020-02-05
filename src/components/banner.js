@@ -7,7 +7,7 @@ import ImageOverlay from "./ImageOverlay"
 import { Container } from "reactstrap"
 
 const Banner = props => {
-  const { data } = props
+  const { data, objectPosition } = props
 
   // let pageHeader = React.createRef()
   // React.useEffect(() => {
@@ -38,6 +38,7 @@ const Banner = props => {
         <Image
           style={{ position: "unset" }}
           fluid={data.image.fluid}
+          objectPosition={objectPosition}
           // ref={pageHeader}
         />
         <ImageOverlay />

@@ -11,13 +11,13 @@ const Footer = React.forwardRef(({ children }, ref) => {
   return (
     <>
       <footer className="footer" ref={ref}>
-        <Container>
-          <nav>
+        <Container className="d-flex flex-column">
+          {/* <nav>
             <ul>
-              <li>
-                <Link to="/">Portable Solutions</Link>
-              </li>
-              {/* <li>
+              <li> */}
+          <Link to="/">Portable Solutions</Link>
+          {/* </li> */}
+          {/* <li>
                 <a
                   href="https://www.creative-tim.com?ref=nuk-pro-react-footer"
                   target="_blank"
@@ -41,10 +41,10 @@ const Footer = React.forwardRef(({ children }, ref) => {
                   Blog
                 </a>
               </li> */}
-            </ul>
-          </nav>
+          {/* </ul>
+          </nav> */}
           {children}
-          <div className="copyright" id="copyright">
+          <div>
             © {new Date().getFullYear()}, Designed and developed by{" "}
             <a href="https://ajsolutions.netlify.com" target="_blank">
               AJSolutions
