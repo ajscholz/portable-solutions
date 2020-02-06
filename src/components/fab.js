@@ -18,12 +18,28 @@ const FABContainer = props => {
     }, 2000)
   }, [])
 
+  // useEffect(() => {
+  //   buttonRef.current.addEventListener("transitionend", e => console.log(e))
+  //   return buttonRef.current.removeEventListener("transitionend", e =>
+  //     console.log(e)
+  //   )
+  // }, [buttonRef.current])
+  // console.log(buttonRef.current)
+
+  // if (fabState.slideIntoView === true && fabState.showForm === true) {
+  //   // setFabState({ ...fabState, showForm: true })
+  //   setTimeout(() => {
+  //     buttonRef.current.style.zIndex = -10
+  //   }, 750)
+  // }
+
   const handleCloseForm = () => {
+    // buttonRef.current.style.zIndex = 5
     setFabState({ ...fabState, showForm: false })
-    buttonRef.current.style.display = "block"
+    // buttonRef.current.setAttribute("style", "display: block; opacity: 0")
   }
 
-  console.log(fabState)
+  // console.log(fabState)
 
   return (
     <div
@@ -33,7 +49,7 @@ const FABContainer = props => {
     >
       <FABTogglerButton
         className={`btn-fab ${
-          fabState.showForm === true ? "fade-out" : "fade-in"
+          fabState.showForm === true ? "fade-out move-behind" : "fade-in"
         }`}
         innerRef={buttonRef}
         size="lg"

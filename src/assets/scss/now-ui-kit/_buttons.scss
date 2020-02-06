@@ -232,11 +232,12 @@
   bottom: 0;
   right: 0;
   // opacity: 1;
-  transition: z-index 0.75s 0.75s, opacity 0.75s;
+  transition: z-index 0s 0.75s, opacity 0.75s;
 }
 
 .move-behind {
   z-index: -5;
+  // transition: z-index;
 }
 
 .fab-card {

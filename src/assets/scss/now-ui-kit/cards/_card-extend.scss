@@ -118,3 +118,14 @@
     z-index: 2;
   }
 }
+
+.fab-card {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 556px;
+  width: 277px;
+  margin-bottom: 0;
+  display: flex;
+  z-index: -1;
+}

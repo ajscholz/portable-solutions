@@ -95,35 +95,25 @@ const ContactCard = props => {
   }
 
   return (
-    <Card
-      className={`card-login card-plain fab-card ${className}`}
-      style={{
-        position: "absolute",
-        bottom: "0",
-        right: "0",
-        height: "556px",
-        width: "277px",
-        marginBottom: "0",
-        display: "flex",
-        zIndex: -1,
-      }}
-    >
+    <Card className={`card-login card-plain fab-card ${className}`}>
       <div
         className={`bg-white d-flex justify-content-center align-items-center position-relative p-3 `}
         style={{ height: "140px", width: "100%", top: 0 }}
       >
-        <button
-          aria-hidden={true}
-          className="close text-dark"
-          type="button"
-          onClick={() => toggle()}
-          style={{ right: "12px", top: "10px", position: "absolute" }}
-        >
-          <i
-            className="now-ui-icons ui-1_simple-remove"
-            style={{ fontSize: "16px" }}
-          />
-        </button>
+        {!accepted && (
+          <button
+            aria-hidden={true}
+            className="close text-dark"
+            type="button"
+            onClick={() => toggle()}
+            style={{ right: "12px", top: "10px", position: "absolute" }}
+          >
+            <i
+              className="now-ui-icons ui-1_simple-remove"
+              style={{ fontSize: "16px" }}
+            />
+          </button>
+        )}
         <Image fixed={logo.fixed} alt="Portable Solutions" />
       </div>
       <ModalBody
@@ -163,8 +153,8 @@ const ContactCard = props => {
       >
         {isSubmitting ? (
           <ModalButton
-            type="submit"
-            onClick={e => handleSubmit(e)}
+            // type="submit"
+            // onClick={e => handleSubmit(e)}
             // disabled={
             //   name === "" || email === "" || phone === "" || orgName === ""
             // }
