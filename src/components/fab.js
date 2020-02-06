@@ -33,13 +33,13 @@ const FABContainer = props => {
     >
       <FABTogglerButton
         className={`btn-fab ${
-          fabState.showForm === true ? "disabled fade-out" : "fade-in"
+          fabState.showForm === true ? "fade-out" : "fade-in"
         }`}
         innerRef={buttonRef}
         size="lg"
         color="success"
         type="button"
-        style={{ zIndex: fabState.showForm === true ? "-2" : "1" }}
+        // style={{ zIndex: fabState.showForm === true ? "-2" : "1" }}
       >
         <i className="now-ui-icons gestures_tap-01 mr-2" style={{ top: 0 }} />
         Get Started

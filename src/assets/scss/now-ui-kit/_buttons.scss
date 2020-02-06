@@ -223,11 +223,6 @@
   transition: all 0.75s;
 }
 
-.slide-into-view {
-  right: 25px;
-  transition: all 0.75s;
-}
-
 .btn-fab {
   margin: 0;
   display: flex;
@@ -237,21 +232,30 @@
   bottom: 0;
   right: 0;
   // opacity: 1;
-  transition: z-index 0.75s, opacity 0.75s;
+  transition: z-index 0.75s 0.75s, opacity 0.75s;
 }
 
-.fade-out {
-  opacity: 0;
-  transition: all 0.75s;
-}
-
-.fade-in {
-  opacity: 1;
-  transition: all 0.75s;
+.move-behind {
+  z-index: -5;
 }
 
 .fab-card {
   opacity: 1;
+  transition: all 0.75s;
+}
+
+.fade-out {
+  opacity: 0 !important;
+  transition: all 0.75s;
+}
+
+.fade-in {
+  opacity: 1 !important;
+  transition: all 0.75s;
+}
+
+.slide-into-view {
+  right: 25px;
   transition: all 0.75s;
 }
 
