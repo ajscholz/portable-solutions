@@ -5,7 +5,7 @@ import { FabContext } from "../context/fabContext"
 const FABTogglerButton = props => {
   const { children, className, ...rest } = props
   const [fabState, setFabState] = useContext(FabContext)
-  return (
+  return fabState.renderButton ? (
     <Button
       onClick={() => setFabState({ ...fabState, showForm: true })}
       {...rest}
@@ -13,7 +13,7 @@ const FABTogglerButton = props => {
     >
       {children}
     </Button>
-  )
+  ) : null
 }
 
 export default FABTogglerButton
