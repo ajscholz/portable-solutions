@@ -32,13 +32,7 @@ const WhySection = () => {
   `)
 
   return (
-    <section
-      id="why"
-      className="features-2 section-image"
-      // style={{
-      //   backgroundImage: "url(" + require("../../assets/img/bg22.jpg") + ")",
-      // }}
-    >
+    <section id="why" className="features-2 section-image">
       <Image
         fluid={section.backgroundImage.fluid}
         style={{
@@ -63,14 +57,14 @@ const WhySection = () => {
             let icon
 
             if (index === 0) {
-              color = "icon-info"
-              icon = "ui-2_chat-round"
+              color = "icon-success"
+              icon = "users_single-02"
             } else if (index === 1) {
               color = "icon-success"
-              icon = "business_chart-pie-36"
+              icon = "business_money-coins"
             } else if (index === 2) {
-              color = "icon-warning"
-              icon = "design-2_ruler-pencil"
+              color = "icon-success"
+              icon = "tech_watch-time"
             }
 
             return (
