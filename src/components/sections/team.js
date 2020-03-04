@@ -3,9 +3,9 @@ import { graphql, useStaticQuery } from "gatsby"
 import Image from "gatsby-image"
 import ImageOverlay from "../ImageOverlay"
 
-import { Container, Row, Col } from "reactstrap"
+import { Col } from "reactstrap"
 
-const QualificationsSection = () => {
+const TeamSection = () => {
   const { section } = useStaticQuery(graphql`
     {
       section: contentfulPageSection(
@@ -49,7 +49,7 @@ const QualificationsSection = () => {
           <h2 className="title">{section.title}</h2>
           <h4 className="description">{section.description.description}</h4>
         </Col>
-        <Container fluid>
+        {/* <Container fluid>
           <Row>
             <Col
               md={{ size: "10", offset: "1" }}
@@ -65,10 +65,10 @@ const QualificationsSection = () => {
               />
             </Col>
           </Row>
-        </Container>
+        </Container> */}
       </div>
     </section>
   )
 }
 
-export default QualificationsSection
+export default TeamSection

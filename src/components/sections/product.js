@@ -1,8 +1,9 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
-import { Col, Row, Container, Card } from "reactstrap"
+import { Col, Row, Container, Card, CardImg, CardImgOverlay } from "reactstrap"
 import FABTogglerButton from "../FABTogglerButton"
+import Image from "gatsby-image"
 
 const ProductSection = () => {
   const { section } = useStaticQuery(graphql`
@@ -20,6 +21,11 @@ const ProductSection = () => {
           description {
             description
           }
+          backgroundImage {
+            fluid {
+              ...GatsbyContentfulFluid
+            }
+          }
         }
       }
     }
@@ -31,21 +37,38 @@ const ProductSection = () => {
           <Col className="ml-auto mr-auto text-center" md="8">
             <h2 className="title">{section.title}</h2>
 
-            <p className="description">{section.description.description}</p>
+            <p className="description" style={{ marginBottom: "70px" }}>
+              {section.description.description}
+            </p>
           </Col>
         </Row>
         <Row className="justify-content-center">
           {section.otherContent.map(item => (
-            <Col md="4" key={item.id}>
+            <Col lg="4" key={item.id}>
               <Card
                 className="card-background card-raised"
                 data-background-color="blue"
-                // style={{
-                //   backgroundImage:
-                //     "url(" + require("assets/img/bg24.jpg") + ")"
-                // }}
+                style={{
+                  marginTop: 0,
+                  display: "flex",
+                  justifyContent: "center",
+                  height: "auto",
+                }}
               >
-                <div className="info">
+                {/* <CardImg> */}
+                <Image
+                  fluid={item.backgroundImage.fluid}
+                  style={{
+                    position: "absolute",
+                    height: "100%",
+                    width: "100%",
+                  }}
+                />
+                {/* </CardImg> */}
+                <div
+                  className="info"
+                  // style={{ position: "absolute", alignSelf: "center" }}
+                >
                   {/* <div className="icon icon-white">
                     <i className="now-ui-icons business_bulb-63"></i>
                   </div> */}
@@ -53,10 +76,10 @@ const ProductSection = () => {
                     <h4 className="info-title mt-3">{item.title}</h4>
                     <p>{item.description.description}</p>
                     <FABTogglerButton
-                      className="btn-link"
+                      className="btn"
                       color="success"
                       type="button"
-                      size="sm"
+                      // size="sm"
                     >
                       <i
                         className="now-ui-icons gestures_tap-01 mr-2"

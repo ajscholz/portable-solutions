@@ -48,7 +48,7 @@ const WhySection = () => {
           position: "absolute",
         }}
       />
-      <ImageOverlay />
+      <ImageOverlay light />
       <Container fluid>
         <Row>
           <Col className="mr-auto ml-auto" md="8">
