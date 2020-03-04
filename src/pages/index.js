@@ -12,6 +12,7 @@ import WhySection from "../components/sections/why"
 import CarouselSection from "../components/sections/carousel"
 
 import { Jumbotron } from "reactstrap"
+import ContactSection from "../components/sections/contact"
 
 const IndexPage = props => {
   const { data } = props
@@ -54,6 +55,7 @@ const IndexPage = props => {
         <CarouselSection />
       </Jumbotron>
       <TeamSection />
+      <ContactSection />
     </>
   )
 }

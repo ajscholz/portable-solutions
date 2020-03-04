@@ -1,7 +1,5 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import Image from "gatsby-image"
-import ImageOverlay from "../ImageOverlay"
 
 import { Col } from "reactstrap"
 
@@ -15,16 +13,7 @@ const TeamSection = () => {
         description {
           description
         }
-        backgroundImage {
-          fluid {
-            ...GatsbyContentfulFluid
-          }
-        }
-        foregroundImage {
-          fluid {
-            ...GatsbyContentfulFluid
-          }
-        }
+
         otherContent {
           id: contentful_id
           title
@@ -38,16 +27,10 @@ const TeamSection = () => {
 
   return (
     <section style={{ position: "relative" }} id="team">
-      <Image
-        className="section-image position-absolute"
-        style={{ height: "100%" }}
-        fluid={section.backgroundImage.fluid}
-      />
-      <ImageOverlay />
-      <div className="features-7 section-image position-relative">
+      <div className="features-6">
         <Col className="mr-auto ml-auto text-center" md="8">
           <h2 className="title">{section.title}</h2>
-          <h4 className="description">{section.description.description}</h4>
+          <p className="description">{section.description.description}</p>
         </Col>
         {/* <Container fluid>
           <Row>

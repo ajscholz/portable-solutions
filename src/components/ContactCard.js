@@ -7,7 +7,12 @@ import { Button, ModalBody, Card, ModalFooter, CardBody } from "reactstrap"
 import { FabContext } from "../context/fabContext"
 
 const ContactCard = props => {
-  const { toggle, className } = props
+  const { toggle, className, fab } = props
+
+  const formStyle =
+    fab === false
+      ? { position: "relative", zIndex: 10, width: "100%", height: "auto" }
+      : {}
 
   const {
     data: { logo },
@@ -59,8 +64,19 @@ const ContactCard = props => {
         }),
       })
       const data = await response.json()
-      if (response.ok) setAccepted(true)
-      else {
+      if (response.ok) {
+        setAccepted(true)
+        if (fab === false) {
+          setFabState({ ...fabState, slideIntoView: false })
+          setTimeout(() => {
+            setFabState({
+              ...fabState,
+              renderButton: false,
+              slideIntoView: false,
+            })
+          }, 750)
+        }
+      } else {
         setAccepted(false)
         throw data.msg
       }
@@ -95,27 +111,32 @@ const ContactCard = props => {
   }
 
   return (
-    <Card className={`card-login card-plain fab-card ${className}`}>
-      <div
-        className={`bg-white d-flex justify-content-center align-items-center position-relative p-3 `}
-        style={{ height: "140px", width: "100%", top: 0 }}
-      >
-        {!accepted && (
-          <button
-            aria-hidden={true}
-            className="close text-dark"
-            type="button"
-            onClick={() => toggle()}
-            style={{ right: "12px", top: "10px", position: "absolute" }}
-          >
-            <i
-              className="now-ui-icons ui-1_simple-remove"
-              style={{ fontSize: "16px" }}
-            />
-          </button>
-        )}
-        <Image fixed={logo.fixed} alt="Portable Solutions" />
-      </div>
+    <Card
+      className={`card-login card-plain fab-card ${className}`}
+      style={formStyle}
+    >
+      {fab !== false && (
+        <div
+          className={`bg-white d-flex justify-content-center align-items-center position-relative p-3 `}
+          style={{ height: "140px", width: "100%", top: 0 }}
+        >
+          {!accepted && (
+            <button
+              aria-hidden={true}
+              className="close text-dark"
+              type="button"
+              onClick={() => toggle()}
+              style={{ right: "12px", top: "10px", position: "absolute" }}
+            >
+              <i
+                className="now-ui-icons ui-1_simple-remove"
+                style={{ fontSize: "16px" }}
+              />
+            </button>
+          )}
+          <Image fixed={logo.fixed} alt="Portable Solutions" />
+        </div>
+      )}
       <ModalBody
         // className={`${fabContext.showForm === true ? "fade-in" : "fade-out"}`}
         data-background-color="info"
@@ -127,8 +148,11 @@ const ContactCard = props => {
             ref={inputRef}
           />
         ) : (
-          <CardBody style={{ width: "229px", height: "272px", paddingTop: 0 }}>
-            <div className="d-flex flex-column align-items-center justify-content-center h-100">
+          <CardBody style={{ width: "100%", height: "100%", paddingTop: 0 }}>
+            <div
+              className="d-flex flex-column align-items-center justify-content-center h-100 w-100 text-center"
+              style={{ margin: "0 auto", maxWidth: "250px" }}
+            >
               {accepted === true ? (
                 <>
                   <Icon className="ui-2_like text-info" />
@@ -164,21 +188,23 @@ const ContactCard = props => {
             &nbsp;&nbsp;Sending...
           </ModalButton>
         ) : accepted === true ? (
-          <ModalButton
-            style={{ margin: 0 }}
-            onClick={() => {
-              setFabState({ ...fabState, slideIntoView: false })
-              setTimeout(() => {
-                setFabState({
-                  ...fabState,
-                  renderButton: false,
-                  slideIntoView: false,
-                })
-              }, 750)
-            }}
-          >
-            <i className="now-ui-icons ui-1_simple-remove mr-2"></i>Close
-          </ModalButton>
+          fab !== false && (
+            <ModalButton
+              style={{ margin: 0 }}
+              onClick={() => {
+                setFabState({ ...fabState, slideIntoView: false })
+                setTimeout(() => {
+                  setFabState({
+                    ...fabState,
+                    renderButton: false,
+                    slideIntoView: false,
+                  })
+                }, 750)
+              }}
+            >
+              <i className="now-ui-icons ui-1_simple-remove mr-2"></i>Close
+            </ModalButton>
+          )
         ) : accepted === false ? (
           <ModalButton onClick={() => setAccepted(null)} style={{ margin: 0 }}>
             <i className="now-ui-icons arrows-1_minimal-left mr-2"></i>Go Back
