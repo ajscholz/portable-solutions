@@ -91,6 +91,16 @@ const Navbar = ({ indexPage }) => {
               <span className="navbar-toggler-bar bar1"></span>
               <span className="navbar-toggler-bar bar2"></span>
               <span className="navbar-toggler-bar bar3"></span>
+              <span
+                style={{
+                  fontSize: "10px",
+                  textTransform: "uppercase",
+                  color: "primary",
+                  fontWeight: "bold",
+                }}
+              >
+                Menu
+              </span>
             </button>
           </div>
 

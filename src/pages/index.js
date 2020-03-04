@@ -9,6 +9,7 @@ import OurSolutionSection from "../components/sections/solution"
 import TeamSection from "../components/sections/team"
 import HowSection from "../components/sections/how"
 import WhySection from "../components/sections/why"
+import CarouselSection from "../components/sections/carousel"
 
 import { Jumbotron } from "reactstrap"
 
@@ -30,7 +31,7 @@ const IndexPage = props => {
         style={{ minHeight: "25vh", maxHeight: "35vh", position: "relative" }}
       >
         <Image
-          fluid={data.imageSection.image.fluid}
+          fluid={data.imageSection.images[0].fluid}
           style={{ position: "unset" }}
         />
         <div
@@ -45,6 +46,13 @@ const IndexPage = props => {
         />
       </Jumbotron>
       <OurSolutionSection />
+      <Jumbotron
+        fluid
+        className="py-0 my-0"
+        style={{ height: "60vh", position: "relative" }}
+      >
+        <CarouselSection />
+      </Jumbotron>
       <TeamSection />
     </>
   )
@@ -66,7 +74,7 @@ export const data = graphql`
     imageSection: contentfulImageSection(
       contentful_id: { eq: "4MJGfktr4JvcQ9cFe8hqqN" }
     ) {
-      image {
+      images {
         fluid {
           ...GatsbyContentfulFluid
         }
