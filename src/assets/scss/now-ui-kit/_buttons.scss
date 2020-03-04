@@ -209,9 +209,9 @@
   z-index: 1050;
   overflow: hidden;
   min-height: 48px;
-  min-width: 190.17px;
+  min-width: 200px;
   // transform: translateX(350px);
-  width: 190.17px;
+  width: 200px;
   height: 48px;
   transition: all 0.75s;
 }
@@ -231,6 +231,7 @@
   position: absolute;
   bottom: 0;
   right: 0;
+  width: 200px;
   // opacity: 1;
   transition: z-index 0s 0.75s, opacity 0.75s;
 }
