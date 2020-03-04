@@ -48,7 +48,7 @@ const Navbar = ({ indexPage }) => {
   const { logo } = useStaticQuery(graphql`
     {
       logo: contentfulAsset(title: { eq: "Logo Gray" }) {
-        fixed(width: 160) {
+        fixed(width: 165) {
           ...GatsbyContentfulFixed
         }
       }
@@ -66,7 +66,7 @@ const Navbar = ({ indexPage }) => {
         className={"fixed-top bg-white"}
         expand="lg"
         id="navbar"
-        style={{ height: "106px" }}
+        style={{ height: "116px" }}
       >
         <Container>
           <div className="navbar-translate">
@@ -91,16 +91,6 @@ const Navbar = ({ indexPage }) => {
               <span className="navbar-toggler-bar bar1"></span>
               <span className="navbar-toggler-bar bar2"></span>
               <span className="navbar-toggler-bar bar3"></span>
-              <span
-                style={{
-                  fontSize: "10px",
-                  textTransform: "uppercase",
-                  color: "primary",
-                  fontWeight: "bold",
-                }}
-              >
-                Menu
-              </span>
             </button>
           </div>
 
