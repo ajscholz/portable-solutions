@@ -83,7 +83,7 @@ const ContactCard = props => {
       <Button
         type={type || "button"}
         block
-        className={`btn-neutral d-flex align-items-center justify-content-center text-success`}
+        className={`btn-neutral d-flex align-items-center justify-content-center text-info`}
         color="default"
         size="lg"
         style={{ width: "100%", opacity: 1 }}
@@ -118,7 +118,7 @@ const ContactCard = props => {
       </div>
       <ModalBody
         // className={`${fabContext.showForm === true ? "fade-in" : "fade-out"}`}
-        data-background-color=""
+        data-background-color="info"
       >
         {accepted === null ? (
           <ContactForm
@@ -131,7 +131,7 @@ const ContactCard = props => {
             <div className="d-flex flex-column align-items-center justify-content-center h-100">
               {accepted === true ? (
                 <>
-                  <Icon className="ui-2_like text-success" />
+                  <Icon className="ui-2_like text-info" />
                   We've received your request and will call you soon to get to
                   know you better and get you a quote.
                 </>

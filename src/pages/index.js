@@ -5,7 +5,7 @@ import Image from "gatsby-image"
 import SEO from "../components/seo"
 import Banner from "../components/banner"
 import ProductSection from "../components/sections/product"
-import CrateInfoSection from "../components/sections/crate-info"
+import OurSolutionSection from "../components/sections/solution"
 import TeamSection from "../components/sections/team"
 import HowSection from "../components/sections/how"
 import WhySection from "../components/sections/why"
@@ -44,7 +44,7 @@ const IndexPage = props => {
           }}
         />
       </Jumbotron>
-      <CrateInfoSection />
+      <OurSolutionSection />
       <TeamSection />
     </>
   )

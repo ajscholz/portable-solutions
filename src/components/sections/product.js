@@ -76,8 +76,9 @@ const ProductSection = () => {
                     <h4 className="info-title mt-3">{item.title}</h4>
                     <p>{item.description.description}</p>
                     <FABTogglerButton
+                      outline
                       className="btn"
-                      color="success"
+                      color="info"
                       type="button"
                       // size="sm"
                     >

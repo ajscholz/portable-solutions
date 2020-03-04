@@ -4,7 +4,7 @@ import Image from "gatsby-image"
 
 import { Col, Row, Container } from "reactstrap"
 
-const CrateInfoSection = () => {
+const OurSolutionSection = () => {
   const { section } = useStaticQuery(graphql`
     {
       section: contentfulPageSection(
@@ -51,13 +51,13 @@ const CrateInfoSection = () => {
           </Col>
         </Row>
         <Row>
-          <Col md="4">
+          <Col lg="4">
             {leftColumnContent.map(item => {
               return (
                 <div className="info info-horizontal" key={item.id}>
-                  <div className="icon icon-info">
+                  {/* <div className="icon icon-info">
                     <i className="now-ui-icons design-2_html5"></i>
-                  </div>
+                  </div> */}
                   <div className="description">
                     <h5 className="info-title">{item.title}</h5>
                     <p>{item.description.description}</p>
@@ -94,23 +94,31 @@ const CrateInfoSection = () => {
             </div> */}
           </Col>
 
-          <Col md="4" style={{ paddingTop: "40px" }}>
+          <Col
+            lg="4"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <Image
               className="phone-container"
               fluid={section.image.fluid}
+              style={{ width: "100%" }}
               imgStyle={{
                 objectFit: "contain",
               }}
             />
           </Col>
 
-          <Col md="4">
+          <Col lg="4">
             {rightColumnContent.map(item => {
               return (
                 <div className="info info-horizontal" key={item.id}>
-                  <div className="icon icon-info">
+                  {/* <div className="icon icon-info">
                     <i className="now-ui-icons design-2_html5"></i>
-                  </div>
+                  </div> */}
                   <div className="description">
                     <h5 className="info-title">{item.title}</h5>
                     <p>{item.description.description}</p>
@@ -148,8 +156,8 @@ const CrateInfoSection = () => {
           </Col>
           <Col
             xs="12"
-            md={{ size: 8, offset: 2 }}
-            large={{ size: 6, offset: 3 }}
+            // md={{ size: 12, offset: 2 }}
+            lg={{ size: 8, offset: 2 }}
           >
             {bottomContent.map(item => {
               return (
@@ -158,9 +166,9 @@ const CrateInfoSection = () => {
                   key={item.id}
                   style={{ paddingTop: "10px" }}
                 >
-                  <div className="icon icon-info">
+                  {/* <div className="icon icon-info">
                     <i className="now-ui-icons design-2_html5"></i>
-                  </div>
+                  </div> */}
                   <div className="description">
                     <h5 className="info-title">{item.title}</h5>
                     <p>{item.description.description}</p>
@@ -175,4 +183,4 @@ const CrateInfoSection = () => {
   )
 }
 
-export default CrateInfoSection
+export default OurSolutionSection

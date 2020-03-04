@@ -43,7 +43,7 @@ const FABContainer = props => {
 
   return (
     <div
-      className={`fab-container bg-success ${fabState.slideIntoView === true &&
+      className={`fab-container bg-info ${fabState.slideIntoView === true &&
         "slide-into-view"} ${fabState.showForm === true && "fab-expand"}`}
       id="fast-action-button"
     >
@@ -53,7 +53,7 @@ const FABContainer = props => {
         }`}
         innerRef={buttonRef}
         size="lg"
-        color="success"
+        color="info"
         type="button"
         // style={{ zIndex: fabState.showForm === true ? "-2" : "1" }}
       >

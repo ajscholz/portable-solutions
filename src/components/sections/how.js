@@ -43,7 +43,7 @@ const HowSection = () => {
                         {` Are you ready? `}
                         <span>
                           <FABTogglerButton
-                            className="btn-link m-0 p-0 text-success"
+                            className="btn-link m-0 p-0 text-info"
                             style={{ cursor: "pointer" }}
                             onClick={() => alert("clicked")}
                             style={{ fontSize: "inherit" }}

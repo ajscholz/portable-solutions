@@ -54,10 +54,10 @@ $success-states-color: lighten($success-color, 6%) !default;
 $success-color-opacity: rgba(103, 141, 88, 0.3) !default;
 $success-color-alert: rgba(103, 141, 88, 0.8) !default;
 
-$info-color: #93a8ac !default;
+$info-color: #5587a0 !default;
 $info-states-color: lighten($info-color, 6%) !default;
-$info-color-opacity: rgba(148, 167, 172, 0.3) !default;
-$info-color-alert: rgba(148, 167, 172, 0.8) !default;
+$info-color-opacity: rgba(85, 135, 160, 0.3) !default;
+$info-color-alert: rgba(85, 135, 160, 0.8) !default;
 
 $warning-color: #f9c80e !default;
 $warning-states-color: lighten($warning-color, 6%) !default;
