@@ -37,7 +37,7 @@ const TeamSection = () => {
   `)
 
   return (
-    <section style={{ position: "relative" }} id="qualifications">
+    <section style={{ position: "relative" }} id="team">
       <Image
         className="section-image position-absolute"
         style={{ height: "100%" }}

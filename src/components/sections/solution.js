@@ -41,7 +41,7 @@ const OurSolutionSection = () => {
   const bottomContent = section.otherContent.slice(4, 5)
 
   return (
-    <section className="features-6" id="crate-info">
+    <section className="features-6" id="crates">
       <Container>
         <Row>
           <Col className="ml-auto mr-auto text-center" md="8">

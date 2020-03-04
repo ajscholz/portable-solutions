@@ -113,7 +113,7 @@ const Navbar = ({ indexPage }) => {
                   to="/#product"
                   onClick={e => navigate(e, "product")}
                 >
-                  <p>Product</p>
+                  <p>How We Help</p>
                 </NavLink>
               </NavItem>
 
@@ -123,7 +123,7 @@ const Navbar = ({ indexPage }) => {
                   to="/#why"
                   onClick={e => navigate(e, "why")}
                 >
-                  <p>Why</p>
+                  <p>Why Choose Us?</p>
                 </NavLink>
               </NavItem>
 
@@ -133,27 +133,27 @@ const Navbar = ({ indexPage }) => {
                   to="/#how"
                   onClick={e => navigate(e, "how")}
                 >
-                  <p>How</p>
+                  <p>What To Expect</p>
                 </NavLink>
               </NavItem>
 
               <NavItem>
                 <NavLink
                   tag={Link}
-                  to="/#crate-info"
-                  onClick={e => navigate(e, "crate-info")}
+                  to="/#crates"
+                  onClick={e => navigate(e, "crates")}
                 >
-                  <p>Crates</p>
+                  <p>Our Crates</p>
                 </NavLink>
               </NavItem>
 
               <NavItem>
                 <NavLink
                   tag={Link}
-                  to="/#qualifications"
-                  onClick={e => navigate(e, "qualifications")}
+                  to="/#team"
+                  onClick={e => navigate(e, "team")}
                 >
-                  <p>Our Qualifications</p>
+                  <p>Our Team</p>
                 </NavLink>
               </NavItem>
             </Nav>
