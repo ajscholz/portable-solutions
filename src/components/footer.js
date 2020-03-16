@@ -1,6 +1,7 @@
 /*eslint-disable*/
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
+import { FabContext } from "../context/fabContext"
 
 // reactstrap components
 import { Container, Button } from "reactstrap"
@@ -8,6 +9,8 @@ import { Container, Button } from "reactstrap"
 // core components
 
 const Footer = React.forwardRef(({ children }, ref) => {
+  const [fabState] = useContext(FabContext)
+  console.log(fabState.renderButton)
   return (
     <>
       <footer className="footer section" ref={ref}>
@@ -70,6 +73,7 @@ const Footer = React.forwardRef(({ children }, ref) => {
               AJSolutions
             </a>
           </div>
+          {fabState.renderButton === true && <div style={{ height: "48px" }} />}
         </Container>
       </footer>
     </>
