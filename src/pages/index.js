@@ -29,7 +29,7 @@ const IndexPage = props => {
       <Jumbotron
         fluid
         className="py-0 my-0"
-        style={{ minHeight: "25vh", maxHeight: "35vh", position: "relative" }}
+        style={{ minHeight: "45vh", maxHeight: "45vh", position: "relative" }}
       >
         <Image
           fluid={data.imageSection.images[0].fluid}
@@ -42,7 +42,7 @@ const IndexPage = props => {
             left: "0",
             bottom: "0",
             right: "0",
-            background: "rgba(0, 0, 0, .5)",
+            background: "rgba(0, 0, 0, 0)",
           }}
         />
       </Jumbotron>
