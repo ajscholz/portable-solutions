@@ -34,7 +34,7 @@ const ImageCarousel = props => {
       activeIndex={activeIndex}
       next={next}
       previous={previous}
-      className="image-carousel"
+      className="image-carousel h-100"
     >
       <CarouselIndicators
         items={items}
@@ -43,11 +43,21 @@ const ImageCarousel = props => {
       />
       {items.map(item => {
         return (
-          <CarouselItem onExiting={onExiting} onExited={onExited} key={item.id}>
+          <CarouselItem
+            onExiting={onExiting}
+            onExited={onExited}
+            key={item.id}
+            className="h-100"
+          >
             {/* <img src={item.src} alt={item.altText} /> */}
-            <Image fluid={item.fluid} style={{ height: "60vh" }} />
-            <div className="carousel-caption d-none d-md-block">
-              <h5>{item.caption}</h5>
+            <Image
+              fluid={item.image.fluid}
+              style={{ height: "85%" }}
+              objectFit="contain"
+              imgStyle={{ objectFit: "contain" }}
+            />
+            <div className="carousel-caption d-block p-0">
+              <h4 style={{ marginBottom: 0 }}>{item.name}</h4>
             </div>
           </CarouselItem>
         )
