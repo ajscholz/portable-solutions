@@ -69,6 +69,7 @@ const ImageCarousel = props => {
           e.preventDefault()
           previous()
         }}
+        role="button"
       >
         <i className="now-ui-icons arrows-1_minimal-left"></i>
       </button>
@@ -79,6 +80,7 @@ const ImageCarousel = props => {
           e.preventDefault()
           next()
         }}
+        role="button"
       >
         <i className="now-ui-icons arrows-1_minimal-right"></i>
       </button>

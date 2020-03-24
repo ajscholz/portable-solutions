@@ -35,7 +35,7 @@ const Layout = ({ children, pageContext }) => {
     setTimeout(() => {
       setFabState({ ...fabState, renderButton: true })
     }, 1000)
-  }, [fabState, setFabState])
+  }, [])
 
   const indexPage = pageContext.layout === "index"
   return (
