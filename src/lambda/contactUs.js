@@ -8,7 +8,6 @@ exports.handler = async event => {
 
   const { body } = event
 
-  console.log(body)
   let data = JSON.parse(body)
 
   // ------------- Google OAuth2 authorization -------------
@@ -51,7 +50,7 @@ exports.handler = async event => {
     replyTo: `${data.name} <${data.email}>`,
     to: `Portable Solutions <info@portablesolutions.com>`,
     bcc: `Andrew Scholz <andrew@citynorth.church>`,
-    subject: "Website Form Submission",
+    subject: "Website Form Submission <portable.solutions>",
     generateTextFromHTML: true,
     html: `
     <html>
@@ -78,11 +77,11 @@ exports.handler = async event => {
       </p>
       <p>
         <span>Organization Name: </span>
-        ${data.orgName}
+        ${data.orgname}
       </p>
       <p>
         <span>Organization Website: </span>
-        ${data.orgWebsite !== "" ? data.orgWebsite : "No website given"}
+        ${data.orgweb !== "" ? data.orgweb : "No website given"}
       </p>
       <br>
       <hr>

@@ -3,7 +3,7 @@
 .form-control {
   background-color: $transparent-bg;
   border: 1px solid $light-gray;
-  border-left: none;
+  border-left: none !important;
   border-radius: $btn-round-radius;
   color: $black-color;
   height: auto;
@@ -320,4 +320,48 @@ textarea.form-control {
 [data-background-color]:not([data-background-color="gray"])
   .form-control::-webkit-input-placeholder {
   color: $light-gray !important;
+}
+
+// .has-danger {
+//   & .input-group-text {
+//     border-color: 1px solid $danger-states-color !important;
+//     border-right: none !important;
+//     // color: $danger-states-color !important;
+//   }
+//   & .form-control {
+//     border-color: 1px solid $danger-states-color !important;
+//     border-left: none !important;
+//     // color: $danger-states-color !important;
+//   }
+//   &:after {
+//     color: $danger-color !important;
+//   }
+
+//   &:focus-within {
+//     & .form-control {
+//       border-color: 1px solid $danger-color !important;
+//       border-left: none !important;
+//     }
+//     & .input-group-text {
+//       border-color: 1px solid $danger-color !important;
+//       border-right: none !important;
+//       outline: none;
+//       // color: $danger-states-color !important;
+//     }
+//   }
+// }
+
+// .form-control-danger:focus {
+//   outline-color: none !important;
+//   box-shadow: none !important;
+// }
+
+.invalid-tooltip {
+  font-size: $font-size-small;
+  top: 80%;
+  // transform: translatex(-50%);
+  left: 50px;
+  width: auto;
+  margin-top: 0;
+  // right: 0;
 }

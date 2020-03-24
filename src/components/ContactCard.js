@@ -1,12 +1,21 @@
-import React, { useState, useRef, useContext } from "react"
+import React, { useState, useContext } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Image from "gatsby-image"
-import ContactForm from "./ContactForm"
 
-import { Button, ModalBody, Card, ModalFooter, CardBody } from "reactstrap"
+import {
+  Button,
+  ModalBody,
+  Card,
+  ModalFooter,
+  CardBody,
+  Form,
+} from "reactstrap"
+
+import MyInput from "./Input"
+import { useForm } from "react-hook-form"
 import { FabContext } from "../context/fabContext"
 
-const ContactCard = props => {
+const Form2 = props => {
   const { toggle, className, fab } = props
 
   const formStyle =
@@ -28,30 +37,18 @@ const ContactCard = props => {
     }
   `)
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    orgName: "",
-    orgWebsite: "",
-  })
-
   const [isSubmitting, setSubmitting] = useState(false)
   const [accepted, setAccepted] = useState(null)
-  const inputRef = useRef()
   const [fabState, setFabState] = useContext(FabContext)
 
-  const updateField = e => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    })
-  }
+  const { register, handleSubmit, errors } = useForm()
+  const onSubmit = async data => {
+    console.log("handling submit")
+    console.log(errors)
+    // console.log(data)
 
-  const handleSubmit = async e => {
+    const formData = data
     setSubmitting(true)
-    e.preventDefault()
-
     try {
       const response = await fetch("/.netlify/functions/contactUs", {
         method: "POST",
@@ -142,11 +139,77 @@ const ContactCard = props => {
         data-background-color="info"
       >
         {accepted === null ? (
-          <ContactForm
-            formData={formData}
-            update={updateField}
-            ref={inputRef}
-          />
+          // {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */ }
+          <Form className="form">
+            <CardBody className="mb-0">
+              {/* NAME INPUT */}
+              <MyInput
+                register={register}
+                name="Name"
+                errors={errors}
+                icon="now-ui-icons users_circle-08"
+                errorPattern={{
+                  value: /^[a-z]{1,} [a-z]{1,}$/i,
+                  message: "Please enter a valid name",
+                }}
+              />
+              {/* EMAIL INPUT */}
+              <MyInput
+                register={register}
+                name="Email"
+                errors={errors}
+                icon="now-ui-icons ui-1_email-85"
+                errorPattern={{
+                  value: /^[a-z1-9]{3,}@[a-z1-9]{2,}.[a-z1-9]{2,}$/i,
+                  message: "Please enter a valid email address",
+                }}
+              />
+              {/* PHONE INPUT */}
+              <MyInput
+                register={register}
+                name="Phone"
+                errors={errors}
+                icon="now-ui-icons tech_mobile"
+                errorPattern={{
+                  value: /^[0-9]{10}$|^[0-9]{3}-[0-9]{3}-[0-9]{4}$|^\([0-9]{3}\) {0,1}[0-9]{3}[- ]{0,1}[0-9]{4}$/,
+                  message: "Please enter a valid phone number",
+                }}
+              />
+              {/* ORGANIZATION NAME INPUT */}
+              <MyInput
+                register={register}
+                name="orgname"
+                placeholder="Organization Name"
+                errors={errors}
+                icon="now-ui-icons business_bank"
+                errorPattern={{
+                  value: /^.{3,}$/i,
+                  message: "Please enter a valid name",
+                }}
+              />
+              {/* ORGANIZATION WEBSITE INPUT */}
+              <MyInput
+                register={register}
+                placeholder="Organization Website"
+                name="orgweb"
+                errors={errors}
+                icon="now-ui-icons business_globe"
+                errorPattern={{
+                  value: /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,}$/,
+                  message: "Please enter a valid website",
+                }}
+              />
+              {/* <textarea
+                name="help"
+                ref={register({ required: "This field is required", minLength: 10 })}
+              />
+
+              <FormFeedback valid={!errors.help}>
+                This field is required. Please enter a valid message.
+              </FormFeedback>
+              errors will return when field validation fails  */}
+            </CardBody>
+          </Form>
         ) : (
           <CardBody style={{ width: "100%", height: "100%", paddingTop: 0 }}>
             <div
@@ -176,14 +239,7 @@ const ContactCard = props => {
         style={{ marginTop: "auto" }}
       >
         {isSubmitting ? (
-          <ModalButton
-            // type="submit"
-            // onClick={e => handleSubmit(e)}
-            // disabled={
-            //   name === "" || email === "" || phone === "" || orgName === ""
-            // }
-            style={{ margin: 0 }}
-          >
+          <ModalButton style={{ margin: 0 }}>
             <i className="now-ui-icons ui-1_settings-gear-63 spin" />
             &nbsp;&nbsp;Sending...
           </ModalButton>
@@ -210,7 +266,7 @@ const ContactCard = props => {
             <i className="now-ui-icons arrows-1_minimal-left mr-2"></i>Go Back
           </ModalButton>
         ) : (
-          <ModalButton onClick={e => handleSubmit(e)} style={{ margin: 0 }}>
+          <ModalButton onClick={handleSubmit(onSubmit)} style={{ margin: 0 }}>
             <i className="now-ui-icons ui-1_send mr-2"></i>Let's Roll
           </ModalButton>
         )}
@@ -219,4 +275,4 @@ const ContactCard = props => {
   )
 }
 
-export default ContactCard
+export default Form2
