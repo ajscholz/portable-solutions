@@ -48,7 +48,7 @@ exports.handler = async event => {
       address: "andrew@citynorth.church",
     },
     replyTo: `${data.name} <${data.email}>`,
-    to: `Portable Solutions <info@portable.solutions>`,
+    to: `Portable Solutions <info@portablesolutions.com>`,
     bcc: `Andrew Scholz <andrew@citynorth.church>`,
     subject: "Website Form Submission <portable.solutions>",
     generateTextFromHTML: true,
