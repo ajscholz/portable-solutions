@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef, useContext } from "react"
+import React, { useEffect, useRef, useContext } from "react"
 import { FabContext } from "../context/fabContext"
 
-import { Button } from "reactstrap"
 import ContactCard from "./ContactCard"
 import FABTogglerButton from "./FABTogglerButton"
 
@@ -16,7 +15,7 @@ const FABContainer = props => {
         setFabState({ ...fabState, slideIntoView: true, showForm: true })
       }, 1000)
     }, 2000)
-  }, [])
+  }, [fabState, setFabState])
 
   // useEffect(() => {
   //   buttonRef.current.addEventListener("transitionend", e => console.log(e))
