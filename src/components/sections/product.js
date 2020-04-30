@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
-import { Col, Row, Container, Card, CardImg, CardImgOverlay } from "reactstrap"
+import { Col, Row, Container, Card } from "reactstrap"
 import FABTogglerButton from "../FABTogglerButton"
 import Image from "gatsby-image"
 

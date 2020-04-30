@@ -195,7 +195,7 @@ const Form2 = props => {
                 errors={errors}
                 icon="now-ui-icons business_globe"
                 errorPattern={{
-                  value: /[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,}$/,
+                  value: /[-a-zA-Z0-9@:%._\\+~#=]{2,256}\.[a-z]{2,}$/,
                   message: "Please enter a valid website",
                 }}
               />

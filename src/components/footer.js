@@ -10,7 +10,6 @@ import { Container, Button } from "reactstrap"
 
 const Footer = React.forwardRef(({ children }, ref) => {
   const [fabState] = useContext(FabContext)
-  console.log(fabState.renderButton)
   return (
     <>
       <footer className="footer section" ref={ref}>

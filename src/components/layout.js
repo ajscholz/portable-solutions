@@ -30,12 +30,16 @@ const Layout = ({ children, pageContext }) => {
   `)
   const [ref, inView] = useInView()
 
-  const [fabState, setFabState] = useContext(FabContext)
-  useEffect(() => {
-    setTimeout(() => {
+  const renderButton = () => {
+    const timeout = setTimeout(() => {
       setFabState({ ...fabState, renderButton: true })
     }, 1000)
-  }, [])
+
+    return () => clearTimeout(timeout)
+  }
+
+  const [fabState, setFabState] = useContext(FabContext)
+  useEffect(renderButton, [renderButton])
 
   const indexPage = pageContext.layout === "index"
   return (

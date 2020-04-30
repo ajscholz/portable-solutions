@@ -1,45 +1,35 @@
-import React, { useState, useEffect, useRef, useContext } from "react"
+import React, { useEffect, useRef, useContext } from "react"
 import { FabContext } from "../context/fabContext"
 
-import { Button } from "reactstrap"
 import ContactCard from "./ContactCard"
 import FABTogglerButton from "./FABTogglerButton"
 
-const FABContainer = props => {
+const FABContainer = () => {
   const buttonRef = useRef()
   const [fabState, setFabState] = useContext(FabContext)
 
-  useEffect(() => {
-    setTimeout(() => {
+  const slideIntoView = () => {
+    const slideTimeout = setTimeout(() => {
       setFabState({ ...fabState, slideIntoView: true })
-      setTimeout(() => {
-        setFabState({ ...fabState, slideIntoView: true, showForm: true })
-      }, 1000)
     }, 2000)
-  }, [])
-
-  // useEffect(() => {
-  //   buttonRef.current.addEventListener("transitionend", e => console.log(e))
-  //   return buttonRef.current.removeEventListener("transitionend", e =>
-  //     console.log(e)
-  //   )
-  // }, [buttonRef.current])
-  // console.log(buttonRef.current)
-
-  // if (fabState.slideIntoView === true && fabState.showForm === true) {
-  //   // setFabState({ ...fabState, showForm: true })
-  //   setTimeout(() => {
-  //     buttonRef.current.style.zIndex = -10
-  //   }, 750)
-  // }
-
-  const handleCloseForm = () => {
-    // buttonRef.current.style.zIndex = 5
-    setFabState({ ...fabState, showForm: false })
-    // buttonRef.current.setAttribute("style", "display: block; opacity: 0")
+    return () => clearTimeout(slideTimeout)
+  }
+  const showForm = () => {
+    let showTimeout
+    if (fabState.slideIntoView === true) {
+      showTimeout = setTimeout(() => {
+        setFabState({ ...fabState, showForm: true })
+      }, 1000)
+    }
+    return () => clearTimeout(showTimeout)
   }
 
-  // console.log(fabState)
+  useEffect(slideIntoView, [])
+  useEffect(showForm, [fabState.slideIntoView, setFabState])
+
+  const handleCloseForm = () => {
+    setFabState({ ...fabState, showForm: false })
+  }
 
   return (
     <div
@@ -55,7 +45,6 @@ const FABContainer = props => {
         size="lg"
         color="info"
         type="button"
-        // style={{ zIndex: fabState.showForm === true ? "-2" : "1" }}
       >
         <i className="now-ui-icons gestures_tap-01 mr-2" style={{ top: 0 }} />
         Get Started
