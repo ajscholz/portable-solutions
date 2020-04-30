@@ -44,7 +44,7 @@ const Layout = ({ children, pageContext }) => {
   const indexPage = pageContext.layout === "index"
   return (
     <>
-      {indexPage === true ? (
+      {indexPage ? (
         fabState.renderButton === true ? (
           <FABContainer hide={inView} />
         ) : null

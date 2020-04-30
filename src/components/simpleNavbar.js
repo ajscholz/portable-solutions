@@ -13,7 +13,7 @@ const SimpleNavbar = () => {
   const { logo } = useStaticQuery(graphql`
     {
       logo: contentfulAsset(title: { eq: "Logo Gray" }) {
-        fixed(width: 160) {
+        fixed(width: 200) {
           ...GatsbyContentfulFixed
         }
       }
@@ -26,15 +26,21 @@ const SimpleNavbar = () => {
         <Container>
           <div
             className="navbar-translate "
-            style={{ display: "flex", justifyContent: "center", width: "100%" }}
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+              height: "106px",
+            }}
           >
             <NavbarBrand
               id="navbar-brand"
+              tag={Link}
+              to="/"
               style={{ cursor: "pointer", marginRight: "0" }}
             >
-              <NavLink tag={Link} to="/">
-                <Image fixed={logo.fixed} alt="Go to homepage" />
-              </NavLink>
+              <Image fixed={logo.fixed} alt="Go to homepage" />
               {/* Portable Solutions */}
             </NavbarBrand>
           </div>

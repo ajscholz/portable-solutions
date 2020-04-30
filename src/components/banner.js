@@ -24,7 +24,7 @@ const Banner = props => {
   //   }
   // })
 
-  const wrapperStyles = props.small ? { minHeight: "75vh" } : {}
+  const wrapperStyles = props.small ? { minHeight: "35vh" } : {}
 
   return (
     <>

@@ -5,7 +5,7 @@ import SimpleNavbar from "./simpleNavbar"
 
 const Header = ({ siteTitle, indexPage }) => (
   <header>
-    {indexPage === true ? (
+    {indexPage ? (
       <Navbar siteTitle={siteTitle} indexPage={indexPage} />
     ) : (
       <SimpleNavbar />
