@@ -16,14 +16,16 @@ const ProductSection = () => {
           description
         }
         otherContent {
-          id: contentful_id
-          title
-          description {
-            description
-          }
-          backgroundImage {
-            fluid {
-              ...GatsbyContentfulFluid
+          ... on ContentfulInfo {
+            id: contentful_id
+            title
+            description {
+              description
+            }
+            backgroundImage {
+              fluid {
+                ...GatsbyContentfulFluid
+              }
             }
           }
         }

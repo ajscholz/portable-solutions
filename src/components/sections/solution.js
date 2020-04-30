@@ -15,10 +15,12 @@ const OurSolutionSection = () => {
           description
         }
         otherContent {
-          id: contentful_id
-          title
-          description {
-            description
+          ... on ContentfulInfo {
+            id: contentful_id
+            title
+            description {
+              description
+            }
           }
         }
         image: foregroundImage {

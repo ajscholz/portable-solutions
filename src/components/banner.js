@@ -1,5 +1,5 @@
 import React from "react"
-
+import { graphql } from "gatsby"
 import Image from "gatsby-image"
 import ImageOverlay from "./ImageOverlay"
 
@@ -83,3 +83,17 @@ const Banner = props => {
 }
 
 export default Banner
+
+export const query = graphql`
+  fragment BannerFragment on ContentfulPage {
+    title
+    banner {
+      heading
+      image: backgroundImage {
+        fluid {
+          src
+        }
+      }
+    }
+  }
+`
