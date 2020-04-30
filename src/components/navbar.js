@@ -79,6 +79,7 @@ const Navbar = ({ indexPage }) => {
             >
               <Image fixed={logo.fixed} alt="Go to homepage" />
             </NavbarBrand>
+
             <button
               style={{ marginLeft: "auto", width: "unset", padding: 0 }}
               onClick={() => {
@@ -95,7 +96,7 @@ const Navbar = ({ indexPage }) => {
           </div>
 
           <Collapse isOpen={collapseOpen} navbar>
-            <CloseButton click={closeMenu} />
+            <CloseButton click={closeMenu} className="navbar-toggler" />
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink
