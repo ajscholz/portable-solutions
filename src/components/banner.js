@@ -25,7 +25,7 @@ const Banner = props => {
   // })
 
   const navbarRef = useRef()
-  const [navbarHeight, setNavbarHeight] = useState(0)
+  const [navbarHeight, setNavbarHeight] = useState("100px")
   useLayoutEffect(() => {
     navbarRef.current = document.getElementById("navbar")
     setNavbarHeight(navbarRef.current.clientHeight)
