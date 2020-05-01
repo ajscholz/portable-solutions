@@ -1,17 +1,16 @@
 import React, { useEffect, useRef } from "react"
-import { graphql, useStaticQuery, Link } from "gatsby"
-import Image from "gatsby-image"
+import { Link } from "gatsby"
 import CloseButton from "./CloseButton"
 
 import {
   Navbar as NavbarReactstrap,
   Collapse,
   Container,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
 } from "reactstrap"
+import NavbarLogo from "./NavbarLogo"
 
 const Navbar = ({ indexPage }) => {
   const [collapseOpen, setCollapseOpen] = React.useState(false)
@@ -45,16 +44,6 @@ const Navbar = ({ indexPage }) => {
     }
   }
 
-  const { logo } = useStaticQuery(graphql`
-    {
-      logo: contentfulAsset(title: { eq: "Logo Gray" }) {
-        fixed(width: 165) {
-          ...GatsbyContentfulFixed
-        }
-      }
-    }
-  `)
-
   const closeMenu = () => {
     document.documentElement.classList.remove("nav-open")
     setCollapseOpen(false)
@@ -63,22 +52,14 @@ const Navbar = ({ indexPage }) => {
   return (
     <>
       <NavbarReactstrap
-        className={"fixed-top bg-white"}
+        className={"fixed-top bg-white mb-0"}
         expand="lg"
         id="navbar"
-        style={{ height: "116px" }}
+        //
       >
         <Container>
           <div className="navbar-translate">
-            <NavbarBrand
-              id="navbar-brand"
-              tag={Link}
-              to="/"
-              onClick={e => navigate(e, "#")}
-              style={{ cursor: "pointer" }}
-            >
-              <Image fixed={logo.fixed} alt="Go to homepage" />
-            </NavbarBrand>
+            <NavbarLogo click={navigate} />
 
             <button
               style={{ marginLeft: "auto", width: "unset", padding: 0 }}

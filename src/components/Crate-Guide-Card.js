@@ -1,36 +1,30 @@
 import React from "react"
 import Image from "gatsby-image"
 import { Link, graphql } from "gatsby"
-import { Card, CardBody, CardTitle, CardFooter, Button } from "reactstrap"
+import { Button, Card, CardBody, CardTitle } from "reactstrap"
 
 const CrateGuideCard = ({ data }) => {
   return (
-    <Card className="card-blog card-plain">
-      <div className="card-image">
+    <Card tag={Link} to={`/rta${data.fields.slug}`}>
+      <div className="card-image p-3">
         <Image
           alt="..."
-          className="img img-raised rounded p-3"
+          className="img h-100 w-100"
           fluid={data.image.fluid}
           objectFit="contain"
+          style={{ width: "100%" }}
         />
       </div>
-      <CardBody className="text-center">
-        {/* <h6 className="category text-danger">
-          <i className="now-ui-icons media-2_sound-wave"></i> Business
-        </h6> */}
-        <CardTitle tag="h5">{data.name}</CardTitle>
-        {/* <p className="card-description">{data.description.description}</p> */}
-        <CardFooter>
-          <Button
-            className="d-inline-flex align-items-center"
-            color="primary"
-            tag={Link}
-            to={`/rta${data.fields.slug}`}
-          >
-            {/* <i className="now-ui-icons arrows-1_cloud-download-93 mr-2" /> */}
-            View Crate Instructions
-          </Button>
-        </CardFooter>
+      <CardBody className="text-center pt-0">
+        <CardTitle tag="h4">{data.name}</CardTitle>
+        <Button
+          className="d-inline-flex align-items-center"
+          color="primary"
+          // onClick={e => e.preventDefault()}
+        >
+          {/* <i className="now-ui-icons arrows-1_cloud-download-93 mr-2" /> */}
+          View Crate Instructions
+        </Button>
       </CardBody>
     </Card>
   )

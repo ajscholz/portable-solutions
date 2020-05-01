@@ -203,3 +203,11 @@
 #menu-dropdown .navbar-toggler {
   pointer-events: unset;
 }
+
+li.nav-item:hover {
+  cursor: pointer;
+}
+
+li.nav-item > a.active:hover {
+  cursor: initial;
+}

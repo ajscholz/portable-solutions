@@ -10,6 +10,7 @@ const DownloadButton = ({ button }) => {
       target="_blank"
       rel="noopener noreferrer"
       size="lg"
+      className="mb-0"
     >
       <div className="d-flex align-items-center">
         <i className="now-ui-icons arrows-1_cloud-download-93 mr-2" />

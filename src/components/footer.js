@@ -8,11 +8,15 @@ import { Container, Button } from "reactstrap"
 
 // core components
 
-const Footer = React.forwardRef(({ children }, ref) => {
+const Footer = React.forwardRef(({ children, indexPage }, ref) => {
   const [fabState] = useContext(FabContext)
+
+  const footerClasses = `footer section${
+    indexPage === true ? "" : " footer-raised"
+  }`
   return (
     <>
-      <footer className="footer section" ref={ref}>
+      <footer className={footerClasses} ref={ref}>
         <Container className="d-flex flex-column align-items-center">
           {/* <nav>
             <ul>
@@ -72,7 +76,9 @@ const Footer = React.forwardRef(({ children }, ref) => {
               AJSolutions
             </a>
           </div>
-          {fabState.renderButton === true && <div style={{ height: "48px" }} />}
+          {fabState.renderButton === true && indexPage && (
+            <div style={{ height: "48px" }} />
+          )}
         </Container>
       </footer>
     </>

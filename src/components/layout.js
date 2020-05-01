@@ -52,7 +52,7 @@ const Layout = ({ children, pageContext }) => {
       <Header siteTitle={data.site.siteMetadata.title} indexPage={indexPage} />
 
       <main>{children}</main>
-      <Footer ref={ref} />
+      <Footer ref={ref} indexPage={indexPage} />
     </>
   )
 }

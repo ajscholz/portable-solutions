@@ -2,107 +2,108 @@ import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Banner from "../components/banner"
 
-import {
-  Container,
-  Row,
-  Col,
-  NavItem,
-  NavLink,
-  Nav,
-  TabContent,
-  TabPane,
-} from "reactstrap"
-import VideoPlayer from "../components/VideoPlayer"
-import DownloadButton from "../components/DownloadButton"
+import { Container, Row, Col, Nav, TabContent } from "reactstrap"
+import OverviewVideo from "../components/crateBuildTabs/OverviewVideo"
+import Guide from "../components/crateBuildTabs/Guide"
+import MoreVideos from "../components/crateBuildTabs/MoreVideos"
+import TabButton from "../components/crateBuildTabs/TabButton"
+
+const allTabs = [
+  {
+    type: "video",
+    component: OverviewVideo,
+    tabs: {
+      icon: "media-1_button-play",
+      text: "Overview Video",
+    },
+  },
+  {
+    type: "guide",
+    component: Guide,
+    tabs: {
+      icon: "files_paper",
+      text: "Build Guide",
+    },
+  },
+  {
+    type: "otherVideos",
+    component: MoreVideos,
+    tabs: {
+      icon: "design_bullet-list-67",
+      text: "More Videos",
+    },
+  },
+]
 
 const CrateTemplate = ({ data }) => {
-  const [tab, setTab] = useState("1")
-  console.log(data)
+  const [currentTab, setCurrentTab] = useState(0)
+
+  // variable that keeps the index of the map useable for
+  let tabIndex = -1
+  const validTabs = allTabs
+    .map((item, index) => {
+      if (data.crate[item.type] === null || data.crate[item.type] === undefined)
+        return null
+      tabIndex++
+      return {
+        tabComponent: React.createElement(
+          TabButton,
+          {
+            tab: tabIndex,
+            setTab: setCurrentTab,
+            active: currentTab === tabIndex,
+            key: tabIndex,
+          },
+          <>
+            <i
+              className={`now-ui-icons ${item.tabs.icon} py-4 my-sm-2 mt-sm-3 mr-3 mx-sm-4 px-sm-2`}
+              style={{ lineHeight: 0 }}
+            />
+            <div className="d-none d-sm-block mb-1">
+              {item.tabs.text.split(" ").map(word => (
+                <>
+                  {word}
+                  <br />
+                </>
+              ))}
+            </div>
+            <div className="d-sm-none">{item.tabs.text}</div>
+          </>
+        ),
+        contentComponent: React.createElement(
+          item.component,
+          { crate: data.crate, tabId: `tab${tabIndex}` },
+          null
+        ),
+      }
+    })
+    .filter(crate => crate !== null)
+  console.log(validTabs)
+
   return (
     <>
       <Banner data={{ image: data.crate.image, heading: data.crate.name }} />
       <section className="features-6">
         <Container>
           <Row>
-            <Col className="d-flex flex-column align-items-center">
+            <Col className="d-flex flex-column align-items-stretch align-items-sm-center">
               <Nav
-                className="nav-pills-primary nav-pills-icons"
+                className="nav-pills-primary nav-pills-icons flex-column flex-sm-row align-items-stretch flex-grow-1"
                 pills
                 role="tablist"
               >
-                {data.crate.video && (
-                  <NavItem>
-                    <NavLink
-                      className={tab === "1" ? "active" : ""}
-                      href="#pablo"
-                      onClick={e => {
-                        e.preventDefault()
-                        setTab("1")
-                      }}
-                    >
-                      <i className="now-ui-icons media-1_button-play"></i>
-                      Overview
-                    </NavLink>
-                  </NavItem>
-                )}
-                {data.crate.guide && (
-                  <NavItem>
-                    <NavLink
-                      className={tab === "2" ? "active" : ""}
-                      href="#pablo"
-                      onClick={e => {
-                        e.preventDefault()
-                        setTab("2")
-                      }}
-                    >
-                      <i className="now-ui-icons files_paper"></i>
-                      Guide
-                    </NavLink>
-                  </NavItem>
-                )}
-                {data.crate.otherVideos && (
-                  <NavItem>
-                    <NavLink
-                      className={tab === "3" ? "active" : ""}
-                      href="#pablo"
-                      onClick={e => {
-                        e.preventDefault()
-                        setTab("3")
-                      }}
-                    >
-                      <i className="now-ui-icons design_bullet-list-67"></i>
-                      More
-                    </NavLink>
-                  </NavItem>
-                )}
+                {validTabs.map(item => item.tabComponent)}
               </Nav>
               <TabContent
-                className="tab-space text-center mt-5"
-                activeTab={"tab" + tab}
+                className="tab-space text-center mt-3 pb-2"
+                activeTab={"tab" + currentTab}
               >
-                {data.crate.video && (
-                  <TabPane tabId="tab1">
-                    <p>
-                      {`Watch this quick video for an overview of the build process for a Portable Solutions ${data.crate.name.toLowerCase()}.`}
-                    </p>
-
-                    <VideoPlayer video={data.crate.video} />
-                  </TabPane>
+                {validTabs.map(item => item.contentComponent)}
+                {/* {data.crate.video && (
+                  <OverviewVideo crate={data.crate} tabId="tab0" />
                 )}
-                {data.crate.guide && (
-                  <TabPane tabId="tab2">
-                    <p>
-                      Download your crate build guide here. This guide will walk
-                      you step-by-step through the crate build.
-                    </p>
-                    <DownloadButton button={data.crate.guide} />
-                  </TabPane>
-                )}
-                {data.crate.otherVideos && (
-                  <TabPane tabId="tab3">
-                    <p>Here are some more videos to help you out.</p>
-                  </TabPane>
-                )}
+                {data.crate.guide && <Guide crate={data.crate} tabId="tab1" />}
+                {data.crate.otherVideos && <MoreVideos tabId="tab2" />} */}
               </TabContent>
             </Col>
           </Row>

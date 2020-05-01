@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useLayoutEffect, useRef, useState } from "react"
 import { graphql } from "gatsby"
 import Image from "gatsby-image"
 import ImageOverlay from "./ImageOverlay"
@@ -24,6 +24,13 @@ const Banner = props => {
   //   }
   // })
 
+  const navbarRef = useRef()
+  const [navbarHeight, setNavbarHeight] = useState(0)
+  useLayoutEffect(() => {
+    navbarRef.current = document.getElementById("navbar")
+    setNavbarHeight(navbarRef.current.clientHeight)
+  }, [])
+
   const wrapperStyles = props.small ? { minHeight: "35vh" } : {}
 
   return (
@@ -32,7 +39,7 @@ const Banner = props => {
         id="#"
         className="page-header d-flex align-items-center"
         style={{
-          marginTop: "106px",
+          marginTop: navbarHeight,
           maxHeight: "60vh",
           minHeight: "60vh",
           ...wrapperStyles,

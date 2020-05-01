@@ -65,7 +65,6 @@ exports.createPages = async ({
     reporter.panicOnBuild(`Error while getting ContentfulCrate from graphql.`)
     return
   }
-  console.log(result.data.page.crates)
   // Create pages for each crate.
   const cratePageTemplate = path.resolve(`src/templates/crate-template.js`)
   result.data.page.crates.forEach(crate => {

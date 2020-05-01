@@ -17,7 +17,7 @@ const RtaGuides = props => {
     <>
       <SEO title={title} />
       <Banner data={banner} small={true} />
-      <section className="features-6">
+      <section className="features-6" style={{ marginBottom: "-30px" }}>
         <Container>
           <Row>
             {crates.all.map(crate => {
