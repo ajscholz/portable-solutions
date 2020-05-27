@@ -17,7 +17,7 @@ const PasswordModal = ({
   showLoginModal,
   setShowLoginModal,
   setShowCrates,
-  password = process.env.ADMIN_PASSWORD,
+  password,
   headerText = "Login",
   bodyText = "Please enter the password given to you by Portable Solutions, or give us a call to get one.",
 }) => {

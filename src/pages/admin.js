@@ -15,6 +15,7 @@ const Admin = ({ data }) => {
       showLoginModal={login}
       setShowLoginModal={setLogin}
       headerText="Admin Page Login"
+      password={process.env.ADMIN_PASSWORD}
       bodyText=""
     />
   ) : (
