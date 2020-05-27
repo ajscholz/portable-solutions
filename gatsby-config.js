@@ -52,7 +52,7 @@ module.exports = {
           {
             userAgent: "*",
             allow: "/",
-            disallow: ["/rta", "/diy", "admin", "/404"],
+            disallow: ["/rta", "/diy", "/admin", "/404"],
           },
         ],
       },
