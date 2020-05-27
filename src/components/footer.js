@@ -13,7 +13,7 @@ const Footer = React.forwardRef(({ children, indexPage }, ref) => {
 
   const footerClasses = `footer section${
     indexPage === true ? "" : " footer-raised"
-  }`
+  } mt-auto`
   return (
     <>
       <footer className={footerClasses} ref={ref}>

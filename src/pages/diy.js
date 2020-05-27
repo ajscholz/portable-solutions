@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 
 import SEO from "../components/seo"
 import Banner from "../components/banner"
 import GuidesList from "../components/sections/guides-list"
+import PasswordModal from "../components/PasswordModal"
 
 const DiyGuides = props => {
   const {
@@ -11,11 +12,14 @@ const DiyGuides = props => {
     crates,
   } = props.data
 
+  const [showCrates, setShowCrates] = useState(false)
+
   return (
     <>
       <SEO title={title} />
       <Banner data={banner} small={true} />
-      <GuidesList guides={crates.all} />
+      {showCrates && <GuidesList guides={crates.all} />}
+      <PasswordModal show={() => setShowCrates(true)} />
     </>
   )
 }

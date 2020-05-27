@@ -43,7 +43,9 @@ const Layout = ({ children, pageContext }) => {
 
   const indexPage = pageContext.layout === "index"
   return (
-    <>
+    <div
+      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+    >
       {indexPage ? (
         fabState.renderButton === true ? (
           <FABContainer hide={inView} />
@@ -53,7 +55,7 @@ const Layout = ({ children, pageContext }) => {
 
       <main>{children}</main>
       <Footer ref={ref} indexPage={indexPage} />
-    </>
+    </div>
   )
 }
 

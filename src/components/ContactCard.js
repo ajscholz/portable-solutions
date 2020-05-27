@@ -2,18 +2,12 @@ import React, { useState, useContext } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import Image from "gatsby-image"
 
-import {
-  Button,
-  ModalBody,
-  Card,
-  ModalFooter,
-  CardBody,
-  Form,
-} from "reactstrap"
+import { ModalBody, Card, ModalFooter, CardBody, Form } from "reactstrap"
 
 import MyInput from "./Input"
 import { useForm } from "react-hook-form"
 import { FabContext } from "../context/fabContext"
+import ModalButton from "./ModalButton"
 
 const Form2 = props => {
   const { toggle, className, fab } = props
@@ -89,23 +83,6 @@ const Form2 = props => {
       style={{ fontSize: "3em" }}
     />
   )
-
-  const ModalButton = props => {
-    const { children, type, ...rest } = props
-    return (
-      <Button
-        type={type || "button"}
-        block
-        className={`btn-neutral d-flex align-items-center justify-content-center text-info`}
-        color="default"
-        size="lg"
-        style={{ width: "100%", opacity: 1 }}
-        {...rest}
-      >
-        {children}
-      </Button>
-    )
-  }
 
   return (
     <Card
