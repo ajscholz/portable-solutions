@@ -74,6 +74,7 @@ const PasswordModal = ({
                   message: "This field is required",
                 }}
                 noMargin
+                submit={handleSubmit(onSubmit)}
               />
             </CardBody>
           </Form>

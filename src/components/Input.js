@@ -15,6 +15,7 @@ const MyInput = ({
   icon,
   errorPattern,
   noMargin,
+  submit,
 }) => {
   const [faFocus, setFaFocus] = useState("")
   const error = errors[name.toLowerCase()]
@@ -32,6 +33,12 @@ const MyInput = ({
           </InputGroupText>
         </InputGroupAddon>
         <Input
+          onKeyDown={e => {
+            if (e.keyCode === 13) {
+              e.preventDefault()
+              submit()
+            }
+          }}
           className={error && "form-control-danger is-invalid"}
           placeholder={`${placeholder ? placeholder : name}...`}
           name={name.toLowerCase()}

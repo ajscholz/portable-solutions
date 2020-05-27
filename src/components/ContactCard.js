@@ -129,6 +129,7 @@ const Form2 = props => {
                   value: /^[a-z]{1,} [a-z]{1,}$/i,
                   message: "Please enter a valid name",
                 }}
+                submit={handleSubmit(onSubmit)}
               />
               {/* EMAIL INPUT */}
               <MyInput
@@ -140,6 +141,7 @@ const Form2 = props => {
                   value: /^[a-z1-9]{3,}@[a-z1-9]{2,}.[a-z1-9]{2,}$/i,
                   message: "Please enter a valid email address",
                 }}
+                submit={handleSubmit(onSubmit)}
               />
               {/* PHONE INPUT */}
               <MyInput
@@ -151,6 +153,7 @@ const Form2 = props => {
                   value: /^[0-9]{10}$|^[0-9]{3}-[0-9]{3}-[0-9]{4}$|^\([0-9]{3}\) {0,1}[0-9]{3}[- ]{0,1}[0-9]{4}$/,
                   message: "Please enter a valid phone number",
                 }}
+                submit={handleSubmit(onSubmit)}
               />
               {/* ORGANIZATION NAME INPUT */}
               <MyInput
@@ -163,6 +166,7 @@ const Form2 = props => {
                   value: /^.{3,}$/i,
                   message: "Please enter a valid name",
                 }}
+                submit={handleSubmit(onSubmit)}
               />
               {/* ORGANIZATION WEBSITE INPUT */}
               <MyInput
@@ -175,6 +179,7 @@ const Form2 = props => {
                   value: /[-a-zA-Z0-9@:%._\\+~#=]{2,256}\.[a-z]{2,}$/,
                   message: "Please enter a valid website",
                 }}
+                submit={handleSubmit(onSubmit)}
               />
               {/* <textarea
                 name="help"
