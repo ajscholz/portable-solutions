@@ -1,63 +1,41 @@
 import React from "react"
-// import { graphql } from "gatsby"
+import { graphql } from "gatsby"
 
-// import SEO from "../../components/seo"
-// import Banner from "../../components/banner"
-// import GuidesList from "../../components/sections/guides-list"
+import SEO from "../components/seo"
+import Banner from "../components/banner"
+import GuidesList from "../components/sections/guides-list"
 
 const DiyGuides = props => {
-  // const { data } = props
-  // const { page, guides } = data
-  // const { title, banner, sections } = page
+  const {
+    page: { title, banner },
+    crates,
+  } = props.data
 
   return (
     <>
-      hello from diy page
-      {/* <SEO title={title} /> */}
-      {/* <Banner data={banner} small={true} /> */}
-      {/* <GuidesList data={sections[0]} guides={guides} /> */}
+      <SEO title={title} />
+      <Banner data={banner} small={true} />
+      <GuidesList guides={crates.all} />
     </>
   )
 }
 
-// export const data = graphql`
-//   {
-//     page: contentfulPage(title: { eq: "DIY Build Guides" }) {
-//       title
-//       banner {
-//         heading
-//         image: backgroundImage {
-//           fluid {
-//             ...GatsbyContentfulFluid
-//           }
-//         }
-//       }
-//       sections {
-//         ... on ContentfulPageSection {
-//           title
-//         }
-//       }
-//     }
-//     guides: allContentfulBuildGuides(filter: { type: { eq: "DIY" } }) {
-//       all: nodes {
-//         id: contentful_id
-//         name
-//         description {
-//           description
-//         }
-//         image {
-//           fluid {
-//             ...GatsbyContentfulFluid
-//           }
-//         }
-//         guide {
-//           file {
-//             url
-//           }
-//         }
-//       }
-//     }
-//   }
-// `
+export const data = graphql`
+  {
+    page: contentfulPage(title: { eq: "DIY Build Guides" }) {
+      ...BannerFragment
+    }
+    crates: allContentfulCrate(
+      filter: {
+        page_section: {
+          elemMatch: { contentful_id: { eq: "4OQhj1IhvqY2xKYQHCM0Q4" } }
+        }
+      }
+      sort: { fields: name, order: ASC }
+    ) {
+      ...GuidesListFragment
+    }
+  }
+`
 
 export default DiyGuides

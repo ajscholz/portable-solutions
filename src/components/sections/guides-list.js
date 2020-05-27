@@ -1,23 +1,25 @@
 import React from "react"
 import { Col, Row, Container } from "reactstrap"
 import CrateGuideCard from "../Crate-Guide-Card"
+import { graphql } from "gatsby"
 
-const GuidesList = props => {
-  const { data, guides } = props
+const GuidesList = ({ guides }) => {
   return (
-    <section className="features-6">
+    <section className="features-6" style={{ marginBottom: "-30px" }}>
       <Container>
         <Row>
-          <Col className="ml-auto mr-auto text-center" md="8">
-            <h2 className="title">{data.title}</h2>
-          </Col>
-        </Row>
-        <Row className="mt-5">
-          {guides.all.map(card => (
-            <Col key={card.id} sm={6} lg={4} xl={3}>
-              <CrateGuideCard data={card} />
-            </Col>
-          ))}
+          {guides.map(guide => {
+            return (
+              <Col
+                xs={{ size: 10, offset: 1 }}
+                sm={{ size: 8, offset: 2 }}
+                md={{ size: 4, offset: 0 }}
+                lg={3}
+              >
+                <CrateGuideCard data={guide} key={guide.id} />
+              </Col>
+            )
+          })}
         </Row>
       </Container>
     </section>
@@ -25,3 +27,11 @@ const GuidesList = props => {
 }
 
 export default GuidesList
+
+export const query = graphql`
+  fragment GuidesListFragment on ContentfulCrateConnection {
+    all: nodes {
+      ...CrateCardFragment
+    }
+  }
+`

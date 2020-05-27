@@ -3,9 +3,7 @@ import { graphql } from "gatsby"
 
 import SEO from "../components/seo"
 import Banner from "../components/banner"
-import CrateGuideCard from "../components/Crate-Guide-Card"
-import { Container, Row, Col } from "reactstrap"
-// import GuidesList from "../../components/sections/guides-list"
+import GuidesList from "../components/sections/guides-list"
 
 const RtaGuides = props => {
   const {
@@ -17,24 +15,7 @@ const RtaGuides = props => {
     <>
       <SEO title={title} />
       <Banner data={banner} small={true} />
-      <section className="features-6" style={{ marginBottom: "-30px" }}>
-        <Container>
-          <Row>
-            {crates.all.map(crate => {
-              return (
-                <Col
-                  xs={{ size: 10, offset: 1 }}
-                  sm={{ size: 8, offset: 2 }}
-                  md={{ size: 4, offset: 0 }}
-                  lg={3}
-                >
-                  <CrateGuideCard data={crate} key={crate.id} />
-                </Col>
-              )
-            })}
-          </Row>
-        </Container>
-      </section>
+      <GuidesList guides={crates.all} />
     </>
   )
 }
@@ -52,9 +33,7 @@ export const data = graphql`
       }
       sort: { fields: name, order: ASC }
     ) {
-      all: nodes {
-        ...CrateCardFragment
-      }
+      ...GuidesListFragment
     }
   }
 `
