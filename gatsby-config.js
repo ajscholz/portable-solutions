@@ -49,7 +49,7 @@ module.exports = {
         host: "https://portable.solutions",
         sitemap: "https://portable.solutions/sitemap.xml",
         policy: [
-          { userAgent: "*", allow: "/", disallow: ["/guides/*", "/404"] },
+          { userAgent: "*", allow: "/", disallow: ["/rta", "/diy", "/404"] },
         ],
       },
     },
