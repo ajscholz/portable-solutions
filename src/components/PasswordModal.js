@@ -32,10 +32,9 @@ const PasswordModal = ({ show }) => {
   return (
     <Modal
       isOpen={loginModal}
-      className="modal-login"
-      modalClassName="modal-primary"
+      className="modal-login m-0"
+      modalClassName="modal-primary d-flex align-items-center justify-content-center"
       toggle={() => setLoginModal(false)}
-      style={{ marginTop: "30%" }}
     >
       <Card className="card-login card-plain">
         <div className="modal-header justify-content-center">
@@ -61,7 +60,7 @@ const PasswordModal = ({ show }) => {
             <a href="tel:614-569-0307">give us a call</a> to get one.
           </p>
           <Form action="" className="form" method="">
-            <CardBody>
+            <CardBody className="pb-0 px-0">
               <MyInput
                 register={register}
                 name="Password"
@@ -71,11 +70,12 @@ const PasswordModal = ({ show }) => {
                   value: /^.+$/i,
                   message: "This field is required",
                 }}
+                noMargin
               />
             </CardBody>
           </Form>
         </ModalBody>
-        <ModalFooter className="flex">
+        <ModalFooter className="flex pb-0">
           <Button
             rounded
             className="w-100"

@@ -14,6 +14,7 @@ const MyInput = ({
   name,
   icon,
   errorPattern,
+  noMargin,
 }) => {
   const [faFocus, setFaFocus] = useState("")
   const error = errors[name.toLowerCase()]
@@ -21,7 +22,9 @@ const MyInput = ({
   return (
     <>
       <InputGroup
-        className={`${faFocus} ${error === true ? "has-danger" : ""} mb-3`}
+        className={`${faFocus} ${error === true ? "has-danger" : ""} ${
+          noMargin === true ? "mb-0" : "mb-3"
+        }`}
       >
         <InputGroupAddon addonType="prepend">
           <InputGroupText>
