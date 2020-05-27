@@ -5,6 +5,7 @@ import SEO from "../components/seo"
 import Banner from "../components/banner"
 import GuidesList from "../components/sections/guides-list"
 import PasswordModal from "../components/PasswordModal"
+import { Button, Container, Row } from "reactstrap"
 
 const DiyGuides = props => {
   const {
@@ -13,13 +14,32 @@ const DiyGuides = props => {
   } = props.data
 
   const [showCrates, setShowCrates] = useState(false)
+  const [showLoginModal, setShowLoginModal] = useState(true)
 
   return (
     <>
       <SEO title={title} />
       <Banner data={banner} small={true} />
-      {showCrates && <GuidesList guides={crates.all} />}
-      <PasswordModal show={() => setShowCrates(true)} />
+      {showCrates ? (
+        <GuidesList guides={crates.all} />
+      ) : (
+        <section className="features-6" style={{ marginBottom: "-30px" }}>
+          <Container>
+            <Row className="justify-content-center">
+              {/* <Col> */}
+              <Button size="lg" onClick={() => setShowLoginModal(true)}>
+                Input Password
+              </Button>
+              {/* </Col> */}
+            </Row>
+          </Container>
+        </section>
+      )}
+      <PasswordModal
+        setShowCrates={() => setShowCrates(true)}
+        showLoginModal={showLoginModal}
+        setShowLoginModal={setShowLoginModal}
+      />
     </>
   )
 }

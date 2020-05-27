@@ -15,14 +15,17 @@ import {
 
 const password = process.env.DIY_PASSWORD
 
-const PasswordModal = ({ show }) => {
-  const [loginModal, setLoginModal] = React.useState(true)
+const PasswordModal = ({
+  showLoginModal,
+  setShowLoginModal,
+  setShowCrates,
+}) => {
   const { register, handleSubmit, errors, setError, reset } = useForm()
 
   const onSubmit = data => {
     if (data.password === password) {
-      setLoginModal(false)
-      show()
+      setShowLoginModal(false)
+      setShowCrates()
     } else {
       reset({ errors: true })
       setError("password", "notMatch", "Incorrect Password")
@@ -31,10 +34,10 @@ const PasswordModal = ({ show }) => {
 
   return (
     <Modal
-      isOpen={loginModal}
+      isOpen={showLoginModal}
       className="modal-login m-0"
       modalClassName="modal-primary d-flex align-items-center justify-content-center"
-      toggle={() => setLoginModal(false)}
+      toggle={() => setShowLoginModal(false)}
     >
       <Card className="card-login card-plain">
         <div className="modal-header justify-content-center">
@@ -49,7 +52,7 @@ const PasswordModal = ({ show }) => {
             className="close h5"
             aria-label="Close"
             type="button"
-            onClick={() => setLoginModal(false)}
+            onClick={() => setShowLoginModal(false)}
           >
             <i className="now-ui-icons ui-1_simple-remove font-weight-bold"></i>
           </button>
