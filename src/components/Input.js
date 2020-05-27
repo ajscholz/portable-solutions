@@ -41,8 +41,8 @@ const MyInput = ({
           onFocus={() => setFaFocus("input-group-focus")}
           onBlur={() => setFaFocus("")}
           style={{
-            borderTopRightRadius: "30px",
-            borderBottomRightRadius: "30px",
+            borderTopRightRadius: "0.25rem",
+            borderBottomRightRadius: "0.25rem",
             boxShadow: "none",
           }}
         />

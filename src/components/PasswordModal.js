@@ -78,7 +78,7 @@ const PasswordModal = ({ show }) => {
         <ModalFooter className="flex">
           <Button
             rounded
-            className="btn-round w-100"
+            className="w-100"
             size="lg"
             onClick={handleSubmit(onSubmit)}
             style={{ margin: 0 }}

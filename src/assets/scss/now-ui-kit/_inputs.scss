@@ -4,7 +4,7 @@
   background-color: $transparent-bg;
   border: 1px solid $light-gray;
   border-left: none !important;
-  border-radius: $btn-round-radius;
+  border-radius: 0.1875rem;
   color: $black-color;
   height: auto;
   line-height: normal;
@@ -164,7 +164,7 @@
 .input-group-text {
   background-color: $white-bg;
   border: 1px solid $light-gray;
-  border-radius: $btn-round-radius;
+  border-radius: 0.25rem;
   color: $dark-background;
 
   @include transition-input-focus-color();
