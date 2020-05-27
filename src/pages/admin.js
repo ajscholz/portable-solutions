@@ -8,7 +8,7 @@ const pStyle = { marginBottom: "0px" }
 const PasswordRow = ({ crate }) => {
   const [copied, setCopied] = useState(false)
 
-  const password = crate.password.substring(0, 6)
+  const password = crate.fields.password
   const rowRef = useRef(password)
 
   const copyText = () => {
@@ -28,7 +28,7 @@ const PasswordRow = ({ crate }) => {
       <div className="d-flex align-items-center">
         <p style={pStyle}>{password}</p>
         <button
-          id="popover3"
+          id="popover"
           className="btn btn-icon btn-link m-0 p-0 "
           onClick={() => copyText()}
         >
@@ -41,7 +41,7 @@ const PasswordRow = ({ crate }) => {
           <Popover
             placement="right"
             isOpen={copied}
-            target="popover3"
+            target="popover"
             className="popover-success"
             hideArrow={true}
           >
@@ -51,9 +51,6 @@ const PasswordRow = ({ crate }) => {
             </PopoverBody>
           </Popover>
         </div>
-        {/* <Alert color="success" isOpen={copied}>
-          Copied
-        </Alert> */}
       </div>
     </>
   )
@@ -109,7 +106,9 @@ export const query = graphql`
     ) {
       all: nodes {
         name
-        password: contentful_id
+        fields {
+          password
+        }
       }
     }
   }

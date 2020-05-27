@@ -17,9 +17,9 @@ const PasswordModal = ({
   showLoginModal,
   setShowLoginModal,
   setShowCrates,
-  password = process.env.DIY_PASSWORD,
+  password = process.env.ADMIN_PASSWORD,
   headerText = "Login",
-  bodyText = "Please enter the password given to you by Portable Solutions, or give us a call to get one",
+  bodyText = "Please enter the password given to you by Portable Solutions, or give us a call to get one.",
 }) => {
   const { register, handleSubmit, errors, setError, reset } = useForm()
 
