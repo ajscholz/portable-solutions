@@ -13,12 +13,13 @@ import {
   ModalFooter,
 } from "reactstrap"
 
-const password = process.env.DIY_PASSWORD
-
 const PasswordModal = ({
   showLoginModal,
   setShowLoginModal,
   setShowCrates,
+  password = process.env.DIY_PASSWORD,
+  headerText = "Login",
+  bodyText = "Please enter the password given to you by Portable Solutions, or give us a call to get one",
 }) => {
   const { register, handleSubmit, errors, setError, reset } = useForm()
 
@@ -45,7 +46,7 @@ const PasswordModal = ({
             className="modal-title"
             style={{ textAlign: "left", marginRight: "auto" }}
           >
-            DIY Guides Login
+            {headerText}
           </h5>
           <button
             aria-hidden={true}
@@ -58,10 +59,7 @@ const PasswordModal = ({
           </button>
         </div>
         <ModalBody data-background-color="">
-          <p className="mt-3">
-            Please enter the password given to you by Portable Solutions, or{" "}
-            <a href="tel:614-569-0307">give us a call</a> to get one.
-          </p>
+          <p className="mt-3">{bodyText}</p>
           <Form action="" className="form" method="">
             <CardBody className="pb-0 px-0">
               <MyInput

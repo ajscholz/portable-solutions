@@ -42,7 +42,10 @@ const Layout = ({ children, pageContext }) => {
   useEffect(renderButton, [renderButton])
 
   const indexPage = pageContext.layout === "index"
-  return (
+  const adminPage = pageContext.layout === "admin"
+  return adminPage ? (
+    <main>{children}</main>
+  ) : (
     <div
       style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
     >

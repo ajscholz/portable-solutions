@@ -13,6 +13,9 @@ exports.onCreatePage = ({ page, actions: { createPage, deletePage } }) => {
   if (page.path === "/") {
     page.context.layout = "index"
     createPage(page)
+  } else if (page.path === "/admin") {
+    page.context.layout = "admin"
+    createPage(page)
   }
 }
 
