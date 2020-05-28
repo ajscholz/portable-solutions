@@ -18,8 +18,8 @@ const CrateTemplate = ({ data, pageContext: { type }, location }) => {
       : location.state === null
       ? false
       : location.state.admin === null
-      ? false
-      : location.state.admin === "undefined"
+      ? typeof location.state === 'undefined' ? false
+      : typeof location.state.admin === "undefined"
       ? false
       : location.state.admin
   )
