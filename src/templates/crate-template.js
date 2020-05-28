@@ -12,10 +12,10 @@ import PasswordModal from "../components/PasswordModal"
 const CrateTemplate = ({
   data,
   pageContext: { type },
-  location: { state: { admin } } = false,
+  location = {state = {admin = false}},
 }) => {
   const [currentTab, setCurrentTab] = useState(0)
-  const [loggedIn, setLoggedIn] = useState(admin)
+  const [loggedIn, setLoggedIn] = useState(location.state.admin)
   const guideType = type === "rta" ? "rtaBuildGuide" : "diyBuildGuide"
   const password =
     type === "rta"
