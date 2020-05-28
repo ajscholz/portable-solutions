@@ -16,12 +16,15 @@ const MyInput = ({
   errorPattern,
   noMargin,
   submit,
+  focusOnMount = false,
 }) => {
   const [faFocus, setFaFocus] = useState("")
   const inputRef = useRef()
   useEffect(() => {
-    inputRef.current.focus()
-  })
+    if (focusOnMount) {
+      inputRef.current.focus()
+    }
+  }, [focusOnMount])
 
   const error = errors[name.toLowerCase()]
 
@@ -50,7 +53,9 @@ const MyInput = ({
           type="text"
           invalid={error ? true : false}
           innerRef={e => {
-            inputRef.current = e
+            if (focusOnMount) {
+              inputRef.current = e
+            }
             register(e, {
               required: "This field is required",
               pattern: errorPattern,

@@ -101,6 +101,9 @@
 }
 .btn-neutral {
   @include btn-styles($white-color, $white-color);
+  // will-change: transform;
+  // -webkit-font-smoothing: antialiased;
+  // transition: all $general-transition-time $transition-ease;
 }
 
 .btn-outline-primary {
@@ -140,6 +143,14 @@
 .btn-neutral.disabled:hover {
   cursor: default;
   opacity: 0.65;
+}
+
+.btn-neutral:focus,
+.btn-neutral:hover {
+  background-color: #fff;
+  // transform: scale(1.03);
+  // -webkit-transform: scale(1.03);
+  // color: $primary-color !important;
 }
 
 [class*="btn-outline-"],

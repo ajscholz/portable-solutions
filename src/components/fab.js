@@ -54,6 +54,7 @@ const FABContainer = () => {
         open={fabState.showForm}
         toggle={handleCloseForm}
         className={`${fabState.showForm === false ? "fade-out" : "fade-in"}`}
+        focusOnMount={true}
       />
     </div>
   )

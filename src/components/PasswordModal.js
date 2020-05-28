@@ -76,6 +76,7 @@ const PasswordModal = ({
           <Form action="" className="form" method="">
             <CardBody className="pb-0 px-0">
               <MyInput
+                focusOnMount={true}
                 register={register}
                 name="Password"
                 icon="now-ui-icons ui-1_lock-circle-open"

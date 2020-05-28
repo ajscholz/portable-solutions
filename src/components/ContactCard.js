@@ -10,7 +10,7 @@ import { FabContext } from "../context/fabContext"
 import ModalButton from "./ModalButton"
 
 const Form2 = props => {
-  const { toggle, className, fab } = props
+  const { toggle, className, fab, focusOnMount } = props
 
   const formStyle =
     fab === false
@@ -130,6 +130,7 @@ const Form2 = props => {
                   message: "Please enter a valid name",
                 }}
                 submit={handleSubmit(onSubmit)}
+                focusOnMount={focusOnMount}
               />
               {/* EMAIL INPUT */}
               <MyInput

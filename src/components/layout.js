@@ -36,7 +36,6 @@ const Layout = ({ children, pageContext }) => {
   useEffect(() => {
     if (indexPage) {
       const timeout = setTimeout(() => {
-        console.log("timeout")
         setFabState({ ...fabState, renderButton: true })
       }, 1000)
 
