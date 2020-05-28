@@ -45,7 +45,11 @@ const Admin = ({ data }) => {
                 Password
               </h5>
               {data.rtaCrates.all.map(crate => (
-                <PasswordRow key={crate.fields.password} crate={crate} />
+                <PasswordRow
+                  key={crate.fields.password}
+                  crate={crate}
+                  link={`/rta${crate.fields.slug}`}
+                />
               ))}
             </div>
             <hr className="my-5" />
@@ -69,7 +73,11 @@ const Admin = ({ data }) => {
                 Password
               </h5>
               {data.diyCrates.all.map(crate => (
-                <PasswordRow key={crate.fields.password} crate={crate} />
+                <PasswordRow
+                  key={crate.fields.password}
+                  crate={crate}
+                  link={`/diy${crate.fields.slug}`}
+                />
               ))}
             </div>
           </div>
@@ -90,6 +98,7 @@ export const query = graphql`
         name
         fields {
           password: rtaPassword
+          slug
         }
       }
     }
@@ -102,6 +111,7 @@ export const query = graphql`
         name
         fields {
           password: diyPassword
+          slug
         }
       }
     }
@@ -110,7 +120,7 @@ export const query = graphql`
 
 export default Admin
 
-const PasswordRow = ({ crate }) => {
+const PasswordRow = ({ crate, link }) => {
   const [copied, setCopied] = useState(false)
 
   const password = crate.fields.password
@@ -128,7 +138,9 @@ const PasswordRow = ({ crate }) => {
   return (
     <>
       <div style={{ alignSelf: "center" }}>
-        <p style={pStyle}>{crate.name}</p>
+        <Link to={link} state={{ admin: true }}>
+          <p style={pStyle}>{crate.name}</p>
+        </Link>
       </div>
       <div className="d-flex align-items-center">
         <p style={pStyle}>{password}</p>
