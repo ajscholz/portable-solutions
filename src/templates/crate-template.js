@@ -12,7 +12,7 @@ import PasswordModal from "../components/PasswordModal"
 const CrateTemplate = ({ data, pageContext: { type } }) => {
   const [currentTab, setCurrentTab] = useState(0)
   const [loggedIn, setLoggedIn] = useState(false)
-
+  console.log(data)
   const guideType = type === "rta" ? "rtaBuildGuide" : "diyBuildGuide"
   const password =
     type === "rta"
@@ -35,7 +35,7 @@ const CrateTemplate = ({ data, pageContext: { type } }) => {
     {
       type: guideType,
       component: Guide,
-      data: guide === null || guide === undefined ? null : guide,
+      data: guide === null || guide === undefined ? null : guide.file.url,
       tabs: {
         icon: "files_paper",
         text: "Build Guide",
