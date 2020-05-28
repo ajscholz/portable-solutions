@@ -21,11 +21,16 @@ const Admin = ({ data }) => {
         dismissable={false}
       />
       {loggedIn ? (
-        <div className="w-100 d-flex justify-content-between p-5">
+        <div className="w-100 p-5">
           <div className="mr-5">
             <h1>PS Admin Page</h1>
-            <h3>Crate Page Passwords</h3>
-
+            <hr className="my-5" />
+            <div className="d-flex align-items-center">
+              <h3 className="mb-3">RTA Page Passwords</h3>
+              <Link className="btn btn-primary my-0 ml-5 mb-3" to="/rta">
+                RTA Crates
+              </Link>
+            </div>
             <div
               style={{
                 display: "grid",
@@ -39,18 +44,34 @@ const Admin = ({ data }) => {
               <h5 style={{ textDecoration: "underline", marginBottom: "0" }}>
                 Password
               </h5>
-              {data.crates.all.map(crate => (
+              {data.rtaCrates.all.map(crate => (
                 <PasswordRow key={crate.fields.password} crate={crate} />
               ))}
             </div>
-          </div>
-          <div className="ml-5 d-flex flex-column justify-content-start flex-wrap">
-            <Link className="btn btn-lg" to="/rta">
-              RTA Crates
-            </Link>
-            <Link className="btn btn-lg" to="/diy">
-              DIY Crates
-            </Link>
+            <hr className="my-5" />
+            <div className="d-flex align-items-center">
+              <h3>DIY Page Passwords</h3>
+              <Link className="btn btn-primary my-0 ml-5 mb-3" to="/diy">
+                DIY Crates
+              </Link>
+            </div>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, max-content)",
+                columnGap: "2rem",
+              }}
+            >
+              <h5 style={{ textDecoration: "underline", marginBottom: "0" }}>
+                Crate Name
+              </h5>
+              <h5 style={{ textDecoration: "underline", marginBottom: "0" }}>
+                Password
+              </h5>
+              {data.diyCrates.all.map(crate => (
+                <PasswordRow key={crate.fields.password} crate={crate} />
+              ))}
+            </div>
           </div>
         </div>
       ) : null}
@@ -60,17 +81,27 @@ const Admin = ({ data }) => {
 
 export const query = graphql`
   {
-    crates: allContentfulCrate(
+    rtaCrates: allContentfulCrate(
       filter: {
-        page_section: {
-          elemMatch: { title: { in: ["RTA Crate List", "DIY Guides List"] } }
-        }
+        page_section: { elemMatch: { title: { eq: "RTA Crate List" } } }
       }
     ) {
       all: nodes {
         name
         fields {
-          password
+          password: rtaPassword
+        }
+      }
+    }
+    diyCrates: allContentfulCrate(
+      filter: {
+        page_section: { elemMatch: { title: { eq: "DIY Guides List" } } }
+      }
+    ) {
+      all: nodes {
+        name
+        fields {
+          password: diyPassword
         }
       }
     }

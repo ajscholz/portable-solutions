@@ -41,8 +41,10 @@ const slugify = title =>
 
 exports.onCreateNode = ({ node, actions: { createNodeField } }) => {
   if (node.internal.type === "ContentfulCrate") {
+    const id = node.contentful_id
     const slug = slugify(node.name)
-    const password = node.contentful_id.substring(0, 6)
+    const diyPassword = id.substring(0, 6)
+    const rtaPassword = id.substring(id.length - 6, id.length)
 
     createNodeField({
       node,
@@ -52,8 +54,14 @@ exports.onCreateNode = ({ node, actions: { createNodeField } }) => {
 
     createNodeField({
       node,
-      name: `password`,
-      value: password,
+      name: `diyPassword`,
+      value: diyPassword,
+    })
+
+    createNodeField({
+      node,
+      name: `rtaPassword`,
+      value: rtaPassword,
     })
   }
 }

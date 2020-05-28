@@ -14,7 +14,10 @@ const CrateTemplate = ({ data, pageContext: { type } }) => {
   const [loggedIn, setLoggedIn] = useState(false)
 
   const guideType = type === "rta" ? "rtaBuildGuide" : "diyBuildGuide"
-
+  const password =
+    type === "rta"
+      ? data.crate.fields.rtaPassword
+      : data.crate.fields.diyPassword
   const video = data.crate.video
   const guide = data.crate[guideType]
   const otherVideos = data.crate.otherVideos
@@ -138,7 +141,7 @@ const CrateTemplate = ({ data, pageContext: { type } }) => {
         headerText={`${data.crate.name} Login`}
         loggedIn={loggedIn}
         setLoggedIn={setLoggedIn}
-        password={data.crate.fields.password}
+        password={password}
         dismissable={false}
       />
     </>
@@ -152,7 +155,8 @@ export const data = graphql`
     crate: contentfulCrate(fields: { slug: { eq: $slug } }) {
       name
       fields {
-        password
+        diyPassword
+        rtaPassword
       }
       image: renderedImage {
         fluid {
