@@ -15,6 +15,7 @@ const GuidesList = ({ guides, page }) => {
                 sm={{ size: 8, offset: 2 }}
                 md={{ size: 4, offset: 0 }}
                 lg={3}
+                key={guide.fields.slug}
               >
                 <CrateGuideCard
                   data={guide}
