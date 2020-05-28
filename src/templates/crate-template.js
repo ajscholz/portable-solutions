@@ -10,15 +10,9 @@ import MoreVideos from "../components/crateBuildTabs/MoreVideos"
 import TabButton from "../components/crateBuildTabs/TabButton"
 import PasswordModal from "../components/PasswordModal"
 
-const CrateTemplate = ({
-  data,
-  pageContext: { type },
-  location: {
-    state: { admin },
-  },
-}) => {
+const CrateTemplate = ({ data, pageContext: { type }, location }) => {
   const [currentTab, setCurrentTab] = useState(0)
-  const [loggedIn, setLoggedIn] = useState(admin)
+  const [loggedIn, setLoggedIn] = useState(location.state.admin)
   const guideType = type === "rta" ? "rtaBuildGuide" : "diyBuildGuide"
   const password =
     type === "rta"
@@ -155,7 +149,7 @@ const CrateTemplate = ({
 }
 
 CrateTemplate.defaultProps = {
-  admin: false,
+  location: { state: { admin: false } },
 }
 
 export default CrateTemplate
