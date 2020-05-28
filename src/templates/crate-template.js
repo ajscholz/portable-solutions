@@ -13,13 +13,17 @@ const CrateTemplate = ({ data, pageContext: { type }, location }) => {
   console.log(location)
   const [currentTab, setCurrentTab] = useState(0)
   const [loggedIn, setLoggedIn] = useState(
-    location === null
+    typeof location === "undefined"
+      ? false
+      : typeof location.state === "undefined"
+      ? false
+      : typeof location.state.admin === "undefined"
+      ? false
+      : location === null
       ? false
       : location.state === null
       ? false
       : location.state.admin === null
-      ? typeof location.state === 'undefined' ? false
-      : typeof location.state.admin === "undefined"
       ? false
       : location.state.admin
   )
