@@ -19,6 +19,11 @@ import FABContainer from "./fab"
 import { FabContext } from "../context/fabContext"
 
 const Layout = ({ children, pageContext }) => {
+  const indexPage = pageContext.layout === "index"
+  const adminPage = pageContext.layout === "admin"
+
+  const [fabState, setFabState] = useContext(FabContext)
+  const [ref, inView] = useInView()
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -28,21 +33,17 @@ const Layout = ({ children, pageContext }) => {
       }
     }
   `)
-  const [ref, inView] = useInView()
+  useEffect(() => {
+    if (indexPage) {
+      const timeout = setTimeout(() => {
+        console.log("timeout")
+        setFabState({ ...fabState, renderButton: true })
+      }, 1000)
 
-  const renderButton = () => {
-    const timeout = setTimeout(() => {
-      setFabState({ ...fabState, renderButton: true })
-    }, 1000)
+      return () => clearTimeout(timeout)
+    }
+  }, [indexPage])
 
-    return () => clearTimeout(timeout)
-  }
-
-  const [fabState, setFabState] = useContext(FabContext)
-  useEffect(renderButton, [renderButton])
-
-  const indexPage = pageContext.layout === "index"
-  const adminPage = pageContext.layout === "admin"
   return adminPage ? (
     <main>{children}</main>
   ) : (
