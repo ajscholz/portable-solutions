@@ -3,7 +3,7 @@ import { Col, Row, Container } from "reactstrap"
 import CrateGuideCard from "../Crate-Guide-Card"
 import { graphql } from "gatsby"
 
-const GuidesList = ({ guides }) => {
+const GuidesList = ({ guides, page }) => {
   return (
     <section className="features-6" style={{ marginBottom: "-30px" }}>
       <Container>
@@ -16,7 +16,10 @@ const GuidesList = ({ guides }) => {
                 md={{ size: 4, offset: 0 }}
                 lg={3}
               >
-                <CrateGuideCard data={guide} key={guide.id} />
+                <CrateGuideCard
+                  data={guide}
+                  buttonUrl={`/${page}${guide.fields.slug}`}
+                />
               </Col>
             )
           })}

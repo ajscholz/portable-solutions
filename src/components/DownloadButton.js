@@ -2,11 +2,11 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Button } from "reactstrap"
 
-const DownloadButton = ({ button }) => {
+const DownloadButton = ({ link }) => {
   return (
     <Button
       tag="a"
-      href={`https:${button.file.url}`}
+      href={`https:${link}`}
       target="_blank"
       rel="noopener noreferrer"
       size="lg"

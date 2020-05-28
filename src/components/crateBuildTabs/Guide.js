@@ -2,14 +2,14 @@ import React from "react"
 import DownloadButton from "../DownloadButton"
 import { TabPane } from "reactstrap"
 
-const Guide = ({ crate, tabId }) => {
+const Guide = ({ name, data, tabId }) => {
   return (
     <TabPane tabId={tabId}>
       <p>
-        Download your crate build guide here. This guide will walk you
-        step-by-step through the crate build.
+        {`Download your ${name} build guide here. This guide will walk you step-by-step
+        through the crate build.`}
       </p>
-      <DownloadButton button={crate.guide} />
+      <DownloadButton link={data} />
     </TabPane>
   )
 }

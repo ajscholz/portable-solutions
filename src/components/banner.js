@@ -98,7 +98,7 @@ export const query = graphql`
       heading
       image: backgroundImage {
         fluid {
-          src
+          ...GatsbyContentfulFluid
         }
       }
     }

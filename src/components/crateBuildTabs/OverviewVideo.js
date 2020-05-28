@@ -2,14 +2,14 @@ import React from "react"
 import { TabPane } from "reactstrap"
 import VideoPlayer from "../VideoPlayer"
 
-const OverviewVideo = ({ crate, tabId }) => {
+const OverviewVideo = ({ name, data, tabId }) => {
   return (
     <TabPane tabId={tabId}>
       <p>
-        {`Watch this quick video for an overview of the build process for a Portable Solutions ${crate.name.toLowerCase()}.`}
+        {`Watch this quick video for an overview of the build process for a Portable Solutions ${name.toLowerCase()}.`}
       </p>
 
-      <VideoPlayer video={crate.video} />
+      <VideoPlayer video={data} />
     </TabPane>
   )
 }

@@ -1,3 +1,14 @@
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type ContentfulCrate implements Node {
+      rtaBuildGuide: ContentfulAsset
+      diyBuildGuide: ContentfulAsset
+    }
+  `
+  createTypes(typeDefs)
+}
+
 // add page context for index page
 const replacePath = path => (path === `/` ? path : path.replace(/\/$/, ``))
 
@@ -56,10 +67,21 @@ exports.createPages = async ({
 }) => {
   const result = await graphql(`
     {
-      page: contentfulPageSection(
+      rtaCrates: contentfulPageSection(
         contentful_id: { eq: "5CAr6OxnbXBUutIIizazuv" }
       ) {
-        crates: otherContent {
+        all: otherContent {
+          ... on ContentfulCrate {
+            fields {
+              slug
+            }
+          }
+        }
+      }
+      diyCrates: contentfulPageSection(
+        contentful_id: { eq: "4OQhj1IhvqY2xKYQHCM0Q4" }
+      ) {
+        all: otherContent {
           ... on ContentfulCrate {
             fields {
               slug
@@ -77,13 +99,25 @@ exports.createPages = async ({
   }
   // Create pages for each crate.
   const cratePageTemplate = path.resolve(`src/templates/crate-template.js`)
-  result.data.page.crates.forEach(crate => {
+  result.data.rtaCrates.all.forEach(crate => {
     const path = `/rta${crate.fields.slug}`
     createPage({
       path,
       component: cratePageTemplate,
       context: {
         slug: crate.fields.slug,
+        type: "rta",
+      },
+    })
+  })
+  result.data.diyCrates.all.forEach(crate => {
+    const path = `/diy${crate.fields.slug}`
+    createPage({
+      path,
+      component: cratePageTemplate,
+      context: {
+        slug: crate.fields.slug,
+        type: "diy",
       },
     })
   })

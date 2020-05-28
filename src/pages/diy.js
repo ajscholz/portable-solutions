@@ -15,7 +15,7 @@ const DiyGuides = props => {
     <>
       <SEO title={title} />
       <Banner data={banner} small={true} />
-      <GuidesList guides={crates.all} />
+      <GuidesList guides={crates.all} page="diy" />
     </>
   )
 }

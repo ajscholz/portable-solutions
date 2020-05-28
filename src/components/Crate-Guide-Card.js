@@ -3,9 +3,9 @@ import Image from "gatsby-image"
 import { Link, graphql } from "gatsby"
 import { Button, Card, CardBody, CardTitle } from "reactstrap"
 
-const CrateGuideCard = ({ data }) => {
+const CrateGuideCard = ({ data, buttonUrl }) => {
   return (
-    <Card tag={Link} to={`/rta${data.fields.slug}`}>
+    <Card tag={Link} to={buttonUrl}>
       <div className="card-image p-3">
         <Image
           alt="..."

@@ -9,43 +9,52 @@ import MoreVideos from "../components/crateBuildTabs/MoreVideos"
 import TabButton from "../components/crateBuildTabs/TabButton"
 import PasswordModal from "../components/PasswordModal"
 
-const allTabs = [
-  {
-    type: "video",
-    component: OverviewVideo,
-    tabs: {
-      icon: "media-1_button-play",
-      text: "Overview Video",
-    },
-  },
-  {
-    type: "guide",
-    component: Guide,
-    tabs: {
-      icon: "files_paper",
-      text: "Build Guide",
-    },
-  },
-  {
-    type: "otherVideos",
-    component: MoreVideos,
-    tabs: {
-      icon: "design_bullet-list-67",
-      text: "More Videos",
-    },
-  },
-]
-
-const CrateTemplate = ({ data }) => {
+const CrateTemplate = ({ data, pageContext: { type } }) => {
   const [currentTab, setCurrentTab] = useState(0)
   const [loggedIn, setLoggedIn] = useState(false)
+
+  const guideType = type === "rta" ? "rtaBuildGuide" : "diyBuildGuide"
+
+  const video = data.crate.video
+  const guide = data.crate[guideType]
+  const otherVideos = data.crate.otherVideos
+
+  const allTabs = [
+    {
+      type: "video",
+      component: OverviewVideo,
+      data: video === null || video === undefined ? null : video,
+      tabs: {
+        icon: "media-1_button-play",
+        text: "Overview Video",
+      },
+    },
+    {
+      type: guideType,
+      component: Guide,
+      data: guide === null || guide === undefined ? null : guide,
+      tabs: {
+        icon: "files_paper",
+        text: "Build Guide",
+      },
+    },
+    {
+      type: "otherVideos",
+      component: MoreVideos,
+      data:
+        otherVideos === null || otherVideos === undefined ? null : otherVideos,
+      tabs: {
+        icon: "design_bullet-list-67",
+        text: "More Videos",
+      },
+    },
+  ]
 
   // variable that keeps the index of the map useable for
   let tabIndex = -1
   const validTabs = allTabs
     .map(item => {
-      if (data.crate[item.type] === null || data.crate[item.type] === undefined)
-        return null
+      if (item.data === null) return null
       tabIndex++
       return {
         tabComponent: React.createElement(
@@ -63,10 +72,10 @@ const CrateTemplate = ({ data }) => {
             />
             <div className="d-none d-sm-block mb-1">
               {item.tabs.text.split(" ").map(word => (
-                <>
+                <React.Fragment key={word}>
                   {word}
                   <br />
-                </>
+                </React.Fragment>
               ))}
             </div>
             <div className="d-sm-none">{item.tabs.text}</div>
@@ -74,7 +83,11 @@ const CrateTemplate = ({ data }) => {
         ),
         contentComponent: React.createElement(
           item.component,
-          { crate: data.crate, tabId: `tab${tabIndex}` },
+          {
+            name: data.crate.name,
+            tabId: `tab${tabIndex}`,
+            data: item.data,
+          },
           null
         ),
       }
@@ -94,13 +107,22 @@ const CrateTemplate = ({ data }) => {
                 pills
                 role="tablist"
               >
-                {validTabs.map(item => item.tabComponent)}
+                {validTabs.map((item, index) => (
+                  <React.Fragment key={index}>
+                    {item.tabComponent}
+                  </React.Fragment>
+                ))}
               </Nav>
               <TabContent
                 className="tab-space text-center mt-3 pb-2"
                 activeTab={"tab" + currentTab}
               >
-                {validTabs.map(item => item.contentComponent)}
+                {validTabs.map((item, index) => (
+                  <React.Fragment key={index}>
+                    {" "}
+                    {item.contentComponent}
+                  </React.Fragment>
+                ))}
                 {/* {data.crate.video && (
                   <OverviewVideo crate={data.crate} tabId="tab0" />
                 )}
@@ -137,7 +159,10 @@ export const data = graphql`
           ...GatsbyContentfulFluid
         }
       }
-      guide: buildGuide {
+      rtaBuildGuide {
+        ...DownloadButtonFragment
+      }
+      diyBuildGuide {
         ...DownloadButtonFragment
       }
       video: buildOverviewVideo {
