@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import PropTypes from "prop-types"
 import { graphql } from "gatsby"
 import Banner from "../components/banner"
 
@@ -11,8 +10,18 @@ import TabButton from "../components/crateBuildTabs/TabButton"
 import PasswordModal from "../components/PasswordModal"
 
 const CrateTemplate = ({ data, pageContext: { type }, location }) => {
+  console.log(location)
   const [currentTab, setCurrentTab] = useState(0)
-  const [loggedIn, setLoggedIn] = useState(location.state.admin)
+  const [loggedIn, setLoggedIn] = useState(
+    location === null
+      ? false
+      : location.state === null
+      ? false
+      : location.state.admin === null
+      ? false
+      : location.state.admin
+  )
+  // const [loggedIn, setLoggedIn] = useState((typeof location !== 'undefined') ? typeof location.state !== 'undefined' ? typeof location.state.admin !== 'undefined') ? location.state.admin ? true : false)
   const guideType = type === "rta" ? "rtaBuildGuide" : "diyBuildGuide"
   const password =
     type === "rta"
@@ -146,10 +155,6 @@ const CrateTemplate = ({ data, pageContext: { type }, location }) => {
       />
     </>
   )
-}
-
-CrateTemplate.defaultProps = {
-  location: { state: { admin: false } },
 }
 
 export default CrateTemplate
