@@ -10,7 +10,6 @@ import TabButton from "../components/crateBuildTabs/TabButton"
 import PasswordModal from "../components/PasswordModal"
 
 const CrateTemplate = ({ data, pageContext: { type }, location }) => {
-  console.log(location)
   const [currentTab, setCurrentTab] = useState(0)
   const [loggedIn, setLoggedIn] = useState(
     typeof location === "undefined"

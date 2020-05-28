@@ -5,6 +5,9 @@ exports.createSchemaCustomization = ({ actions }) => {
       rtaBuildGuide: ContentfulAsset
       diyBuildGuide: ContentfulAsset
     }
+    type ContentfulAsset implements Node {
+      name: String!
+    }
   `
   createTypes(typeDefs)
 }
@@ -24,7 +27,7 @@ exports.onCreatePage = ({ page, actions: { createPage, deletePage } }) => {
   if (page.path === "/") {
     page.context.layout = "index"
     createPage(page)
-  } else if (page.path === "/admin") {
+  } else if (page.path.includes("/admin")) {
     page.context.layout = "admin"
     createPage(page)
   }

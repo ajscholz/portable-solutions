@@ -25,15 +25,21 @@ export const data = graphql`
     page: contentfulPage(title: { eq: "RTA Build Guides" }) {
       ...BannerFragment
     }
-    crates: allContentfulCrate(
-      filter: {
-        page_section: {
-          elemMatch: { contentful_id: { eq: "5CAr6OxnbXBUutIIizazuv" } }
+    crates: contentfulPageSection(title: { eq: "RTA Crate List" }) {
+      all: otherContent {
+        ... on ContentfulCrate {
+          id: contentful_id
+          name
+          image: renderedImage {
+            fluid {
+              ...GatsbyContentfulFluid
+            }
+          }
+          fields {
+            slug
+          }
         }
       }
-      sort: { fields: name, order: ASC }
-    ) {
-      ...GuidesListFragment
     }
   }
 `

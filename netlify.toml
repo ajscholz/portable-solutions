@@ -2,6 +2,7 @@
 CONTENTFUL_SPACE_ID = "34koz2oasvqj"
 CONTENTFUL_ACCESS_TOKEN = "snfBgRT1fS1_7kty1Wi9vXvWcKywZo8uEoIKjbGWRaw"
 CONTENTFUL_HOST = "cdn.contentful.com"
+
 GMAIL_CLIENT_ID = "414263688123-nh836er4rfqs8jvsl53mj91noicucsve.apps.googleusercontent.com"
 GMAIL_CLIENT_SECRET = "EB85wR78a9Bk7lCz8xoENzte"
 GMAIL_REFRESH_TOKEN = "1/aBElizWiN8_kQlGU-_Y9xxuXPKgsdjoiL1Bl-BvLzFs"

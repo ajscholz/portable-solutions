@@ -22,19 +22,48 @@ const DiyGuides = props => {
 
 export const data = graphql`
   {
+    crates: contentfulPageSection(title: { eq: "DIY Guides List" }) {
+      all: otherContent {
+        ... on ContentfulCrate {
+          id: contentful_id
+          name
+          image: renderedImage {
+            fluid {
+              ...GatsbyContentfulFluid
+            }
+          }
+          fields {
+            slug
+          }
+        }
+      }
+    }
+
+    # crates: allContentfulCrate(
+    #   filter: {
+    #     page_section: {
+    #       elemMatch: { contentful_id: { eq: "4OQhj1IhvqY2xKYQHCM0Q4" } }
+    #     }
+    #   }
+    #   sort: { fields: name, order: ASC }
+    # ) {
+    #   nodes {
+    #     name
+    #   }
+    # }
     page: contentfulPage(title: { eq: "DIY Build Guides" }) {
       ...BannerFragment
     }
-    crates: allContentfulCrate(
-      filter: {
-        page_section: {
-          elemMatch: { contentful_id: { eq: "4OQhj1IhvqY2xKYQHCM0Q4" } }
-        }
-      }
-      sort: { fields: name, order: ASC }
-    ) {
-      ...GuidesListFragment
-    }
+    # crates: allContentfulCrate(
+    #   filter: {
+    #     page_section: {
+    #       elemMatch: { contentful_id: { eq: "4OQhj1IhvqY2xKYQHCM0Q4" } }
+    #     }
+    #   }
+    #   sort: { fields: name, order: ASC }
+    # ) {
+    #   ...GuidesListFragment
+    # }
   }
 `
 
