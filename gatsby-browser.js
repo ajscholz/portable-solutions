@@ -9,11 +9,16 @@
 const React = require("react")
 const smoothscroll = require("smoothscroll-polyfill")
 const { FabProvider } = require("./src/context/fabContext")
+const { AdminProvider } = require("./src/context/adminContext")
 
 exports.onClientEntry = () => {
   smoothscroll.polyfill()
 }
 
 exports.wrapRootElement = ({ element }) => {
-  return <FabProvider>{element}</FabProvider>
+  return (
+    <FabProvider>
+      <AdminProvider>{element}</AdminProvider>
+    </FabProvider>
+  )
 }

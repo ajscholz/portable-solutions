@@ -1,57 +1,59 @@
-import React, { useRef, useState } from "react"
+import React, { useRef, useState, useContext } from "react"
 import { graphql } from "gatsby"
 import { Popover, PopoverBody } from "reactstrap"
 import PasswordModal from "../components/PasswordModal"
 import { Link } from "gatsby"
+import { AdminContext } from "../context/adminContext"
 
 const pStyle = { marginBottom: "0px" }
 
 const Admin = ({ data }) => {
-  const [login, setLogin] = useState(true)
+  const [loggedIn, setLoggedIn] = useContext(AdminContext)
 
-  return login ? (
-    <PasswordModal
-      setShowCrates={() => {}}
-      showLoginModal={login}
-      setShowLoginModal={setLogin}
-      headerText="Admin Page Login"
-      password={process.env.ADMIN_PASSWORD}
-      bodyText=""
-    />
-  ) : (
+  return (
     <>
-      <div className="w-100 d-flex justify-content-between p-5">
-        <div className="mr-5">
-          <h1>PS Admin Page</h1>
-          <h3>Crate Page Passwords</h3>
+      <PasswordModal
+        loggedIn={loggedIn}
+        setLoggedIn={setLoggedIn}
+        headerText="Admin Page Login"
+        password="PS-ADMIN"
+        bodyText=""
+        dismissable={false}
+      />
+      {loggedIn ? (
+        <div className="w-100 d-flex justify-content-between p-5">
+          <div className="mr-5">
+            <h1>PS Admin Page</h1>
+            <h3>Crate Page Passwords</h3>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(2, max-content)",
-              columnGap: "2rem",
-            }}
-          >
-            <h5 style={{ textDecoration: "underline", marginBottom: "0" }}>
-              Crate Name
-            </h5>
-            <h5 style={{ textDecoration: "underline", marginBottom: "0" }}>
-              Password
-            </h5>
-            {data.crates.all.map(crate => (
-              <PasswordRow key={crate.password} crate={crate} />
-            ))}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, max-content)",
+                columnGap: "2rem",
+              }}
+            >
+              <h5 style={{ textDecoration: "underline", marginBottom: "0" }}>
+                Crate Name
+              </h5>
+              <h5 style={{ textDecoration: "underline", marginBottom: "0" }}>
+                Password
+              </h5>
+              {data.crates.all.map(crate => (
+                <PasswordRow key={crate.fields.password} crate={crate} />
+              ))}
+            </div>
+          </div>
+          <div className="ml-5 d-flex flex-column justify-content-start flex-wrap">
+            <Link className="btn btn-lg" to="/rta">
+              RTA Crates
+            </Link>
+            <Link className="btn btn-lg" to="/diy">
+              DIY Crates
+            </Link>
           </div>
         </div>
-        <div className="ml-5 d-flex flex-column justify-content-start flex-wrap">
-          <Link className="btn btn-lg" to="/rta">
-            RTA Crates
-          </Link>
-          <Link className="btn btn-lg" to="/diy">
-            DIY Crates
-          </Link>
-        </div>
-      </div>
+      ) : null}
     </>
   )
 }

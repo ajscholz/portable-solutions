@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import {
   InputGroup,
   InputGroupAddon,
@@ -18,6 +18,11 @@ const MyInput = ({
   submit,
 }) => {
   const [faFocus, setFaFocus] = useState("")
+  const inputRef = useRef()
+  useEffect(() => {
+    inputRef.current.focus()
+  })
+
   const error = errors[name.toLowerCase()]
 
   return (
@@ -44,10 +49,13 @@ const MyInput = ({
           name={name.toLowerCase()}
           type="text"
           invalid={error ? true : false}
-          innerRef={register({
-            required: "This field is required",
-            pattern: errorPattern,
-          })}
+          innerRef={e => {
+            inputRef.current = e
+            register(e, {
+              required: "This field is required",
+              pattern: errorPattern,
+            })
+          }}
           onFocus={() => setFaFocus("input-group-focus")}
           onBlur={() => setFaFocus("")}
           style={{

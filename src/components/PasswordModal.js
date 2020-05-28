@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import MyInput from "./Input"
 
@@ -14,31 +14,42 @@ import {
 } from "reactstrap"
 
 const PasswordModal = ({
-  showLoginModal,
-  setShowLoginModal,
-  setShowCrates,
+  loggedIn = false,
+  setLoggedIn,
   password,
+  dismissable,
   headerText = "Login",
   bodyText = "Please enter the password given to you by Portable Solutions, or give us a call to get one.",
 }) => {
   const { register, handleSubmit, errors, setError, reset } = useForm()
+  const [show, setShow] = useState(!loggedIn)
 
   const onSubmit = data => {
     if (data.password === password) {
-      setShowLoginModal(false)
-      setShowCrates()
+      login()
     } else {
       reset({ errors: true })
       setError("password", "notMatch", "Incorrect Password")
     }
   }
 
+  const hideModal = () => {
+    setShow(false)
+  }
+
+  const login = () => {
+    hideModal()
+    setLoggedIn(true)
+  }
+
   return (
     <Modal
-      isOpen={showLoginModal}
-      className="modal-login m-0"
-      modalClassName="modal-primary d-flex align-items-center justify-content-center"
-      toggle={() => setShowLoginModal(false)}
+      isOpen={show}
+      className="modal-login"
+      modalClassName="modal-primary"
+      centered={true}
+      backdrop={dismissable === false ? "static" : true}
+      toggle={() => setShow(false)}
     >
       <Card className="card-login card-plain">
         <div className="modal-header justify-content-center">
@@ -48,15 +59,17 @@ const PasswordModal = ({
           >
             {headerText}
           </h5>
-          <button
-            aria-hidden={true}
-            className="close h5"
-            aria-label="Close"
-            type="button"
-            onClick={() => setShowLoginModal(false)}
-          >
-            <i className="now-ui-icons ui-1_simple-remove font-weight-bold"></i>
-          </button>
+          {dismissable === true && (
+            <button
+              aria-hidden={true}
+              className="close h5"
+              aria-label="Close"
+              type="button"
+              onClick={() => hideModal()}
+            >
+              <i className="now-ui-icons ui-1_simple-remove font-weight-bold"></i>
+            </button>
+          )}
         </div>
         <ModalBody data-background-color="">
           <p className="mt-3">{bodyText}</p>
@@ -79,12 +92,11 @@ const PasswordModal = ({
         </ModalBody>
         <ModalFooter className="flex pb-0">
           <Button
-            rounded
             className="w-100"
             size="lg"
             onClick={handleSubmit(onSubmit)}
             style={{ margin: 0 }}
-            disabled={errors.password}
+            disabled={errors.password && true}
           >
             Login
           </Button>

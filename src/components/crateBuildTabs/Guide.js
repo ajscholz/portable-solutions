@@ -3,7 +3,6 @@ import DownloadButton from "../DownloadButton"
 import { TabPane } from "reactstrap"
 
 const Guide = ({ crate, tabId }) => {
-  console.log(crate)
   return (
     <TabPane tabId={tabId}>
       <p>
