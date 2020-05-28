@@ -19,6 +19,8 @@ const CrateTemplate = ({ data, pageContext: { type }, location }) => {
       ? false
       : location.state.admin === null
       ? false
+      : location.state.admin === "undefined"
+      ? false
       : location.state.admin
   )
   // const [loggedIn, setLoggedIn] = useState((typeof location !== 'undefined') ? typeof location.state !== 'undefined' ? typeof location.state.admin !== 'undefined') ? location.state.admin ? true : false)
