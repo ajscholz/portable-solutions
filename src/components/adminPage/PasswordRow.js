@@ -8,12 +8,17 @@ const PasswordRow = ({ crate, link }) => {
   const [copied, setCopied] = useState(false)
 
   const password = crate.fields.password
-  const rowRef = useRef(password)
 
   const copyText = () => {
-    navigator.clipboard.writeText(rowRef.current).then(() => {
-      setCopied(true)
-    })
+    navigator.clipboard
+      .writeText(
+        `Crate: ${crate.name}
+Instruction Page: https://portable.solutions${link}
+Password: ${password}`
+      )
+      .then(() => {
+        setCopied(true)
+      })
     setTimeout(() => {
       setCopied(false)
     }, 2200)

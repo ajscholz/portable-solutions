@@ -20,7 +20,7 @@ const Admin = ({ data }) => {
       {loggedIn ? (
         <div className="w-100 p-5">
           <div className="mr-5">
-            <h1>PS Admin Page</h1>
+            <h1>Password Dashboard</h1>
             <hr className="my-5" />
 
             <PasswordSection
