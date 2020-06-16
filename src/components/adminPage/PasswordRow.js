@@ -27,7 +27,7 @@ Password: ${password}`
   return (
     <>
       <div style={{ alignSelf: "center" }}>
-        <Link to={link} state={{ admin: true }}>
+        <Link to={link}>
           <p style={pStyle}>{crate.name}</p>
         </Link>
       </div>

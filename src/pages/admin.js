@@ -7,39 +7,36 @@ import PasswordSection from "../components/adminPage/PasswordSection"
 const Admin = ({ data }) => {
   const [loggedIn, setLoggedIn] = useContext(AdminContext)
 
-  return (
-    <>
-      <PasswordModal
-        loggedIn={loggedIn}
-        setLoggedIn={setLoggedIn}
-        headerText="Admin Page Login"
-        password="PS-ADMIN"
-        bodyText=""
-        dismissable={false}
-      />
-      {loggedIn ? (
-        <div className="w-100 p-5">
-          <div className="mr-5">
-            <h1>Password Dashboard</h1>
-            <hr className="my-5" />
+  return loggedIn === true ? (
+    <div className="w-100 p-5">
+      <div className="mr-5">
+        <h1>Password Dashboard</h1>
+        <hr className="my-5" />
 
-            <PasswordSection
-              heading="RTA Page Passwords"
-              passwords={data.rtaCrates.all}
-              link={{ text: "RTA Crates", to: "/rta" }}
-            />
+        <PasswordSection
+          heading="RTA Page Passwords"
+          passwords={data.rtaCrates.all}
+          link={{ text: "RTA Crates", to: "/rta" }}
+        />
 
-            <hr className="my-5" />
+        <hr className="my-5" />
 
-            <PasswordSection
-              heading="DIY Page Passwords"
-              passwords={data.diyCrates.all}
-              link={{ text: "DIY Crates", to: "/diy" }}
-            />
-          </div>
-        </div>
-      ) : null}
-    </>
+        <PasswordSection
+          heading="DIY Page Passwords"
+          passwords={data.diyCrates.all}
+          link={{ text: "DIY Crates", to: "/diy" }}
+        />
+      </div>
+    </div>
+  ) : (
+    <PasswordModal
+      // loggedIn={loggedIn}
+      setLoggedIn={setLoggedIn}
+      headerText="Admin Page Login"
+      password="PS-ADMIN"
+      bodyText=""
+      dismissable={false}
+    />
   )
 }
 

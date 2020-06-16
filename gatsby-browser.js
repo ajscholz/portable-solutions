@@ -13,6 +13,12 @@ const { AdminProvider } = require("./src/context/adminContext")
 
 exports.onClientEntry = () => {
   smoothscroll.polyfill()
+
+  if (typeof window !== "undefined") {
+    const admin =
+      window.localStorage.getItem("admin") === "true" ? "true" : "false"
+    window.localStorage.setItem("admin", admin)
+  }
 }
 
 exports.wrapRootElement = ({ element }) => {

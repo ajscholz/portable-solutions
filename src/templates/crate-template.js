@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useContext } from "react"
 import { graphql } from "gatsby"
 import Banner from "../components/banner"
 
@@ -8,25 +8,12 @@ import Guide from "../components/crateBuildTabs/Guide"
 import MoreVideos from "../components/crateBuildTabs/MoreVideos"
 import TabButton from "../components/crateBuildTabs/TabButton"
 import PasswordModal from "../components/PasswordModal"
+import { AdminContext } from "../context/adminContext"
 
-const CrateTemplate = ({ data, pageContext: { type }, location }) => {
+const CrateTemplate = ({ data, pageContext: { type } }) => {
   const [currentTab, setCurrentTab] = useState(0)
-  const [loggedIn, setLoggedIn] = useState(
-    typeof location === "undefined"
-      ? false
-      : typeof location.state === "undefined"
-      ? false
-      : typeof location.state.admin === "undefined"
-      ? false
-      : location === null
-      ? false
-      : location.state === null
-      ? false
-      : location.state.admin === null
-      ? false
-      : location.state.admin
-  )
-  // const [loggedIn, setLoggedIn] = useState((typeof location !== 'undefined') ? typeof location.state !== 'undefined' ? typeof location.state.admin !== 'undefined') ? location.state.admin ? true : false)
+  const [loggedIn, setLoggedIn] = useContext(AdminContext)
+
   const guideType = type === "rta" ? "rtaBuildGuide" : "diyBuildGuide"
   const password =
     type === "rta"
