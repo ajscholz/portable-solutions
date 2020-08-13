@@ -114,20 +114,22 @@ const Form2 = props => {
       <ModalBody
         // className={`${fabContext.showForm === true ? "fade-in" : "fade-out"}`}
         data-background-color="info"
+        className="py-0"
       >
         {accepted === null ? (
           // {/* "handleSubmit" will validate your inputs before invoking "onSubmit" */ }
           <Form className="form">
-            <CardBody className="mb-0">
+            <CardBody className="pb-0">
               {/* NAME INPUT */}
               <MyInput
                 register={register}
                 name="Name"
                 errors={errors}
                 icon="now-ui-icons users_circle-08"
+                required={true}
                 errorPattern={{
                   value: /^[a-z]{1,} [a-z]{1,}$/i,
-                  message: "Please enter a valid name",
+                  message: "Please enter a valid first and last name",
                 }}
                 submit={handleSubmit(onSubmit)}
                 focusOnMount={focusOnMount}
@@ -138,6 +140,7 @@ const Form2 = props => {
                 name="Email"
                 errors={errors}
                 icon="now-ui-icons ui-1_email-85"
+                required={true}
                 errorPattern={{
                   value: /^[a-z1-9]{3,}@[a-z1-9]{2,}.[a-z1-9]{2,}$/i,
                   message: "Please enter a valid email address",
@@ -150,6 +153,7 @@ const Form2 = props => {
                 name="Phone"
                 errors={errors}
                 icon="now-ui-icons tech_mobile"
+                required={true}
                 errorPattern={{
                   value: /^[0-9]{10}$|^[0-9]{3}-[0-9]{3}-[0-9]{4}$|^\([0-9]{3}\) {0,1}[0-9]{3}[- ]{0,1}[0-9]{4}$/,
                   message: "Please enter a valid phone number",
@@ -163,6 +167,7 @@ const Form2 = props => {
                 placeholder="Organization Name"
                 errors={errors}
                 icon="now-ui-icons business_bank"
+                required={true}
                 errorPattern={{
                   value: /^.{3,}$/i,
                   message: "Please enter a valid name",
@@ -182,15 +187,21 @@ const Form2 = props => {
                 }}
                 submit={handleSubmit(onSubmit)}
               />
-              {/* <textarea
-                name="help"
-                ref={register({ required: "This field is required", minLength: 10 })}
+              <MyInput
+                register={register}
+                placeholder="Message..."
+                name="message"
+                rows="3"
+                icon="now-ui-icons ui-2_chat-round"
+                errors={errors}
+                submit={handleSubmit(onSubmit)}
+                type="textarea"
               />
 
-              <FormFeedback valid={!errors.help}>
+              {/* <FormFeedback valid={!errors.help}>
                 This field is required. Please enter a valid message.
-              </FormFeedback>
-              errors will return when field validation fails  */}
+              </FormFeedback> */}
+              {/* errors will return when field validation fails  */}
             </CardBody>
           </Form>
         ) : (

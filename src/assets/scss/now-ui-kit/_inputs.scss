@@ -166,6 +166,8 @@
   border: 1px solid $light-gray;
   border-radius: 0.25rem;
   color: $dark-background;
+  display: flex;
+  align-items: flex-start;
 
   @include transition-input-focus-color();
 
@@ -192,6 +194,7 @@
   }
 
   i {
+    margin-top: 2px;
     width: 17px;
   }
 }
@@ -272,7 +275,7 @@ textarea.form-control {
   max-height: 80px;
   padding: 10px 10px 0 0;
   resize: none;
-  border: none;
+  // border: none;
   border-bottom: 1px solid $light-gray;
   border-radius: 0;
   line-height: 2;
@@ -280,8 +283,8 @@ textarea.form-control {
   &:focus,
   &:active {
     border-left: none;
-    border-top: none;
-    border-right: none;
+    // border-top: none;
+    // border-right: none;
   }
 }
 
