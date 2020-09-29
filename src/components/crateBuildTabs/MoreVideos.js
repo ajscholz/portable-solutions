@@ -1,10 +1,24 @@
 import React from "react"
-import { TabPane } from "reactstrap"
+import { Col, Container, Row, TabPane } from "reactstrap"
+import VideoPlayer from "../VideoPlayer"
 
-const MoreVideos = ({ tabId }) => {
+const MoreVideos = ({ data, tabId }) => {
+  console.log(data)
   return (
     <TabPane tabId={tabId}>
-      <p>Here are some more videos to help you out.</p>
+      <Container fluid>
+        <Row>
+          {data.map(video => {
+            console.log(video)
+            return (
+              <Col sm={12} key={video.url}>
+                <h3 style={{ textAlign: "left" }}>{video.title}</h3>
+                <VideoPlayer video={video} />
+              </Col>
+            )
+          })}
+        </Row>
+      </Container>
     </TabPane>
   )
 }

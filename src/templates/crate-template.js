@@ -118,12 +118,11 @@ const CrateTemplate = ({ data, pageContext: { type } }) => {
                 ))}
               </Nav>
               <TabContent
-                className="tab-space text-center mt-3 pb-2"
+                className="tab-space text-center mt-3 pb-2 w-100"
                 activeTab={"tab" + currentTab}
               >
                 {validTabs.map((item, index) => (
                   <React.Fragment key={index}>
-                    {" "}
                     {item.contentComponent}
                   </React.Fragment>
                 ))}
@@ -171,6 +170,9 @@ export const data = graphql`
         ...DownloadButtonFragment
       }
       video: buildOverviewVideo {
+        ...VideoFragment
+      }
+      otherVideos {
         ...VideoFragment
       }
     }
